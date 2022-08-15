@@ -26,7 +26,7 @@
 	<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/main.js'])
+    @vite(['resources/sass/app.scss', 'resources/sass/dashboard.scss', 'resources/js/app.js', 'resources/js/main.js'])
 
 </head>
 

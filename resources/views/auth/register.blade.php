@@ -74,4 +74,25 @@
         </div>
     </div>
 </div>
+
+<!-- Main Section -->
+	<main  class="l-main">
+		<section class="settings section bd-container">
+    		<span class="dashboard-title register">Create an account</span>
+    		<div class="registration-container">
+    			<div class="full-name-container">
+    				<input class="textbox register-account" type="text" placeholder="First Name">
+    				<input class="textbox register-account" type="text" placeholder="Last Name">
+    			</div>
+    			<input class="textbox register-account" type="text" placeholder="E-mail Address">
+    			<input class="textbox register-account" type="text" placeholder="Username">
+    			<div class="registration-password-container">
+    				<input class="textbox register-account" type="text" placeholder="Password">
+    				<input class="textbox register-account" type="text" placeholder="Confirm Password">
+    			</div>
+    			<a href="#" class="button account">Create account</a>
+    		</div>
+    	</section>
+	</main>
+
 @endsection

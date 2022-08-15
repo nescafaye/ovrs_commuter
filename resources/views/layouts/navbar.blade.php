@@ -45,12 +45,12 @@
      <a href="#" class="nav__logo">Van<mark style="background: none;color: "class="vango">Go</mark></a>
      <div class="nav__menu" id="nav-menu">
          <ul class="nav__list">
-             <li class="nav__item"><a href="{{ url('/') }}" class="nav__link active-link">Home</a></li>
+             <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('/')) ? 'active-link' : '' }}">Home</a></li>
              <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
              <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
              <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
-             <li class="nav__item"><a href="#" class="nav__link">Register</a></li>
-             <li class="nav__item"><a href="{{ route('login') }}" class="nav__link">Log In</a></li>
+             <li class="nav__item"><a href="{{ route('register') }}" class="nav__link {{ (request()->is('register')) ? 'active-link' : '' }}">Register</a></li>
+             <li class="nav__item"><a href="{{ route('login') }}" class="nav__link {{ (request()->is('login')) ? 'active-link' : '' }}">Log In</a></li>
              <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
          </ul>
      </div>

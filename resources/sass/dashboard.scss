@@ -1,0 +1,1007 @@
+:root
+{
+  /*========== For Dashboard ==========*/
+
+  /*Colors*/
+  --text-area-color: rgba(238, 242, 254, 0.22);
+  --font-color-text-area: #4B535A;
+  --dashboard-font-color: #606A74;
+  --dashboard-icon-color: #8FA5A5;
+  --dashboard-subtitle: #4B535A;
+  --sentence-color: #8FA5A5;
+  --button-color: #60B0B0;
+  --line-color:#84929E;
+  --usertype-dropdown: #696969;
+  --switch-button: #ffffff;
+  --switch-button-border: #D9DADC;
+  --dropdown-border:  rgba(132, 146, 158, 0.3);
+  --dropdown: #84929E4D;
+  --sort: white;
+   --chexbox-name: #8FA5A5;
+
+  /*Font-size*/
+  --dashboard-title-page-size: 1.25rem;
+  --dasboard-subtitle-size: 1rem;
+  --paragraph-size: .938rem;
+  --upcoming-destination: .990rem;
+  --upcoming-sched: .800rem;
+
+  /*Font-weight*/
+  --page-title: 500;
+  --button:  450;
+  --dropdown: 400;
+
+  /*fONTS*/
+  --font: 'Poppins', sans-serif;
+  --font-style: normal;
+
+  /*Margin*/
+  --mb-7: 18rem;
+  --mb-8: 4rem;
+  --mb-9: 15rem;
+  --mb-10: 20rem;
+  --mb-11: 5rem;
+  --mb-12: 7rem;
+  --mb-13: 10rem;
+
+}
+/*========== Variables Dark theme ==========*/
+body.dark-theme
+{
+  --font-color-text-area: #C7D1CC;
+  --dashboard-subtitle: #FFFF;
+  --dashboard-font-color: #FFFF;
+  --body-color: #263238;
+  --line-color:#FFFFFF;
+  --text-color-light: #C7D1CC;
+  --container-color: #3B4D56;
+  --usertype-dropdown: #C7D1CC;
+  --switch-button:#C7D1CC ;
+  --switch-button-border:  #263238;
+  --title-color: #F1F3F2;
+  --sort:  #263238;
+   --chexbox-name: #C7D1CC;
+}
+/*========== LINE ==========*/
+hr 
+{
+  color: var(--line-color);
+}
+
+/*========== REGISTER ==========*/
+.account
+{
+  margin-top: var(--mb-3);
+  margin-bottom: var(--mb-2);
+  width: 100%;
+  text-align: center;
+}
+input.register-account{
+  margin-top: var(--mb-3);
+}
+.full-name-container, .registration-password-container{
+  grid-gap: var(--mb-1);
+}
+
+.full-name-container, .registration-password-container
+  {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+/*========== No bookings ==========*/
+
+.no-booking-title 
+{
+  font-family: var(--logo-font);
+  font-size:var(--h2-font-size) ;
+  margin-bottom:0;
+  color: var( --dashboard-font-color);
+}
+
+.no_booking_container 
+{
+  margin-top: 0;
+  margin-bottom: var(--mb-3);
+  color: var(--text-color-light);
+  text-align: center;
+}
+.bookings-img
+{
+  width: 266px;
+  justify-self: center;
+}
+
+/*========== CLASS CSS ==========*/
+
+.dashboard-title 
+{
+  font-size: var(--dashboard-title-page-size);
+  color: var( --dashboard-font-color);
+  font-weight: var(--page-title);
+  margin-bottom: var(--mb-3);
+}
+.dashboard-subtitle 
+{
+  font-size: var(--dasboard-subtitle-size);
+  color: var( --dashboard-subtitle);
+  font-weight: var( --page-title);
+  margin-bottom: 0;
+}
+.title-description 
+{
+  color: var( --sentence-color);
+  font-size: var(--paragraph-size);
+}
+
+/*========== TEXTBOX ==========*/
+
+.settings input
+{
+  margin-top: var(--mb-2);
+}
+.textbox input
+{
+  width: 100%;
+  margin-top: 4px;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  line-height: 2;
+  border: 2px;
+  background:var( --text-area-color);
+  border-radius: 6px;
+}
+.textbox ,textarea
+{
+  width: 100%;
+  margin-top: 4px;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  line-height: 2;
+  font-family: var(--font);
+  font-size:var(--paragraph-size);
+  border: 2px;
+  background:var( --text-area-color);
+  border-radius: 6px;
+  color: var(--font-color-text-area);
+}
+.textbox:focus 
+{
+  outline: none !important;
+  border:1px solid #60B0B0;
+}
+
+/*========== SETTINGS ==========*/
+
+/*Forgot Password*/
+.password-button 
+{
+  float: right;
+  color:var(--button-color);
+  font-family: var(--font);
+  text-decoration: none;
+  font-weight: var(--button);
+  margin-top: var(--mb-2);
+  font-size: var(--paragraph-size);
+}
+/*Billing Details*/
+summary 
+{
+  line-height: 40px;
+  margin: 10px
+}
+.Username-billing 
+{
+  color: var( --dashboard-font-color);
+}
+.save 
+{
+  width: 95%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.Delete-Account 
+{
+  align-items: center;
+  color:var(--dashboard-icon-color);
+  font-family: var(--font);
+}
+.dropdown-billing-container 
+{
+  box-sizing: border-box;
+  height: 60px;
+  border: 1px solid var(--dropdown-border);
+  margin-bottom: 0px;
+  border-radius: 12px 12px 0px 0px;
+}
+.collase-billing-information-container
+{
+  margin-top: -1px;
+  box-sizing: border-box;
+  height: 270px;
+  border-left: 1px solid var(--dropdown-border);
+  border-top: 1px solid var(--dropdown-border);
+  border-right: 1px solid var(--dropdown-border);
+  border-bottom: 1px solid var(--dropdown-border);
+  border-radius: 0px 0px 12px 12px;  
+}
+.collase-billing-information-container input
+{
+  width: 95%;
+  margin-bottom: 10px;
+}
+.collase-billing-information-container textarea
+{
+  width: 95%;
+}
+
+/*========== Passenger ==========*/
+.PassengerAcount {
+  margin-left: var(--mb-3);
+}
+.main-passenger-information-container input{
+  margin-bottom: 10px;
+  width: 97%;
+  box-sizing: border-box;
+  height: auto;
+}
+.save-passenger{
+   width: 97%;
+}
+.main-passenger-information-container 
+{
+  box-sizing: border-box;
+  border: 1px solid var(--dropdown-border);
+  border-radius: 0px 0px 12px 12px;  
+}
+.main-passenger-container {
+  border: 1px solid var(--dropdown-border);
+  border-radius: 12px 12px 0px 0px;
+  box-sizing: border-box;
+  height: 70px;
+}
+.save-passenger 
+{
+  margin-bottom: var(--mb-2);
+}
+.pnc input
+{
+  margin-top: var(--mb-2);
+}
+.add-passenger a
+{
+  text-align: center;
+  width: 50%;
+}
+.Username-passenger 
+{
+  color: var( --dashboard-font-color);
+}
+
+.collase-passenger-information-container input
+{
+   width: 97%;
+   margin-bottom: 10px;
+}
+.collase-passenger-information-container
+{
+  margin-top: -1px;
+  box-sizing: border-box;
+  height: auto;
+  border: 1px solid var(--dropdown-border);
+  border-radius: 0px 0px 12px 12px;  
+}
+.dropdown-passenger-container
+{
+  box-sizing: border-box;
+  height: 60px;
+  border: 1px solid var(--dropdown-border);
+  margin-bottom: 0px;
+  border-radius: 12px 12px 0px 0px;
+}
+/*Phone Number*/
+.phone-number
+{
+  position: relative;
+}
+.phone 
+{
+  position: absolute;
+  padding:22px 10px;
+}
+.phone 
+{
+  width:67px;
+  height: 67px;
+}
+input.accountphone
+{
+  padding-left: 50px; 
+  width: 300px;
+}
+/*Birthday*/
+.birthday-container
+{
+  position: relative;
+}
+.birthday 
+{
+  position: absolute;
+   padding:22px 10px;
+}
+input.bday
+{
+  padding-left: 50px; 
+  width: 310px;
+}
+.birthday 
+{
+  width:67px;
+  height: 67px;
+}
+/*========== Upcoming Trips ==========*/
+.calen {
+  color: var(--dashboard-icon-color);
+  margin-right: var(--mb-1);
+}
+.arrow {
+  color: var(--dashboard-icon-color);
+}
+.seatticket {
+  color: var(--dashboard-icon-color);
+  margin-left: var(--mb-10);
+  margin-right: var(--mb-1);
+}
+.seatsreserved {
+   color: var(--dashboard-icon-color);
+    margin-left: var(--mb-10);
+}
+.ticket
+{
+  color: var(--dashboard-icon-color);
+  margin-left: var(--mb-7);
+  margin-right: var(--mb-1);
+}
+.remind__img
+{
+ border-radius: 15px 15px 0px 0px;
+ position: absolute;
+}
+.schedule 
+{
+  float: right;
+  margin: var(--mb-3);
+  letter-spacing: -0.02em;
+  line-height: 30px;
+  background: var(--body-color);
+  font-weight: var(--page-title);
+  font-family: var(--font);
+  font-size: var(--paragraph-size);
+  color: var( --dashboard-subtitle);
+  text-align: center;
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+}
+.vansched, .seatsched
+{
+  position: relative;
+  margin: var(--mb-5);
+  margin-top:  var(--mb-6) ;
+}
+
+.header-trip-seats 
+{
+  height: 130px;
+  background: rgba(102, 178, 178, 0.67);
+  margin: 20px;
+  border-radius: 15px 15px 0px 0px;
+  margin-bottom: 0px;
+}
+.body-trip 
+{
+  margin: 20px;
+  margin-top: -1px;
+  border: 1px solid var(--dropdown-border);
+  border-radius: 0px 0px 12px 12px;
+  box-sizing: border-box;
+  height: 100px;
+}
+.trip-schedule, .trip-destination
+{
+  display: flex;
+  margin: 20px;
+}
+.trip-schedule p, .trip-destination p, .arrow
+{
+  margin-right: var(--mb-3);
+}
+.header-trip-van {
+  height: 130px;
+  background:  rgba(102, 178, 178, 0.67);
+  margin: 20px;
+  border-radius: 15px 15px 0px 0px;
+  margin-bottom: 0px;
+} 
+/*========== SORT DROPDOWN ==========*/
+.sort 
+{
+  color: var(--dashboard-icon-color);
+  float: right;
+  margin-top: 5px;
+}
+.sort-select-box 
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  max-width: 110px;
+  float: right;
+}
+.sort-select-box .sort-container 
+{
+  opacity: 0;
+  height: 0;
+}
+.sort-container .sort-dropdown 
+{
+  background:var(--sort);
+  color: #0d141f;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+  margin-top: 20px;
+  width: 150px;
+  position: relative;
+  right: 48px;
+  z-index: 1;
+}
+.sort-dropdown .sort-option a 
+{
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  width: 100%;
+  text-decoration: none;
+  color: var(--usertype-dropdown);
+}
+.sort-select-box .sort-container.active 
+{
+  max-height: 250px;
+  opacity: 1;
+}
+.sort-select-box .sort-option 
+{
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+}
+.sort-select-box .sort-option:hover 
+{
+   background:#66B2B2;
+   color: white;
+}
+.sort-option a:hover 
+{
+  background:#66B2B2;
+  color: white;
+}
+.sort-select-box .sort-option .a 
+{
+  display: none;
+ }
+
+.sort-option 
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+/*========== GENDER DROPDOWN ==========*/
+.gender-dropdown 
+{
+  margin-top: var(--mb-1);
+  z-index: 1000;
+}
+.gender-dropdown .gender-select-box 
+{
+  display: flex;
+  width:292px;
+  flex-direction: column;
+  color: var(--usertype-dropdown);
+  z-index: 300;
+}
+.gender-dropdown .gender-select-box .gender-container 
+{
+  background: var(--text-area-color);
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.3s;
+  border-radius: 8px;
+  overflow: hidden;
+  order: 1;
+  box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.07); 
+}
+.selected-gender
+{  
+  background: var(--text-area-color);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  position: relative;
+  order: 0;
+}
+.selected-gender::after
+{
+  content: "";
+  background: url("Images/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 50%;
+  width: 16px;
+  right: 10px;
+  top: 18px;
+  transition: all 0.6s;
+}
+.gender-dropdown .gender-select-box .gender-container.active 
+{
+  max-height: 250px;
+  opacity: 1;
+}
+.gender-dropdown .gender-select-box .gender-container.active+.selected-gender::after
+{
+  transform: rotateX(180deg);
+  top: 6px;
+}
+.gender-dropdown .gender-select-box .gender,
+.selected-gender
+{
+  padding: 14px 24px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: var(--paragraph-size);
+  font-weight: var( --dropdown);
+}
+.gender-dropdown .gender-select-box .gender:hover 
+{
+  background: rgba(102, 178, 178, 0.67);
+  color: white;
+}
+.gender-dropdown .gender-select-box label 
+{
+  cursor: pointer;
+}
+.gender-dropdown .gender-select-box .gender .radio 
+{
+  display: none;
+}
+/*========== USER DROPDOWN ==========*/
+.usersub 
+{
+  margin-bottom: var(--mb-2);
+}
+.usertype-container .user-select-box 
+{
+  display: flex;
+  width:292px;
+  flex-direction: column;
+  color: var(--usertype-dropdown);
+}
+.usertype-container .user-select-box .users-container 
+{
+  background: var(--text-area-color);
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.3s;
+  border-radius: 8px;
+  overflow: hidden;
+  font-weight: 400;
+  order: 1;
+  color:  var(--usertype-dropdown);
+  box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.07);
+}
+.selected-user
+{
+  background: var(--text-area-color);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  position: relative;
+  order: 0;
+}
+.selected-user::after
+{
+  content: "";
+  background: url("Images/arrowdown.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 50%;
+  width: 16px;
+  right: 10px;
+  top: 18px;
+  transition: all 0.6s;
+}
+.usertype-container .user-select-box .users-container.active 
+{
+  max-height: 250px;
+  opacity: 1;
+}
+.usertype-container .user-select-box .users-container.active+.selected-user::after
+{
+  transform: rotateX(180deg);
+  top: 6px;
+}
+.usertype-container .user-select-box .usertype,
+.selected-user
+{
+  padding: 14px 24px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: var(--paragraph-size);
+  font-weight: var( --dropdown);
+}
+.usertype-container .user-select-box .usertype:hover 
+{
+  background:#66B2B2;
+  color: white;
+}
+.usertype-container .user-select-box label 
+{
+  cursor: pointer;
+}
+.usertype-container .user-select-box .usertype .radio 
+{
+  display: none;
+}
+/*========== Payments ==========*/
+.checkboxname {
+  color: var( --chexbox-name);
+}
+.payment
+{
+  width: 100%;
+  text-align: center;
+}
+.proceed {
+  margin-bottom: var(--mb-2);
+}
+
+.titlepayment 
+{
+  margin: var(--mb-3);
+}
+.payment-container-title
+{
+  border: 1px solid var(--dropdown-border);
+  border-radius: 12px 12px 0px 0px;
+  box-sizing: border-box;
+  height: 90px;
+}
+.second 
+{
+   border: 1px solid var(--dropdown-border);
+  border-radius: 0px 0px 0px 0px;
+  box-sizing: border-box;
+  height: 90px;
+}
+.payment-container-body 
+{
+  border: 1px solid var(--dropdown-border);
+  border-radius: 0px 0px 12px 12px ;
+  box-sizing: border-box;
+  height: auto;
+}
+.passengercon 
+{
+
+  border-radius: 0px 0px 0px 0px  ;
+}
+.payment-container-body input{
+  margin-bottom: var(--mb-2);
+  width: 95%;
+}
+.checkbx {
+  margin: var(--mb-2);
+  margin-bottom:var(--mb-11) ;
+}
+.gcashicon, .offline
+{
+   color: var(--dashboard-font-color);
+   margin-right: var(--mb-1);
+}
+.payment-container-title p {
+  margin-left: var(--mb-3);
+}
+.gdpayment {
+  margin-left: var(--mb-1-2);
+}
+
+.numberofpassenger, .seatnumber, .short, .departure, 
+.titledestination, .shortdes, .firstcustomer, .secondcustomer{
+  display: flex;
+}
+.short 
+{
+  float: right;
+  margin: var(--mb-2);
+  background: var(--button-color);
+  border-radius: 10px;
+  line-height:40px;
+  height: 40px;
+  width: 250px;
+}
+.firstcustomer, .secondcustomer{ 
+  margin-left: var(--mb-3);
+}
+.short p
+{
+  color: var(--sort);
+}
+.currentdestination-price{
+ margin-left: var(--mb-13)
+}
+.destination-container
+{
+  margin-top: var(--mb-8);
+  margin-left: var(--mb-3);
+}
+.right {
+margin-top: var(--mb-3);
+margin-left: var(--mb-3);
+}
+.nopassanger {
+  margin-top: var(--mb-3);
+}
+
+.passicon {
+  margin-right: var(--mb-2);
+  color: #66B2B2;
+}
+.titledestination p {
+  color: var(--light-color);
+  font-weight: 500;
+}
+.rightitle {
+  color: var(--light-color);
+  font-weight: 500;
+}
+.departure-container {
+  margin-top: var(--mb-2);
+}
+.number , .iconleft,  .iconright
+{
+  color: var(--dashboard-font-color);
+}
+.number {
+  font-weight: 450;
+}
+.iconleft, .iconright
+{
+  margin-right: var(--mb-3);
+}
+.linedes {
+  margin-bottom: var(--mb-1);
+  color: var(--dashboard-font-color);
+}
+.loc 
+{
+  margin-left:  var(--mb-5-1);;
+}
+.short-trip {
+  float: right;
+  margin: var(--mb-2);
+  background: #EAEAEA;
+  height: 30px;
+  width: 180px;
+  border-radius: 7px;
+}
+.tripline 
+{
+  margin-left:.25rem;
+}
+.reservation-price {
+  margin-left: var(--mb-8);
+}
+.reserve 
+{
+  margin-top: var(--mb-1);
+  margin-left: var(--mb-1);
+}
+.subtotal , .currentdestination{
+   margin-left: var(--mb-4);
+}
+.SHORTARROW {
+   margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+}
+/*========== switch button ==========*/
+
+input.apple-switch
+{
+  position: relative;
+  appearance: none; 
+  outline: none;
+  width: 50px; 
+  height: 30px;
+  background-color: var(--switch-button);
+  border: 1px solid var(--switch-button-border);
+  border-radius: 50px;
+  box-shadow: inset -20px 0 0 0 var(--switch-button);
+  transition-duration: 200ms;
+}
+input.apple-switch:after 
+{
+  content: "";
+  position: absolute;
+  top: 1px; 
+  left: 1px;
+  width: 26px; 
+  height: 26px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+}
+input.apple-switch:checked 
+{
+  border-color: none;
+  box-shadow: inset 20px 0 0 0 #66B2B2;
+
+}
+input.apple-switch:checked:after 
+{
+  left: 20px;
+  box-shadow: -2px 4px 3px rgba(0,0,0,0.05);
+}
+
+/*========== Notification ==========*/
+@media screen and (min-width: 576px)
+{
+    .notification-email-container, .notification-sms-container 
+  {
+    display: flex;
+    flex-direction: row;
+  }
+  .notification-email-container input, .notification-sms-container input
+  {
+    justify-self: center;
+    margin-left: var(--mb-7);
+  }
+  .notification-sms-container input
+  {
+    margin-top: var(--mb-8);
+  }
+  .add-passenger 
+  {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .add-passenger a
+  {
+    text-align: center;
+    width: 50%;
+    margin-left: var(--mb-9);
+  }
+  .full-name-container
+  {
+    display: grid ;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gdpayment 
+  {
+    margin-left: var(--mb-1-2);
+  }
+  .container ,.short-trip, .reservation-subtitle, .reservation-fee,
+   .discount-voucher
+  {
+    display: flex;
+    flex-direction: row;
+  }
+  .right-container 
+  {
+    flex: 55%;
+    margin-left: var(--mb-2);
+  }
+
+
+}
+/*==========Billing Information ==========*/
+.billing-title {
+  box-sizing: border-box;
+  height: 80px;
+  border: 1px solid var(--dropdown-border);
+  margin-bottom: 0px;
+  border-radius: 12px 12px 0px 0px;
+}
+.bill-information-container {
+  box-sizing: border-box;
+  height: 150px;
+  border: 1px solid var(--dropdown-border);
+  margin-bottom: 0px;
+  border-radius:  0px 0px 12px 12px;
+}
+.bill
+{
+  width: 95%;
+  margin-top: 15px;
+}
+.information-billing {
+  margin: var(--mb-3);
+}
+/*========== payment method ==========*/
+
+.method-container {
+  box-sizing: border-box;
+  height: 130px;
+  border: 1px solid var(--dropdown-border);
+
+  border-radius:  0px 0px 12px 12px;
+}
+.method-container article{
+  margin: var(--mb-3);
+}
+.billingmethiod {
+  margin: var(--mb-3);
+}
+.app
+{
+  max-width: 300px;
+  margin: 0 auto;
+}
+.app i 
+{
+  font-size: var(--paragraph-size);
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: 1;
+}
+article 
+{
+  position: relative;
+  width: 140px;
+  height:50px;
+  margin: 5px;
+  float: left;
+  border: 1px solid var(--dropdown-border);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+article div
+{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 25px;
+  transition: .5s ease;
+}
+
+article input 
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 100px;
+  opacity: 0;
+  cursor: pointer;
+}
+input[type=checkbox]:checked ~ div
+{
+  background-color: var(--first-color);
+  border-radius: 8px;
+}
+
+@keyframes slidein 
+{
+  from {
+    margin-top: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin: 0%;
+    width: 100%;
+  }
+}

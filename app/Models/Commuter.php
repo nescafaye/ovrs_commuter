@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Http\Middleware\Authenticate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Commuter extends Model
+class Commuter extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'comm_id',
@@ -17,7 +21,7 @@ class Commuter extends Model
         'comm_mail',
         'comm_phone',
         'birthdate',
-        'gender'
+        'gender',
     ];
 
     protected $hidden = [
