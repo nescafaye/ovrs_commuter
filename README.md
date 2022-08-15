@@ -9,3 +9,4 @@
 9. Run php artisan migrate
 10. Go to http://localhost:8000/
 
+Run npm install && npm run dev
