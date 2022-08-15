@@ -1,0 +1,482 @@
+/* ===== Google Font Import - Poformsins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// // Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+@import 'app.scss';
+
+body {
+    background: #d1f0f0;
+    // background-image: url(../../public/assets/bg-login.svg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    max-width: 80%;
+    height: 100vh;
+    /* background: #000; */
+} 
+
+ .container .forms{
+    display: flex;
+    align-items: center;
+    transition: height 0.2s ease;
+    padding: 40px 30px;
+    margin-right: 60px;
+    border-radius: 8px;
+    // background: white;
+    // box-shadow: 2px 2px 15px 2px rgba(198, 208, 207, 0.519) ;
+} 
+
+.container.active .login{
+    margin-left: -50%;
+    opacity: 0;
+    transition: margin-left 0.18s ease, opacity 0.15s ease;
+}
+
+.container .signup{
+    opacity: 0;
+    transition: opacity 0.09s ease;
+}
+.container.active .signup{
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.container.active .forms{
+    height: 600px;
+}
+.container .form .title{
+    position: relative;
+    font-size: 30px;
+    font-family: 'Circular STD', 'Poppins', 'sans-serif';
+    font-weight: bolder;
+    padding-bottom: 3px;
+}
+
+.logo-head {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+a.back {
+    position: relative;
+    left: 40%;
+    background-color: #60b0b017;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.form .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -20%;
+    height: 6px;
+    width: 65px;
+    background-color: #60B0B0;
+    border-radius: 25px;
+}
+
+.form .input-field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.input-field input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0 35px;
+    border: 2px;
+    font-size: 16px;
+    background: #ecf0f1;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid){
+    outline: none !important;
+    border:1px solid #60B0B0;
+}
+
+.input-field i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) ~ i{
+    color: #60B0B0;
+}
+
+.input-field i.icon{
+    left: 2%;
+}
+
+.input-field i.toggle-password{
+    right: 0;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.form .checkbox-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.checkbox-text .checkbox-content{
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-content input{
+    margin: 0 8px -2px 4px;
+    accent-color: #60B0B0;
+}
+
+.form .text{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+}
+
+.form a.text, a.signup-link{
+    color: #60B0B0;
+    text-decoration: none;
+}
+
+.form a.text, a.signup-link:visited {
+    color: #60B0B0;
+    background-color: transparent;
+}
+
+.form a:hover{
+    text-decoration: underline;
+}
+
+.form .socmed-button{
+    margin-top: 35px;
+
+    button {
+      font-size: 16px;
+    }
+}
+
+.form .button-login input{
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #60B0B0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-login input:hover {
+    background-color: #004C4C;
+}
+
+.form .login-signup{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.login h5 {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #cbcbcb;
+}
+  
+.login h5:before, .login h5:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 2px solid #cbcbcb;
+    margin: auto;
+}
+
+.bx {
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+.bxl-google {
+    margin-right: 10px;
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    
+}
+
+.bx.bxl-facebook {
+    color: white;
+}
+
+.login h3 {
+  overflow: hidden;
+  text-align: center;
+  color: #CED4DA;
+}
+
+.login h3:before,
+.login h3:after {
+  background-color: #CED4DA;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.login h3:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.login h3:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+
+.input-box input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 0 35px 0 15px;
+    transition: all 0.2s linear;
+}
+
+input:is(:focus, :valid){
+    border-color: #4070f4;
+}
+
+.input-box :is(label, i){
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    transition: all 0.2s linear;
+}
+
+.input-box label{
+    left: 15px;
+    pointer-events: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+input:is(:focus, :valid) ~ label{
+    color: #4070f4;
+    top: 0;
+    font-size: 12px;
+    font-weight: 500;
+    // background-color: #fff;
+}
+
+.input-box i{
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+input:is(:focus, :valid) ~ i{
+    color: #4070f4;
+}
+
+a.close {
+    color: #004C4C;
+}
+
+
+/* Slider */
+
+.img-slider{
+  position: relative;
+  width: 800px;
+  height: 500px;
+  margin: 10px;
+  /* background: #1D212B; */
+}
+
+.img-slider .slide{
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  clip-path: circle(0% at 0 50%);
+  
+}
+
+.img-slider .slide.active{
+  clip-path: circle(150% at 0 50%);
+  transition: 2s;
+  transition-property: clip-path;
+}
+
+.img-slider .slide img{
+  z-index: 1;
+  width: 50%;
+  border-radius: 5px;
+  padding-left: 160px;
+}
+
+.img-slider .slide .info{
+  position: absolute;
+  top: 100;
+  padding: 15px 30px;
+  width: 70%;
+
+}
+
+.img-slider .slide .info h2{
+  color: #004C4C;
+  font-size: 35px;
+  font-weight: 650;
+  text-align: center;
+
+}
+
+.img-slider .slide .info p{
+  color: #6C757D;
+  font-size: 15px;
+  padding: 10px;
+  padding-top: 30px;
+  border-radius: 4px;
+  text-align: center;
+  
+}
+
+.img-slider .navigation{
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  bottom: 50px;
+  left: 35%;
+  transform: translateX(-50%);
+}
+
+.img-slider .navigation .btn{
+  background: #ffffff;
+  margin: 10px;
+  padding: 3px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.img-slider .navigation .btn.active{
+  background: #008080;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+/* 
+@media (max-width: 820px){
+  .img-slider{
+    width: 600px;
+    height: 375px;
+  }
+
+  .img-slider .slide .info{
+    padding: 10px 25px;
+  }
+
+  .img-slider .slide .info h2{
+    font-size: 35px;
+  }
+
+  .img-slider .slide .info p{
+    width: 70%;
+    font-size: 15px;
+  }
+
+  .img-slider .navigation{
+    bottom: 25px;
+  }
+
+  .img-slider .navigation .btn{
+    width: 10px;
+    height: 10px;
+    margin: 8px;
+  }
+}
+
+@media (max-width: 620px){
+  .img-slider{
+    width: 400px;
+    height: 250px;
+  }
+
+  .img-slider .slide .info{
+    padding: 10px 20px;
+  }
+
+  .img-slider .slide .info h2{
+    font-size: 30px;
+  }
+
+  .img-slider .slide .info p{
+    width: 80%;
+    font-size: 13px;
+  }
+
+  .img-slider .navigation{
+    bottom: 15px;
+  }
+
+  .img-slider .navigation .btn{
+    width: 8px;
+    height: 8px;
+    margin: 6px;
+  }
+}
+
+@media (max-width: 420px){
+  .img-slider{
+    width: 320px;
+    height: 200px;
+  }
+
+  .img-slider .slide .info{
+    padding: 5px 10px;
+  }
+
+  .img-slider .slide .info h2{
+    font-size: 25px;
+  }
+
+  .img-slider .slide .info p{
+    width: 90%;
+    font-size: 11px;
+  }
+
+  .img-slider .navigation{
+    bottom: 10px;
+  }
+}
+       */

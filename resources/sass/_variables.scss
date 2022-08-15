@@ -1,0 +1,74 @@
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: 'Poppins', sans-serif;
+// $font-size-base: 0.9rem;
+// $line-height-base: 1.6;
+
+/*===== VARIABLES CSS =====*/
+$header-height: 3rem;
+
+/*========== Colors in Official Website ==========*/
+$first-color: #60B0B0;
+$header-color: #4B535A;
+$light-color: #606A74;
+$logo-color: #263238;
+$paragraph-color: #8FA5A5;
+$text-color-light: #A6A6A6;
+$hover-color: #008080;
+$white-color: #FFFFFF;
+$body-color: #FBFEFD;
+$text-color: #C7D1CC;
+
+/*========== Font and typography ==========*/
+$body-font: 'Poppins', sans-serif;
+$logo-font: 'Circular Std';
+$biggest-font-size: 2.25rem;
+$h1-font-size: 1.5rem;
+$h2-font-size: 1.25rem;
+$h3-font-size: 1rem;
+$normal-font-size: .938rem;
+$small-font-size: .813rem;
+$smaller-font-size: .75rem;
+
+/*========== Font weight ==========*/
+
+$font-medium: 500;
+$font-semi-bold: 600;
+$logo-font-weight: 900;
+
+/*========== Margenes ==========*/
+$mb-1: .5rem;
+$mb-1-2: .7rem;
+$mb-2: 1rem;
+$mb-02: 1.2rem;
+$mb-3: 1.5rem;
+$mb-4: 2rem;
+$mb-5: 2.5rem;
+$mb-5-1: 2.7rem;
+$mb-6: 3rem;
+
+/*========== z index ==========*/
+$z-tooltip: 10;
+$z-fixed: 100;
+
+
+@media screen and (min-width: 768px) {
+    $biggest-font-size: 4rem;
+    $h1-font-size: 2.25rem;
+    $h2-font-size: 1.5rem;
+    $h3-font-size: 1.25rem;
+    $normal-font-size: 1rem;
+    $small-font-size: .875rem;
+    $smaller-font-size: menu
+}
+
+/*========== Variables Dark theme ==========*/
+body.dark-theme {
+    $light-color: #FFFF;
+    $text-color: #C7D1CC;
+    $body-color: #263238;
+    $text-color-light: #FFFF;
+    $container-color: #3B4D56;
+}
