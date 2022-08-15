@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'commuters',
     ],
 
     /*
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'commuters',
         ],
     ],
 
@@ -60,14 +60,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'commuters' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Commuter::class,
+            'table' => 'commuters'
         ],
 
         // 'users' => [
         //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'table' => 'commuters',
         // ],
     ],
 
@@ -87,8 +88,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'commuters' => [
+            'provider' => 'commuters',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

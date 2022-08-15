@@ -27,66 +27,11 @@
       </div>
     
       <div class="navigation">
-        <div class="btn active"></div>
-        <div class="btn"></div>
-        <div class="btn"></div>
+        <div class="btn_slider active"></div>
+        <div class="btn_slider"></div>
+        <div class="btn_slider"></div>
       </div>
     </div>
-
-    <script type="text/javascript">
-    var slides = document.querySelectorAll('.slide');
-    var btns = document.querySelectorAll('.btn');
-    let currentSlide = 1;
-
-    // Javascript for image slider manual navigation
-    var manualNav = function(manual){
-      slides.forEach((slide) => {
-        slide.classList.remove('active');
-
-        btns.forEach((btn) => {
-          btn.classList.remove('active');
-        });
-      });
-
-      slides[manual].classList.add('active');
-      btns[manual].classList.add('active');
-    }
-
-    btns.forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        manualNav(i);
-        currentSlide = i;
-      });
-    });
-
-    // Javascript for image slider autoplay navigation
-    var repeat = function(activeClass){
-      let active = document.getElementsByClassName('active');
-      let i = 1;
-
-      var repeater = () => {
-        setTimeout(function(){
-          [...active].forEach((activeSlide) => {
-            activeSlide.classList.remove('active');
-          });
-
-        slides[i].classList.add('active');
-        btns[i].classList.add('active');
-        i++;
-
-        if(slides.length == i){
-          i = 0;
-        }
-        if(i >= slides.length){
-          return;
-        }
-        repeater();
-      }, 10000);
-      }
-      repeater();
-    }
-    repeat();
-    </script>
 
         <div class="forms">
 
@@ -104,11 +49,11 @@
                     <span class="title">Welcome!</span>
 
                     <div class="input-field form-group">
-                        <input type="email" placeholder="{{ __('Enter Email') }}" name="email" class="is-invalid" value="{{ old('email') }}" required autocomplete="email">
+                        <input type="text" placeholder="{{ __('Enter Username') }}" name="comm_un" class="is-invalid" value="{{ old('comm_un') }}" required autocomplete="username">
                         <span class="invalid-feedback"></span>
                         <i class="uil uil-envelope icon"></i>
 
-                        @error('email')
+                        @error('comm_un')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                           </span>
@@ -116,11 +61,18 @@
 
                     </div>
 
-                    <div class="input-field form-group">
-                        <input type="password" id="password-field" spellcheck="false" placeholder="{{ __('Enter Password') }}" name="password" class="password is-invalid" required>
+                    <div class="input-field form-group pw">
+                        <input type="password" id="password-field" spellcheck="false" placeholder="{{ __('Enter Password') }}" name="comm_pw" class="password is-invalid" required>
                         <span class="invalid-feedback"></span>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash toggle-password" toggle="#password-field"></i>
+
+                        @error('comm_pw')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
+
                     </div>
 
                     <!-- <div class="Forgot-password">
@@ -160,12 +112,12 @@
 
                         <div class="col-9 social-login">
                             <button class="btn w-100 btn-light"><i class='bx bxl-google'></i>Sign in with Google</button>
+                            <a href="{{ route('googleRedirect') }}" class="text signup-link">Sign in with Google</a>
                         </div>
 
                         <div class="col-3 social-login">
                             <button class="btn w-100 btn-primary fb"><i class='bx bxl-facebook'></i></button>
                         </div>
-
 
                     </div>
 
@@ -173,7 +125,7 @@
 
                 <div class="login-signup">
                     <span class="text">Don't have an account?
-                        <a href="#" class="text signup-link">Register Now</a>
+                        <a href="{{ route('register') }}" class="text signup-link">Register Now</a>
                     </span>
                 </div>
             </div>
@@ -181,30 +133,4 @@
         </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-
-    <!-- Always remember to call the above files first before calling the bootstrap.min.js file -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
-
-    <!-- Show password function -->
-
-    <script>
-        $(".toggle-password").click(function() {
-
-            $(this).toggleClass("uil-eye uil-eye-slash");
-
-            var input = $($(this).attr("toggle"));
-
-            if (input.attr("type") == "password") {
-                input.attr("type", "text");
-            } else {
-                input.attr("type", "password");
-            }
-
-        });
-    </script>
 @endsection

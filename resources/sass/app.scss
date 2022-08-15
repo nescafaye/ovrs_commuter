@@ -20,8 +20,10 @@
   --text-color-light: #A6A6A6;
   --hover-color: #008080;
   --white-color:  #FFFFFF;
-   --body-color: #FBFEFD;
-  --login-color: #60B0B0 ;
+  --body-color: #FBFEFD;
+  --login-color: #008080;
+  --title-color: #263238;
+  --medium-color: #e0e0e0;
 
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
@@ -87,6 +89,8 @@ body.dark-theme
   --text-color-light: #FFFF;
   --container-color: #3B4D56;
   --login-color: #FFFFFF;
+  --title-color: #C7D1CC;
+  --medium-color: #C7D1CC;
 }
 
 /*========== Button Dark/Light ==========*/

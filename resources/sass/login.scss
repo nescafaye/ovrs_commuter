@@ -7,7 +7,7 @@
 @import 'app.scss';
 
 body {
-    background: #d1f0f0;
+    background: var(--body-color);
     // background-image: url(../../public/assets/bg-login.svg);
     background-repeat: no-repeat;
     background-position: bottom;
@@ -53,26 +53,15 @@ body {
 .container.active .forms{
     height: 600px;
 }
+
 .container .form .title{
     position: relative;
     font-size: 30px;
     font-family: 'Circular STD', 'Poppins', 'sans-serif';
-    font-weight: bolder;
+    font-weight: 800;
     padding-bottom: 3px;
-}
+    color: var(--light-color);
 
-.logo-head {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-a.back {
-    position: relative;
-    left: 40%;
-    background-color: #60b0b017;
-    padding: 5px 10px;
-    border-radius: 10px;
 }
 
 .form .title::before{
@@ -86,12 +75,17 @@ a.back {
     border-radius: 25px;
 }
 
-.form .input-field{
+.form .input-field {
     position: relative;
     height: 50px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 35px;
+
+    &.pw {
+      margin-top: 20px !important;
+    }
 }
+
 
 .input-field input{
     position: absolute;
@@ -151,8 +145,9 @@ a.back {
 }
 
 .form .text{
-    color: rgb(255, 255, 255);
+    color: var( --text-color-light);
     font-size: 14px;
+    font-weight: 400;
 }
 
 .form a.text, a.signup-link{
@@ -317,6 +312,7 @@ a.close {
 }
 
 
+
 /* Slider */
 
 .img-slider{
@@ -365,7 +361,7 @@ a.close {
 }
 
 .img-slider .slide .info p{
-  color: #6C757D;
+  color:  var(--light-color);
   font-size: 15px;
   padding: 10px;
   padding-top: 30px;
@@ -383,15 +379,15 @@ a.close {
   transform: translateX(-50%);
 }
 
-.img-slider .navigation .btn{
-  background: #ffffff;
+.img-slider .navigation .btn_slider{
+  background: var(--medium-color);
   margin: 10px;
   padding: 3px 16px;
   border-radius: 12px;
   cursor: pointer;
 }
 
-.img-slider .navigation .btn.active{
+.img-slider .navigation .btn_slider.active{
   background: #008080;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
@@ -419,7 +415,7 @@ a.close {
     bottom: 25px;
   }
 
-  .img-slider .navigation .btn{
+  .img-slider .navigation .btn_slider{
     width: 10px;
     height: 10px;
     margin: 8px;
@@ -449,7 +445,7 @@ a.close {
     bottom: 15px;
   }
 
-  .img-slider .navigation .btn{
+  .img-slider .navigation .btn_slider{
     width: 8px;
     height: 8px;
     margin: 6px;

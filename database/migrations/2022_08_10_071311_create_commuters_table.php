@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('comm_pw');
             $table->rememberToken();
             $table->timestamps();
-            $table->timestamp('email_verified_at')->nullable();
+            // $table->timestamp('email_verified_at')->nullable();
         });
     }
 

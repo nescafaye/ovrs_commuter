@@ -2,16 +2,26 @@
 
 namespace App\Models;
 
-use App\Http\Middleware\Authenticate;
+// use App\Http\Middleware\Authenticate;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Commuter extends Authenticatable
+class Commuter extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
+    
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $table = 'commuters';
 
     protected $fillable = [
         'comm_id',

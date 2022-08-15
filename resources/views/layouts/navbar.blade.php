@@ -45,12 +45,36 @@
      <a href="#" class="nav__logo">Van<mark style="background: none;color: "class="vango">Go</mark></a>
      <div class="nav__menu" id="nav-menu">
          <ul class="nav__list">
-             <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('/')) ? 'active-link' : '' }}">Home</a></li>
-             <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-             <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-             <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
-             <li class="nav__item"><a href="{{ route('register') }}" class="nav__link {{ (request()->is('register')) ? 'active-link' : '' }}">Register</a></li>
-             <li class="nav__item"><a href="{{ route('login') }}" class="nav__link {{ (request()->is('login')) ? 'active-link' : '' }}">Log In</a></li>
+
+            <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('/')) ? 'active-link' : '' }}">Home</a></li>
+
+            <!-- Hide these links when the user isn't logged in -->
+            @if (Auth::guest())
+
+            <li class="nav__item"><a href="{{ url('/#about') }}" class="nav__link {{ (request()->is('/*')) ? 'active-link' : '' }}">About</a></li>
+            <li class="nav__item"><a href="{{ url('/#services') }}" class="nav__link {{ (request()->is('/*')) ? 'active-link' : '' }}">Services</a></li>
+            <li class="nav__item "><a href="{{ url('/#contact') }}" class="nav__link {{ (request()->is('/*')) ? 'active-link' : '' }}">Contact us</a></li>
+
+            @endif
+
+            <!-- Show these links when user is logged in -->
+            @if (Route::has('login'))
+                    @auth
+                    <li class="nav__item"><a href="{{ route('bookings') }}" class="nav__link {{ (request()->is('bookings')) ? 'active-link' : '' }}">Bookings</a></li>
+                    <li class="nav__item"><a href="{{ route('passenger') }}" class="nav__link {{ (request()->is('passenger')) ? 'active-link' : '' }}">Passenger</a></li>
+                    <li class="nav__item"><a href="{{ route('account') }}" class="nav__link {{ (request()->is('account')) ? 'active-link' : '' }}">Account</a></li>
+                    <li class="nav__item"><a href="{{ route('logout') }}" class="nav__link">Logout</a></li>
+                    
+                    @else
+                        @if (Route::has('register'))
+                            <li class="nav__item"><a href="{{ route('register') }}" class="nav__link {{ (request()->is('register')) ? 'active-link' : '' }}">Register</a></li>
+                        @endif
+
+                        <li class="nav__item"><a href="{{ route('login') }}" class="nav__link {{ (request()->is('login')) ? 'active-link' : '' }}">Log In</a></li>
+                    @endauth
+                
+            @endif
+            
              <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
          </ul>
      </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,24 +73,33 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- Main Section -->
 	<main  class="l-main">
 		<section class="settings section bd-container">
     		<span class="dashboard-title register">Create an account</span>
     		<div class="registration-container">
-    			<div class="full-name-container">
-    				<input class="textbox register-account" type="text" placeholder="First Name">
-    				<input class="textbox register-account" type="text" placeholder="Last Name">
-    			</div>
-    			<input class="textbox register-account" type="text" placeholder="E-mail Address">
-    			<input class="textbox register-account" type="text" placeholder="Username">
-    			<div class="registration-password-container">
-    				<input class="textbox register-account" type="text" placeholder="Password">
-    				<input class="textbox register-account" type="text" placeholder="Confirm Password">
-    			</div>
-    			<a href="#" class="button account">Create account</a>
+
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+
+                    <div class="full-name-container">
+                        <input class="textbox register-account" type="text" name="comm_fname" placeholder="{{ __('Full Name') }}" value="{{ old('comm_fname') }}">
+                        {{-- <input class="textbox register-account" type="text" placeholder="Last Name"> --}}
+                    </div>
+                    
+                    <input class="textbox register-account" type="email" name="comm_mail" placeholder="{{ __('Email Address') }}" value="{{ old('comm_mail') }}">
+                    <input class="textbox register-account" type="text" name="comm_un" placeholder="{{ __('Username') }}" value="{{ old('comm_un') }}">
+                    
+                    <div class="registration-password-container">
+                        <input class="textbox register-account" type="password" name="password" placeholder="{{ __('Password') }}" required autocomplete="new-password">
+                        <input class="textbox register-account" type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">
+                    </div>
+
+                    <input type="submit" class="button account" value="{{ __('Create Account') }}">
+                </form>
+
     		</div>
     	</section>
 	</main>
