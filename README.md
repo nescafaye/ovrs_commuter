@@ -7,6 +7,6 @@
 5. Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
 8. Run php artisan key:generate
 9. Run php artisan migrate
-10. Go to http://localhost:8000/
+10. Run npm install && npm run dev
+11. Go to http://localhost:8000/
 
-Run npm install && npm run dev
