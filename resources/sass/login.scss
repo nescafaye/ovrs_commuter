@@ -8,10 +8,10 @@
 
 body {
     background: var(--body-color);
-    // background-image: url(../../public/assets/bg-login.svg);
-    // background-repeat: no-repeat;
-    // background-position: bottom;
-    // background-size: contain;
+    background-image: url(../../public/assets/bottom-bg.svg);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -222,8 +222,8 @@ body {
     align-items: center;
     height: 48px;
 
-      span {
-        font-size: 14px !important;
+      span.title {
+        font-size: var(--h2-font-size);
       }
   }
 }

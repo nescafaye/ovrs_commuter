@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Commuter;
 
 class AccountController extends Controller
 {
@@ -25,6 +26,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('accounts');
+        $commuters = Commuter::where('comm_id', auth()->id())->get();
+        return view('accounts', compact('commuters'));
     }
 }

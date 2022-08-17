@@ -88,6 +88,7 @@ body.dark-theme
   border:1px solid #60B0B0;
 }
 /*========== switch button ==========*/
+
 input.apple-switch
 {
   position: relative;
@@ -163,7 +164,7 @@ input.apple-switch:checked:after
 .selected-gender::after
 {
   content: "";
-  background: url("Images/arrow-down.svg");
+  background: url("../../public/assets/arrowdown.svg");
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -286,6 +287,13 @@ input.apple-switch:checked:after
   height: 100vh;
 }
 
+.dashboard-title {
+  &.register {
+    font-weight: var(--font-semi-bold);
+    font-size: var(--h2-font-size);
+  }
+}
+
 .account
 {
   margin-top: var(--mb-3);
@@ -402,6 +410,11 @@ summary
   line-height: 40px;
   margin:var(--mb-1-2);
 }
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
 .dropdown-billing-container, .dropdown-passenger-container
 {
   box-sizing: border-box;
@@ -508,9 +521,15 @@ input.accountphone
   .full-name-container, .registration-password-container, 
   .email-notification-container, .notification-sms-container
   {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
   }
+  
   .settings-nav-container, .passenger-nav-container
   {
     display: flex;

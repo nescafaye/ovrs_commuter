@@ -54,9 +54,7 @@
                         <i class="uil uil-envelope icon"></i>
 
                         @error('comm_un')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>Username Error</strong>
-                          </span>
+                              <strong>{{ $message }}</strong>
                         @enderror
 
                     </div>
@@ -68,9 +66,7 @@
                         <i class="uil uil-eye-slash toggle-password" toggle="#password-field"></i>
 
                         @error('comm_pw')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>Password Error</strong>
-                          </span>
+                              <strong>{{ $message }}</strong>
                         @enderror
 
                     </div>

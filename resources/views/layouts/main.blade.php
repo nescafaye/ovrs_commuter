@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- FanIcon Link -->
+	<link rel="icon" type="image/x-icon" href="{{ asset('assets/fanicon.png') }}">
+
     <!--Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

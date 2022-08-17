@@ -16,6 +16,7 @@
                     <br>
                 </div>
 
+
                 <!--Primary Passenger -->
                 <div class="primary-container">
                     <details class="dropdown-passenger-container">
@@ -24,8 +25,13 @@
                             <div class="passenger-name-container">
                                 <center>
                                     <br>
-                                    <input class="textbox primarytxtbx" type="text" placeholder="First Name">
-                                    <input class="textbox primarytxtbx" type="text" placeholder="Last Name">
+                                    @foreach ($commuters as $commuter)
+
+                                    <input class="textbox primarytxtbx" type="text" placeholder="First Name" value="{{ $commuter->comm_fname }}">
+                                    <input class="textbox primarytxtbx" type="text" placeholder="Last Name" value="{{ $commuter->comm_lname }}">
+                                        
+                                    @endforeach
+  
                                 </center>
                             </div>
         

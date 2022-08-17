@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- FanIcon Link -->
+	<link rel="icon" type="image/x-icon" href="{{ asset('assets/fanicon.png') }}">
+
     <!--Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +64,7 @@
             @if (Route::has('login'))
                     @auth
                     <li class="nav__item"><a href="{{ route('bookings') }}" class="nav__link {{ (request()->is('bookings')) ? 'active-link' : '' }}">Bookings</a></li>
-                    <li class="nav__item"><a href="{{ route('account') }}" class="nav__link {{ (request()->is('account')) ? 'active-link' : '' }}">Account</a></li>
+                    <li class="nav__item"><a href="{{ route('account') }}" class="nav__link {{ (request()->is('account/*')) ? 'active-link' : '' }}">Account</a></li>
                     <li class="nav__item"><a href="{{ route('logout') }}" class="nav__link"><span class="iconify" data-icon="entypo:log-out" data-width="13" data-height="13"></span></a></li>
                     
                     @else

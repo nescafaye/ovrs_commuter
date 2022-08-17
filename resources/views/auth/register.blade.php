@@ -142,7 +142,7 @@
                     @csrf
 
                     <div class="full-name-container">
-                        <input class="textbox register-txtbx" type="text" name="comm_fname" placeholder="{{ __('First Name') }}" value="{{ old('comm_fname') }}">
+                        <input class="textbox register-txtbx" type="text" name="comm_fname" placeholder="{{ __('First Name') }}" value="{{ old('comm_fname') }}" required autocomplete="First-Name">
                             
                             @error('comm_fname')
                             <span class="invalid-feedback" role="alert">
@@ -150,11 +150,11 @@
                             </span>
                             @enderror
 
-                        <input class="textbox register-txtbx" type="text" name="comm_lname" placeholder="{{ __('Last Name') }}" value="{{ old('comm_lname') }}">
+                        <input class="textbox register-txtbx" type="text" name="comm_lname" placeholder="{{ __('Last Name') }}" value="{{ old('comm_lname') }}" required autocomplete="Surname">
 
                     </div>
 
-                    <input class="textbox register-txtbx" type="email" name="comm_mail" placeholder="{{ __('Email Address') }}" value="{{ old('comm_mail') }}">
+                    <input class="textbox register-txtbx" type="email" name="comm_mail" placeholder="{{ __('Email Address') }}" value="{{ old('comm_mail') }}" required>
                     
                         @error('comm_mail')
                             <span class="invalid-feedback" role="alert">
@@ -162,7 +162,7 @@
                             </span>
                         @enderror
 
-                    <input class="textbox register-txtbx" type="text" name="comm_un" placeholder="{{ __('Username') }}" value="{{ old('comm_un') }}">
+                    <input class="textbox register-txtbx" type="text" name="comm_un" placeholder="{{ __('Username') }}" value="{{ old('comm_un') }}" required>
                 
                     @error('comm_un')
                         <span class="invalid-feedback" role="alert">

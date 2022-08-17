@@ -10,19 +10,22 @@
         <div class="settings_container">
             <span class="dashboard-subtitle-settings">Account Information</span>
 
+            @foreach ($commuters as $commuter)
+                
+
             <!--Email -->
             <div class="email-container">
                 <br>
                 <span class="dashboard-subtitle-email">Email Address</span>
                 <p class="email-description">This is where your confirmation email, tickets, and notifications will be sent</p>
-                <input class="textbox" type="text" placeholder="someone@email.com">
+                <input class="textbox" type="text" placeholder="someone@email.com" value="{{$commuter->comm_mail}}">
             </div>
 
             <!--Username -->
             <div class="username-container">
                 <br>
                 <span class="dashboard-subtitle-username">Username</span>
-                <input class="textbox" type="text" placeholder="username">
+                <input class="textbox" type="text" placeholder="Username" value="{{$commuter->comm_un}}">
             </div>
 
             <!--Password -->
@@ -41,19 +44,19 @@
                 <br><hr style="opacity: 0.4;"><br>
                 <span class="dashboard-subtitle-settings">Notification</span>
                 <!--Email -->
-                <div class="email-notification-container">
+                <div class="email-notification-container notif-flex">
                     <div class="email-description-container">
                         <span class="dashboard-subtitle-email">Email</span>
-                        <p class="email-description">Receive updates, notifications, upcoming events, and offers in my email.</p>
+                        <p class="email-description">Receive updates, notifications, upcoming events, <br>and offers in my email.</p>
                     </div>
                     <input class="apple-switch email" type="checkbox">
                 </div>
+                <br>
                 <!--SMS -->
-                <div class="notification-sms-container">
+                <div class="notification-sms-container notif-flex">
                     <div class="sms-description-container">
-                        <br><br>
                         <span class="dashboard-subtitle-sms">SMS</span>
-                        <p class="sms-description">Receive updates, notifications, upcoming events, and offers in my email.</p>
+                        <p class="sms-description">Receive updates, notifications, upcoming events, <br>and offers in my email.</p>
                     </div>
                     <input class="apple-switch sms" type="checkbox">
                 </div>
@@ -61,7 +64,7 @@
             <div class="Billing-container">
                 <br><hr style="opacity: 0.4;"><br>
                 <span class="dashboard-subtitle-settings">Billing Details</span>
-                <p class="billing-description">Let’s make your everyday payments safe & easy through <mark class="gcash-highlight">Gcash</mark></p><br>
+                <p class="billing-description">Let’s make your everyday payments safe & easy through <mark class="gcash-highlight">GCash</mark></p><br>
                 <details class="dropdown-billing-container">
                     <summary class="Username-billing">Passenger Name</summary>
                     <div class="billing-information-container">
@@ -76,7 +79,11 @@
                 </details>
                 <br><br>
             </div>
+
+            @endforeach
+
         </div>
+
             
         @endsection
 
