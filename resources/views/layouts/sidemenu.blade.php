@@ -30,14 +30,32 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/sass/dashboard.scss', 'resources/sass/login.scss', 'resources/js/app.js', 'resources/js/main.js', 'resources/js/login.js'])
+    @vite(['resources/sass/app.scss', 'resources/sass/dashboard.scss', 'resources/js/app.js', 'resources/js/main.js'])
 
 </head>
 <body>
-    <div id="app">
 
-        @include('layouts.main')
+    <main class="l-main">
+        <section class="passengers section bd-container" id="settings">
+            
+            
+            <div class="passenger-nav-container">
+    
+                <div class="sidebar_nav">
+                    <ul>
+                        <li><a href="{{ route('account') }}" class="{{ (request()->is('account/passengers')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('account/passengers')) ? 'picked-icon' : '' }}" data-icon="gridicons:multiple-users"></span>Passengers</a></li>
+                        <li><a href="{{ route('settings') }}" class="{{ (request()->is('account/settings')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('account/settings')) ? 'picked-icon' : '' }}" data-icon="ci:settings-filled"></span>Settings</a></li>
+                    </ul>
+                </div>
+    
+                    
+            @yield('details')
+    
+            </div>
+    
         
-    </div>
+        </section>
+    </main>
+
 </body>
 </html>

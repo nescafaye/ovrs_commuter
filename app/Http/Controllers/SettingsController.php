@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class SettingsController extends Controller
 {
     //
 
@@ -18,13 +18,13 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    /**
+     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('dashboard');
+        return view('settings');
     }
 }

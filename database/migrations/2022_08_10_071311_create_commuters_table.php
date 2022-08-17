@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id('comm_id');
             $table->string('comm_fname');
             // $table->string('comm_mname')->nullable();
-            // $table->string('comm_lname');
+            $table->string('comm_lname');
             $table->string('comm_un')->unique();
             $table->string('comm_mail');
-            $table->string('comm_phone')->unique();
-            $table->date('birthdate');
+            $table->string('comm_phone')->unique()->nullable();
+            $table->date('birthdate')->nullable();
             $table->string('gender')->nullable();
             $table->string('comm_pw');
             $table->rememberToken();

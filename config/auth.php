@@ -63,7 +63,7 @@ return [
         'commuters' => [
             'driver' => 'eloquent',
             'model' => App\Models\Commuter::class,
-            'table' => 'commuters'
+            'table' => 'commuters',
         ],
 
         // 'users' => [

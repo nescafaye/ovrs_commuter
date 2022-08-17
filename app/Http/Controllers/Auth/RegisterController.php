@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Commuter;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\Commuter;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::BOOKINGS;
+    protected $redirectTo = RouteServiceProvider::LOGIN;
 
     /**
      * Create a new controller instance.
@@ -51,14 +52,15 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'comm_fname' => ['required', 'string', 'max:255'],
+            'comm_lname' => ['required', 'string', 'max:255'],
             'comm_un' => ['required', 'string', 'max:150'],
-            'comm_mail' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'comm_pw' => ['required', 'string', 'min(8)
+            'comm_mail' => ['required', 'string', 'email', 'max:255', 'unique:commuters'],
+            'comm_pw' => ['required', 'string', Password::min(8)
                                                 ->letters()
                                                 ->mixedCase()
                                                 ->numbers()
                                                 ->symbols()
-                                                ->uncompromised()', 'confirmed'],
+                                                ->uncompromised()],
         ]);
     }
 
@@ -66,12 +68,13 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\Commuter
      */
     protected function create(array $data)
     {
         return Commuter::create([
             'comm_fname' => $data['comm_fname'],
+            'comm_lname' => $data['comm_lname'],
             'comm_un' => $data['comm_un'],
             'comm_mail' => $data['comm_mail'],
             'comm_pw' => Hash::make($data['comm_pw']),

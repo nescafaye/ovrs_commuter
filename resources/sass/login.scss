@@ -1,4 +1,4 @@
-/* ===== Google Font Import - Poformsins ===== */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 // // Bootstrap
@@ -9,9 +9,9 @@
 body {
     background: var(--body-color);
     // background-image: url(../../public/assets/bg-login.svg);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: contain;
+    // background-repeat: no-repeat;
+    // background-position: bottom;
+    // background-size: contain;
 }
 
 .container {
@@ -29,6 +29,7 @@ body {
     align-items: center;
     transition: height 0.2s ease;
     padding: 40px 30px;
+    width: 40%;
     margin-right: 60px;
     border-radius: 8px;
     // background: white;
@@ -212,13 +213,29 @@ body {
     margin: auto;
 }
 
+.social-login {
+  
+  button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+
+      span {
+        font-size: 14px !important;
+      }
+  }
+}
+
 .bx {
-    font-size: 24px;
+    font-size: 25px;
     margin-top: 5px;
 }
 
 .bxl-google {
-    margin-right: 10px;
+
+    margin: 2px 10px;
     background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
@@ -307,9 +324,7 @@ input:is(:focus, :valid) ~ i{
     color: #4070f4;
 }
 
-a.close {
-    color: #004C4C;
-}
+
 
 
 

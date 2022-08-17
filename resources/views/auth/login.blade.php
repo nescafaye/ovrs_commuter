@@ -55,7 +55,7 @@
 
                         @error('comm_un')
                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
+                              <strong>Username Error</strong>
                           </span>
                         @enderror
 
@@ -69,7 +69,7 @@
 
                         @error('comm_pw')
                           <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
+                              <strong>Password Error</strong>
                           </span>
                         @enderror
 
@@ -111,7 +111,7 @@
                         </div>
 
                         <div class="col-9 social-login">
-                            <button class="btn w-100 btn-light"><i class='bx bxl-google'></i>Sign in with Google</button>
+                            <button class="btn w-100 btn-light"><i class='bx bxl-google'></i><span>Sign in with Google</span></button>
                             <a href="{{ route('googleRedirect') }}" class="text signup-link">Sign in with Google</a>
                         </div>
 

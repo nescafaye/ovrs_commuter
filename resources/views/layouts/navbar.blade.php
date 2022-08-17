@@ -51,9 +51,9 @@
             <!-- Hide these links when the user isn't logged in -->
             @if (Auth::guest())
 
-            <li class="nav__item"><a href="{{ url('/#about') }}" class="nav__link {{ (request()->is('/*')) ? 'active-link' : '' }}">About</a></li>
-            <li class="nav__item"><a href="{{ url('/#services') }}" class="nav__link {{ (request()->is('/*')) ? 'active-link' : '' }}">Services</a></li>
-            <li class="nav__item "><a href="{{ url('/#contact') }}" class="nav__link {{ (request()->is('/*')) ? 'active-link' : '' }}">Contact us</a></li>
+            <li class="nav__item"><a href="{{ url('/#about') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">About</a></li>
+            <li class="nav__item"><a href="{{ url('/#services') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Services</a></li>
+            <li class="nav__item "><a href="{{ url('/#contact') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Contact us</a></li>
 
             @endif
 
@@ -61,9 +61,8 @@
             @if (Route::has('login'))
                     @auth
                     <li class="nav__item"><a href="{{ route('bookings') }}" class="nav__link {{ (request()->is('bookings')) ? 'active-link' : '' }}">Bookings</a></li>
-                    <li class="nav__item"><a href="{{ route('passenger') }}" class="nav__link {{ (request()->is('passenger')) ? 'active-link' : '' }}">Passenger</a></li>
                     <li class="nav__item"><a href="{{ route('account') }}" class="nav__link {{ (request()->is('account')) ? 'active-link' : '' }}">Account</a></li>
-                    <li class="nav__item"><a href="{{ route('logout') }}" class="nav__link">Logout</a></li>
+                    <li class="nav__item"><a href="{{ route('logout') }}" class="nav__link"><span class="iconify" data-icon="entypo:log-out" data-width="13" data-height="13"></span></a></li>
                     
                     @else
                         @if (Route::has('register'))
