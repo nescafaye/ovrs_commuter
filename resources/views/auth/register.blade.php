@@ -142,7 +142,7 @@
                     @csrf
 
                     <div class="full-name-container">
-                        <input class="textbox register-txtbx" type="text" name="comm_fname" placeholder="{{ __('First Name') }}" value="{{ old('comm_fname') }}" required autocomplete="First-Name">
+                        <input class="textbox register-txtbx" type="text" name="comm_fname" placeholder="{{ __('First Name') }}" value="{{ old('comm_fname') }}" required autocomplete="given-name">
                             
                             @error('comm_fname')
                             <span class="invalid-feedback" role="alert">
@@ -150,7 +150,7 @@
                             </span>
                             @enderror
 
-                        <input class="textbox register-txtbx" type="text" name="comm_lname" placeholder="{{ __('Last Name') }}" value="{{ old('comm_lname') }}" required autocomplete="Surname">
+                        <input class="textbox register-txtbx" type="text" name="comm_lname" placeholder="{{ __('Last Name') }}" value="{{ old('comm_lname') }}" required autocomplete="family-name">
 
                     </div>
 
@@ -171,9 +171,9 @@
                     @enderror
 
                     <div class="registration-password-container">
-                        <input class="textbox register-txtbx" type="password" name="comm_pw" placeholder="{{ __('Password') }}" required autocomplete="new-password">
+                        <input class="textbox register-txtbx" type="password" name="password" placeholder="{{ __('Password') }}" required autocomplete="new-password">
                         
-                        @error('comm_pw')
+                        @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

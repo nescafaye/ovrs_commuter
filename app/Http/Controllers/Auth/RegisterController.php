@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+
 class RegisterController extends Controller
 {
     /*
@@ -31,6 +34,24 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::LOGIN;
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
 
     /**
      * Create a new controller instance.
@@ -55,12 +76,12 @@ class RegisterController extends Controller
             'comm_lname' => ['required', 'string', 'max:255'],
             'comm_un' => ['required', 'string', 'max:150'],
             'comm_mail' => ['required', 'string', 'email', 'max:255', 'unique:commuters'],
-            'comm_pw' => ['required', 'string', Password::min(8)
-                                                ->letters()
-                                                ->mixedCase()
-                                                ->numbers()
-                                                ->symbols()
-                                                ->uncompromised()],
+            'password' => ['required', 'string', Password::min(8)
+                ->letters()
+                ->mixedCase()
+                ->numbers()
+                ->symbols()
+                ->uncompromised()],
         ]);
     }
 
@@ -77,7 +98,7 @@ class RegisterController extends Controller
             'comm_lname' => $data['comm_lname'],
             'comm_un' => $data['comm_un'],
             'comm_mail' => $data['comm_mail'],
-            'comm_pw' => Hash::make($data['comm_pw']),
+            'password' => Hash::make($data['password']),
         ]);
     }
 }

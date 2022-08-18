@@ -43,7 +43,7 @@
                 }
                 ?>
 
-                <form action="{{route('login')}}" method="POST" class="log-in-sign-in-form" autocomplete="off">
+                <form action="{{ route('login') }}" method="POST" class="log-in-sign-in-form" autocomplete="off">
                   @csrf
 
                     <span class="title">Welcome!</span>
@@ -60,12 +60,12 @@
                     </div>
 
                     <div class="input-field form-group pw">
-                        <input type="password" id="password-field" spellcheck="false" placeholder="{{ __('Enter Password') }}" name="comm_pw" class="password is-invalid" required>
+                        <input type="password" id="password-field" spellcheck="false" placeholder="{{ __('Enter Password') }}" name="password" class="password is-invalid" required>
                         <span class="invalid-feedback"></span>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash toggle-password" toggle="#password-field"></i>
 
-                        @error('comm_pw')
+                        @error('password')
                               <strong>{{ $message }}</strong>
                         @enderror
 
@@ -78,8 +78,8 @@
 
                     <div class="checkbox-text">
                         <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck">
-                            <label for="logCheck" class="text" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}</label>
+                            <input type="checkbox" id="logCheck" checked>
+                            <label for="logCheck" class="text {{ old('remember') ? 'checked' : '' }}"> {{ __('Remember Me') }}</label>
                         </div>
 
                         @if (Route::has('password.request'))

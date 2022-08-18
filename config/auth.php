@@ -40,6 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'commuters',
         ],
+
+        // 'commuters' => [
+        //     'redirectTo' => 'bookings',
+        //     'driver' => 'session',
+        //     'provider' => 'commuters',
+        //    ],
     ],
 
     /*

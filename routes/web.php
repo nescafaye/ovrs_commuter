@@ -26,7 +26,7 @@ Route::get('/account/passengers', [App\Http\Controllers\AccountController::class
 Route::get('/passengers', [App\Http\Controllers\PassengerController::class, 'index'])->name('passenger');
 Route::get('account/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
 
-
+//logout
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'logout'])->name('');
  });
