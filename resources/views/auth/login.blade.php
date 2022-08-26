@@ -107,8 +107,7 @@
                         </div>
 
                         <div class="col-9 social-login">
-                            <button class="btn w-100 btn-light"><i class='bx bxl-google'></i><span>Sign in with Google</span></button>
-                            <a href="{{ route('googleRedirect') }}" class="text signup-link">Sign in with Google</a>
+                            <button class="btn w-100 btn-light"><i class='bx bxl-google'></i><a class="google" href="{{ route('googleRedirect') }}" target="_blank">Sign in with Google</a></button>
                         </div>
 
                         <div class="col-3 social-login">

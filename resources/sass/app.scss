@@ -36,22 +36,32 @@
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
 
-  /*========== Font weight ==========*/
-  
-  --font-medium: 500;
-  --font-semi-bold: 600;
-  --logo-font-weight: 900;
+ /*========== Font weight ==========*/
+ --button:  450;
+ --font-medium: 500;
+ --font-semi-bold: 600;
+ --logo-font-weight: 900;
+ /*========== Margenes ==========*/
+ --mb-01: .3rem;
+ --mb-1: .5rem;
+ --mb-1-2: .7rem;
+ --mb-2: 1rem;
+ --mb-02: 1.2rem;
+ --mb-3: 1.5rem;
+ --mb-4: 2rem;
+ --mb-46: 2.45rem;
+ --mb-5: 2.5rem;
+ --mb-5-1: 2.7rem;
+ --mb-6: 3rem;
+ --mb-7: 4rem;
+ --mb-9: 5rem;
+ --mb-10: 6rem;
+ --mb-11: 7rem;
+ --mb-12: 8rem;
+ --mb-8: 20rem;
 
-  /*========== Margenes ==========*/
-  --mb-1: .5rem;
-  --mb-1-2: .7rem;
-  --mb-2: 1rem;
-  --mb-02: 1.2rem;
-  --mb-3: 1.5rem;
-  --mb-4: 2rem;
-  --mb-5: 2.5rem;
-  --mb-5-1: 2.7rem;
-  --mb-6: 3rem;
+
+ --mb-special: 50rem;
 
   /*========== z index ==========*/
   --z-tooltip: 10;

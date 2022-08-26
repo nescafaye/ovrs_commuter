@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/bookings', [App\Http\Controllers\BookingsController::class, 'index'])->name('bookings');
-Route::get('/account/passengers', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
+
+Route::get('/account/passengers/', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
+Route::post('/account/passengers/', [App\Http\Controllers\AccountController::class, 'update'])->name('account.edit');
+
 Route::get('/passengers', [App\Http\Controllers\PassengerController::class, 'index'])->name('passenger');
-Route::get('account/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
+
+Route::get('account/settings/', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
+Route::post('account/settings/', [App\Http\Controllers\SettingsController::class, 'update'])->name('settings.edit');
 
 //logout
 Route::group(['middleware' => ['auth']], function() {
@@ -34,6 +40,6 @@ Route::group(['middleware' => ['auth']], function() {
 
  // Social Login
 
-Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider'])->name('googleRedirect');
-Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback'])->name('googleCallback');
+ Route::get('/auth/google/redirect', [App\Http\Controllers\SocialLoginController::class, 'googleRedirect'])->name('googleRedirect');
+ Route::get('/auth/google/callback', [App\Http\Controllers\SocialLoginController::class, 'googleCallback'])->name('googleCallback');
 

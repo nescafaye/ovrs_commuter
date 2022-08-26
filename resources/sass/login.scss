@@ -222,8 +222,9 @@ body {
     align-items: center;
     height: 48px;
 
-      span.title {
-        font-size: var(--h2-font-size);
+      a.google {
+        text-decoration: none;
+        color: #000;
       }
   }
 }
