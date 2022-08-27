@@ -26,24 +26,30 @@ class AccountController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Commuter $commuters)
-    {
+    {   
         $commuters = Commuter::where('comm_id', auth()->id())->get();
-        // $id = Commuter::where('comm_id', auth()->id())->get();
         return view('accounts', compact('commuters'));
     }
 
     public function update(Request $request)
     {
-        $all = $request->except('_token');
+        $all = $request->validate([
+            'comm_fname' => 'required',
+            'comm_lname' => 'required',
+            'gender' => 'required',
+            'comm_phone' => 'required',
+        ]);
+
+
         $update = Commuter::where('comm_id', auth()->id())->update($all);
         
-	if  ($update)
+        if  ($update)
             {
-                return redirect()->back()->with('status','Changes saved successfuly');
+                return redirect()->back()->with('status','Changes saved successfully!');
             }
-    else
+        else
             {
                 return redirect()->back()->with('status','Changes failed to save');
             }
-    }
+        }
 }

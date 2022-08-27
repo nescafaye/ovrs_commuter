@@ -24,6 +24,7 @@
   --login-color: #008080;
   --title-color: #263238;
   --medium-color: #e0e0e0;
+  --message-bg-color: #c8eeee;
 
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
@@ -101,6 +102,7 @@ body.dark-theme
   --login-color: #60B0B0;
   --title-color: #C7D1CC;
   --medium-color: #C7D1CC;
+  --message-bg-color: rgba(238, 254, 251, 0.22);
 }
 
 /*========== Button Dark/Light ==========*/
@@ -111,6 +113,30 @@ body.dark-theme
   color: var(--text-color);
   font-size: 1rem;
   cursor: pointer;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  overflow: hidden;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+  // border-radius: 20px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(172, 174, 175, 0.559);
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(136, 136, 136); 
 }
 
 body

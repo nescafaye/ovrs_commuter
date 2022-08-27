@@ -142,27 +142,25 @@
             <h1 class="home__title_ footer-title">Van<mark style="background: none;color: "class="vango">Go</mark></h1>
                <span class="footer__description">Online Van Reservation</span>
             <div>
-                <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
-                 <a href="#" class="footer__social"><i class='bx bxl-instagram'></i></a>
-                <a href="#" class="footer__social"><i class='bx bxl-twitter'></i></a>
+                <a href="https://www.facebook.com/VanGoph-106458635519239/" class="footer__social"><i class='bx bxl-facebook'></i></a>
+                 <a href="https://www.instagram.com/vango.ph/" class="footer__social"><i class='bx bxl-instagram'></i></a>
+                <a href="https://twitter.com/VanGo_Ph" class="footer__social"><i class='bx bxl-twitter'></i></a>
             </div>
         </div>
            <div class="footer__content">
             <h3 class="footer__title">Services</h3>
             <ul>
-                <li><a href="#" class="footer__link">Delivery</a></li>
-                <li><a href="#" class="footer__link">Pricing</a></li>
                 <li><a href="#" class="footer__link">Rent Van</a></li>
-                <li><a href="#" class="footer__link">Reserve your spot</a></li>
+                <li><a href="#" class="footer__link">Reserve Seats</a></li>
             </ul>
         </div>
         <div class="footer__content">
             <h3 class="footer__title">Information</h3>
             <ul>
-               <li><a href="#" class="footer__link">Event</a></li>
-               <li><a href="#" class="footer__link">Contact us</a></li>
-                <li><a href="#" class="footer__link">Privacy policy</a></li>
-                <li><a href="#" class="footer__link">Terms of services</a></li>
+               <li><a href="#menu" class="footer__link">Featured</a></li>
+               <li><a href="#contact" class="footer__link">Contact us</a></li>
+                <li><a href="{{ route('privacy')}} " class="footer__link">Privacy policy</a></li>
+                <li><a href="{{ route('terms')}}" class="footer__link">Terms of services</a></li>
             </ul>
         </div>
         <div class="footer__content ">

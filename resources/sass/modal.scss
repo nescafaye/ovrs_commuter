@@ -29,10 +29,15 @@
     float: right;
     color: var(--dashboard-font-color);
   }
+
+  a.choice {
+    padding: 8px 46px;
+    color: #fff;
+  }
+
   .choice-1
   {
     color: #fff;
-    padding: 5px 18px;
     background: var( --first-color);
     border-radius: 5px;
     border: none;
@@ -42,14 +47,16 @@
   }
   .choice-2
   {
-    color: var(--dashboard-font-color);
     background: none;
-    padding: 5px 18px;
     border-radius: 5px;
     border: 1px solid var(--dropdown-border);
     width: 120px;
     height: 34PX;
     cursor: pointer;  
+
+    a.choice {
+      color: var(--dashboard-font-color);
+    }
   }
   .dashboard-subtitle-modal 
   {

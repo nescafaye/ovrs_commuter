@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('comm_mail');
             $table->string('comm_phone')->unique()->nullable();
             $table->date('birthdate')->nullable();
-            $table->string('gender')->nullable();
+            $table->enum('gender', ['Female', 'Male', 'Others'])->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

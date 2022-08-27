@@ -45,39 +45,50 @@
 
 <header class="l-header" id="header">
  <nav class="nav bd-container">
-     <a href="#" class="nav__logo">Van<mark style="background: none;color: "class="vango">Go</mark></a>
+     <a href="{{ route('home') }}" class="nav__logo">Van<mark style="background: none;color: "class="vango">Go</mark></a>
      <div class="nav__menu" id="nav-menu">
          <ul class="nav__list">
 
-            <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('/')) ? 'active-link' : '' }}">Home</a></li>
+            @if(Route::is('terms', 'privacy'))
 
-            <!-- Hide these links when the user isn't logged in -->
-            @if (Auth::guest())
+            <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                
+            @else
 
-            <li class="nav__item"><a href="{{ url('/#about') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">About</a></li>
-            <li class="nav__item"><a href="{{ url('/#services') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Services</a></li>
-            <li class="nav__item "><a href="{{ url('/#contact') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Contact us</a></li>
+                <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('/')) ? 'active-link' : '' }}">Home</a></li>
 
-            @endif
+                <!-- Hide these links when the user isn't logged in -->
+                @if (Auth::guest())
 
-            <!-- Show these links when user is logged in -->
-            @if (Route::has('login'))
+                <li class="nav__item"><a href="{{ url('/#about') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">About</a></li>
+                <li class="nav__item"><a href="{{ url('/#services') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Services</a></li>
+                <li class="nav__item "><a href="{{ url('/#contact') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Contact us</a></li>
+
+                @endif
+
+                <!-- Show these links when user is logged in -->
+                @if (Route::has('login'))
                     @auth
                     <li class="nav__item"><a href="{{ route('bookings') }}" class="nav__link {{ (request()->is('bookings')) ? 'active-link' : '' }}">Bookings</a></li>
                     <li class="nav__item"><a href="{{ route('account') }}" class="nav__link {{ (request()->is('account/*')) ? 'active-link' : '' }}">Account</a></li>
                     <li class="nav__item"><a href="{{ route('logout') }}" class="nav__link"><span class="iconify" data-icon="entypo:log-out" data-width="13" data-height="13"></span></a></li>
-                    
-                    @else
-                        @if (Route::has('register'))
-                            <li class="nav__item"><a href="{{ route('register') }}" class="nav__link {{ (request()->is('register')) ? 'active-link' : '' }}">Register</a></li>
-                        @endif
 
-                        <li class="nav__item"><a href="{{ route('login') }}" class="nav__link {{ (request()->is('login')) ? 'active-link' : '' }}">Log In</a></li>
+                @else
+
+                    @if (Route::has('register'))
+                        <li class="nav__item"><a href="{{ route('register') }}" class="nav__link {{ (request()->is('register')) ? 'active-link' : '' }}">Register</a></li>
+                    @endif
+                    
+                    <li class="nav__item"><a href="{{ route('login') }}" class="nav__link {{ (request()->is('login')) ? 'active-link' : '' }}">Log In</a></li>
                     @endauth
-                
+                    
+                @endif
+
+                <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+  
             @endif
             
-             <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+            
          </ul>
      </div>
      <div class="nav__toggle" id="nav-toggle">

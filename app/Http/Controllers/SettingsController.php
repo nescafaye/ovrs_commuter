@@ -33,17 +33,22 @@ class SettingsController extends Controller
 
     public function update(Request $request, Commuter $comm)
     {
-        $all = $request->except('_token');
-        $password = Hash::make($request['password']);
-        $update = Commuter::where('comm_id', auth()->id())->update($all, $password);
+        $all = $request->validate([
+            'comm_mail' => 'required|email',
+            'comm_un' => 'required|unique:commuters',
+            'password' => 'required',
+        ]);
+
+        $pass = bcrypt(request()->password);
+        $update = Commuter::where('comm_id', auth()->id())->update($all, ['password' => $pass]);
         
         if  ($update)
                 {
-                    return redirect()->back()->with('status','Changes saved successfuly');
+                    return redirect()->back()->with('success','Changes saved successfully');
                 }
         else
                 {
-                    return redirect()->back()->with('status','Changes failed to save');
+                    return redirect()->back()->with('error','Changes failed to save');
                 }
         }
 }

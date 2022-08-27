@@ -5,15 +5,23 @@
     @extends('layouts.sidemenu')
 
         @section('details')
-
-        @if (session('status'))
-            <div>
-                {{ session('status') }}
-            </div>
-        @endif
         
-        <! --Passenger -->
+        <!-- Passenger -->
         <div class="passenger-container">
+            
+            <div class="flash-message">
+
+                @if (session('success'))
+                        <p class="success-msg msg"><span class="iconify-inline" data-icon="bi:check-circle" data-width="17" data-height="17"></span> {{ session('success') }}</p>   
+                
+                @elseif (session('error'))
+    
+                        <p class="error-msg msg"><span class="iconify-inline" data-icon="bi:exclamation-circle" data-width="17" data-height="17"></span> {{ session('error') }}</p>
+    
+                @endif
+    
+                </div>
+
             <span class="dashboard-subtitle-settings">Passenger Information</span>
             <div class="passenger-title-container">
                 <br>
@@ -24,7 +32,7 @@
 
             @foreach ($commuters as $commuter)
 
-            <! --Primary Passenger -->
+            <!-- Primary Passenger -->
             <div class="primary-container">
                 <details open class="dropdown-passenger-container">
                     <summary class="Username-passenger">Primary Passenger Name</summary>
@@ -33,7 +41,7 @@
                         <form action="{{ route('account.edit') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <! --Full Name -->
+                        <!-- Full Name -->
                         <div class="passenger-name-container">
                             <center>
                                 <br>
@@ -43,30 +51,39 @@
                         </div>
                         <div class="subheading-informaiton-container">
                             
-                            <! -- dropdown gender -->
+                            <!-- dropdown gender -->
                             <div class="gender-dropdown">
                                 <div class="gender-select-box">
                                       <div class="gender-container">
-                                            <div class="gender">
-                                              <input type="radio" class="radio" id="Female" name="category" value=""/>
-                                              <label for="Female">Female</label>
+                                        
+                                        <div class="gender">
+                                            <label class="gender-lbl">
+                                                <input type="radio" class="radio" id="Female" name="gender" value="Female"/>
+                                                {{ __('Female') }}
+                                            </label>
                                         </div>
                                         <div class="gender">
-                                              <input type="radio" class="radio" id="Male" name="category" value=""/>
-                                              <label for="Male">Male</label>
+                                            <label class="gender-lbl">
+                                                <input type="radio" class="radio" id="Male" name="gender" value="Male"/>
+                                                {{ __('Male') }}
+                                            </label>
                                         </div>
                                         <div class="gender">
-                                              <input type="radio" class="radio" id="Others" name="category" value=""/>
-                                              <label for="Others">Others</label>
+                                            <label class="gender-lbl">
+                                                <input type="radio" class="radio" id="Female" name="gender" value="Others"/>
+                                                {{ __('Others') }}
+                                            </label>
                                         </div>
                                       </div>
-                                      <div class="selected-gender">Select</div>
+                                      <div class="selected-gender">
+                                           {{ $commuter->gender }}
+                                      </div>
                                     </div>
                             </div>
 
-                            <! -- Phone Number -->
+                            <!-- Phone Number -->
                             <div class="phone-number-container">
-                                <span class="iconify-inline phone" data-icon="twemoji:flag-philippines" data-width="22" data-height="22"></span>
+                                <span class="iconify-inline phone" data-icon="twemoji:flag-philippines" data-width="12" data-height="12"></span>
                                 <input class="textbox accountphone" type="text" placeholder="Phone Number" name="comm_phone" value="{{ $commuter->comm_phone }}">
                             </div>
                         </div>
@@ -74,8 +91,9 @@
                     </div>
                     	
                     <center>
-                        <button type="submit" class="button account save-changes-account"> <a href="#modalWindowChangesAccount">Save Changes</button>
+                        <button onclick="openModal()" type="submit" class="button account save-changes-account"> <a href="#modalWindowChangesAccount">Save Changes</button>
                     </center>
+                    
 
                     </form>
 
@@ -87,7 +105,7 @@
 
         </div>
 
-        <! -- SAVE CHANGES MODAL -->
+        <!-- SAVE CHANGES MODAL -->
         <div id="modalWindowChangesAccount" class="">
             <div>
                 <header>
@@ -108,8 +126,8 @@
                     <div class="field">
                         <div class="modal-choice">
                             <center>
-                                <button class="choice-1">Yes</button>
-                                <button class="choice-2">No</button>
+                                <button type="submit" class="choice-1">Yes</button>
+                                <button class="choice-2"><a href="#close" class="choice">No</a></button>
                             </center>
                         </div>
                     </div>
@@ -117,7 +135,7 @@
             </div>
         </div>
 
-         <! -- EXIT MODAL -->
+         <!-- EXIT MODAL -->
     	<div id="modalWindowExit" class="">
         	<div>
             	<header>
@@ -138,14 +156,31 @@
                 	<div class="field">
                     	<div class="modal-choice">
                         	<center>
-                          		<button class="choice-1"><a href="" class="choices-1">Yes</button></a>
-                            	<button class="choice-2"><a href="" class="choices-2">No</a></button>
+                          		<button type="submit" class="choice-1">Yes</button>
+                            	<button class="choice-2"><a href="#close" class="choices-2">No</a></button>
                         	</center>
                     	</div>
                 	</div>
             	</div>
         	</div>
     	</div>
+
+        <!-- Gender Dropdown Scripts -->
+        <script type="text/javascript">
+            const selectedGender = document.querySelector(".selected-gender");
+            const genderContainer = document.querySelector(".gender-container");
+            const optionsGender = document.querySelectorAll(".gender");
+            selectedGender.addEventListener("click", () => {
+                genderContainer.classList.toggle("active");
+            });
+
+            optionsGender.forEach(o => {
+                o.addEventListener("click", () => {
+                    selectedGender.innerHTML = o.querySelector("label").innerHTML;
+                    genderContainer.classList.remove("active");
+                });
+            });
+        </script>
             
         @endsection
 

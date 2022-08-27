@@ -22,6 +22,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::view('/privacy-policy', 'privacy')->name('privacy');
+Route::view('/terms-of-service', 'terms')->name('terms');
+
 Route::get('/bookings', [App\Http\Controllers\BookingsController::class, 'index'])->name('bookings');
 
 Route::get('/account/passengers/', [App\Http\Controllers\AccountController::class, 'index'])->name('account');

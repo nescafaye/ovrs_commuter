@@ -6,14 +6,22 @@
 
         @section('details')
 
-        @if (session('status'))
-            <div>
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <! --Settings Container -->
+        <!--Settings Container -->
         <div class="settings_container">
+
+            <div class="flash-message">
+
+            @if (session('success'))
+                    <p class="success-msg msg"><span class="iconify-inline" data-icon="bi:check-circle" data-width="17" data-height="17"></span> {{ session('success') }}</p>   
+            
+            @elseif (session('error'))
+
+                    <p class="error-msg msg"><span class="iconify-inline" data-icon="bi:exclamation-circle" data-width="17" data-height="17"></span> {{ session('error') }}</p>
+
+            @endif
+
+            </div>
+
             <span class="dashboard-subtitle-settings">Account Information</span>
 
             @foreach ($commuters as $commuter)
@@ -44,7 +52,7 @@
                     <p class="password-description">Enter both fields to update your password</p>
                     <input class="textbox" name="password" type="password" placeholder="{{ __('Current Password') }}">
                     <input class="textbox" name="password" type="password" placeholder="{{ __('New Password') }}">
-                    <a href="" class="password-button">Forgot Password?</a>
+                    <a href="{{ route('password.update') }}" class="password-button">Forgot Password?</a>
                 <br><br>
 
                 <button type="submit" class="button account save-changes-account"> <a href="#modalWindowChangesAccount">Save Changes</a></button>
@@ -82,7 +90,7 @@
             <div class="Billing-container">
                 <br><hr style="opacity: 0.4;"><br>
                 <span class="dashboard-subtitle-settings">Billing Details</span>
-                <p class="billing-description">Let’s make your everyday payments safe & easy through <mark class="gcash-highlight">Gcash</mark></p><br>
+                <p class="billing-description">Let’s make your everyday payments safe & easy through <mark class="gcash-highlight">GCash</mark></p><br>
                 <details open class="dropdown-billing-container">
                     <summary class="Username-billing">Passenger Name</summary>
                     <div class="billing-information-container">
