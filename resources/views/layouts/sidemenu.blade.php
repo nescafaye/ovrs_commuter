@@ -46,9 +46,9 @@
                     @if(Route::is('terms', 'privacy'))
 
                         <ul class="policy-class">
-                            {{-- <li><a href="{{ route('home') }}" ><span class="iconify-inline icon" data-icon="cil:arrow-left" data-width="20" data-height="20"></span>Back</a></li> --}}
-                            <li><a href="{{ route('terms') }}" class="{{ (request()->is('terms-of-service')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('terms-of-service')) ? 'picked-icon' : '' }}" data-icon="gridicons:multiple-users"></span>Terms of Service</a></li>
+                            <li><a href="{{ route('home') }}" ><span class="iconify-inline icon" data-icon="cil:arrow-left" data-width="20" data-height="20"></span>Back</a></li>
                             <li><a href="{{ route('privacy') }}" class="{{ (request()->is('privacy-policy')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('privacy-policy')) ? 'picked-icon' : '' }}" data-icon="ic:round-privacy-tip" data-width="20" data-height="20"></span>Privacy Policy</a></li>
+                            <li><a href="{{ route('terms') }}" class="{{ (request()->is('terms-of-service')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('terms-of-service')) ? 'picked-icon' : '' }}" data-icon="gridicons:multiple-users"></span>Terms of Service</a></li>
                         </ul>
                             
                     @else

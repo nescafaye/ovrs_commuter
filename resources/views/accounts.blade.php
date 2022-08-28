@@ -35,7 +35,11 @@
             <!-- Primary Passenger -->
             <div class="primary-container">
                 <details open class="dropdown-passenger-container">
-                    <summary class="Username-passenger">Primary Passenger Name</summary>
+                    <summary class="Username-passenger">
+                        <span>{{ $commuter->comm_fname }} {{ $commuter->comm_lname }}</span>
+                        <img src="{{ asset('assets/arrowdown.svg')}}" width="14" height="14" alt="">
+                    </summary>
+
                     <div class="passenger-information-container">
 
                         <form action="{{ route('account.edit') }}" method="POST" enctype="multipart/form-data">
@@ -49,6 +53,7 @@
                                 <input class="textbox primarytxtbx" name="comm_lname" type="text" placeholder="Last Name" value="{{ $commuter->comm_lname }}">
                             </center>
                         </div>
+
                         <div class="subheading-informaiton-container">
                             
                             <!-- dropdown gender -->
@@ -83,7 +88,7 @@
 
                             <!-- Phone Number -->
                             <div class="phone-number-container">
-                                <span class="iconify-inline phone" data-icon="twemoji:flag-philippines" data-width="12" data-height="12"></span>
+                                {{-- <span class="iconify-inline phone" data-icon="twemoji:flag-philippines" data-width="12" data-height="12"></span> --}}
                                 <input class="textbox accountphone" type="text" placeholder="Phone Number" name="comm_phone" value="{{ $commuter->comm_phone }}">
                             </div>
                         </div>
@@ -93,12 +98,12 @@
                     <center>
                         <button onclick="openModal()" type="submit" class="button account save-changes-account"> <a href="#modalWindowChangesAccount">Save Changes</button>
                     </center>
-                    
 
                     </form>
 
                     <br><br><br>
                 </details>
+                
             </div>
 
             @endforeach

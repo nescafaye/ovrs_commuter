@@ -34,10 +34,10 @@ class AccountController extends Controller
     public function update(Request $request)
     {
         $all = $request->validate([
-            'comm_fname' => 'required',
-            'comm_lname' => 'required',
-            'gender' => 'required',
-            'comm_phone' => 'required',
+            'comm_fname',
+            'comm_lname',
+            'gender',
+            'comm_phone' => 'min:11',
         ]);
 
 
@@ -45,11 +45,11 @@ class AccountController extends Controller
         
         if  ($update)
             {
-                return redirect()->back()->with('status','Changes saved successfully!');
+                return redirect()->back()->with('success','Changes saved successfully!');
             }
         else
             {
-                return redirect()->back()->with('status','Changes failed to save');
+                return redirect()->back()->with('error','Changes failed to save');
             }
         }
 }

@@ -21,6 +21,7 @@
   --terms: #60B0B0;
   --error-msg: rgb(230, 189, 189);
   --error-txt: rgb(197, 58, 58);
+  --dropdown-open: transparent;
 
   /*Font-size*/
 
@@ -45,6 +46,7 @@ body.dark-theme {
   --text-area-color: #525C64;
   --error-msg: rgba(238, 254, 251, 0.22);
   --error-txt: rgb(255, 131, 131);
+  --dropdown-open: rgba(0, 0, 0, 0.055);
 
 }
 
@@ -79,6 +81,7 @@ textarea {
   width: 100%;
   margin-top: 4px;
   padding: 5px 15px;
+  height: 45px;
   box-sizing: border-box;
   line-height: 2;
   font-family: var(--font);
@@ -109,7 +112,7 @@ textarea {
     }
 
     .msg {
-      font-size: var(--normal-font-size);
+      font-size: var(--small-font-size);
       padding: 10px 15px;
       border-radius: 8px;
 
@@ -176,7 +179,7 @@ input.apple-switch:checked:after {
 
 .gender-dropdown .gender-select-box {
   display: flex;
-  width: 360px;
+  // width: 360px;
   flex-direction: column;
   color: var(--font-color-text-area);
   z-index: 300;
@@ -201,7 +204,7 @@ input.apple-switch:checked:after {
   margin-bottom: 8px;
   position: relative;
   order: 0;
-  padding: 10px 15px !important;
+  padding: 12px 15px !important;
 
     input[type=radio] {
       display: none;
@@ -227,7 +230,7 @@ input.apple-switch:checked:after {
 }
 
 .gender-dropdown .gender-select-box .gender-container.active+.selected-gender::after {
-  transform: rotateX(180deg);
+  transform: rotate(180deg);
   top: 6px;
 }
 
@@ -455,41 +458,90 @@ input.register-txtbx {
 .Username-billing,
 .Username-passenger {
   color: var(--dashboard-font-color);
+  font-weight: var(--font-semi-bold);
+  padding-left: 10px;
 }
 
 summary {
+  list-style: none;
   line-height: 40px;
   margin: var(--mb-1-2);
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &:hover img {
+    opacity: 1;
+  }
 }
 
-.dropdown-billing-container,
-.dropdown-passenger-container {
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details.dropdown-billing-container,
+details.dropdown-passenger-container:not(.save-changes-account) {
   box-sizing: border-box;
-  height: 60px;
   border: 1px solid var(--dropdown-border);
   margin-bottom: 0px;
-  border-radius: 12px 12px 0px 0px;
+  border-radius: 10px;
+  max-height: 84px;
+  transition: all 0.3s ease-in-out;
+  
+  // box-shadow: 1px 1px 8px 1px rgba(132, 146, 158, 0.119);
+
+  img {
+    margin-right: 10px;
+    opacity: 0.5;
+  }
+
+  &:not([open]) {
+
+    img {
+      transform: rotate(-180deg);
+      transition: ease 0.3s;
+      
+    }
+}
+  &[open] {
+    max-height: 290px;
+    background-color: var(--dropdown-open);
+    
+      img {
+        transform: rotate3d(180deg);
+        transition: ease 0.3s;
+      }
+  }
+}
+
+details.dropdown-billing-container {
+  &[open] {
+    width: 100%;
+  }
 }
 
 .billing-information-container,
 .passenger-information-container {
-  border: 1px solid var(--dropdown-border);
-  margin-top: -1px;
+  border-top: 1px solid var(--dropdown-border);
   box-sizing: border-box;
-  height: 220px;
+  height: 230px;
+  padding: 25px;
+  padding-top: 0px;
   border-radius: 0px 0px 12px 12px;
 }
 
+.billing-information-container {
+  padding-top: 8px;
+}
+
 .billing-information-container input {
-  width: 95%;
+  width: 100%;
+  height: 45px;
 }
 
 .account:hover {
   background-color: var(--hover);
-}
-
-.save-changes {
-  width: 95%;
 }
 
 .save-changes-account {
@@ -498,12 +550,16 @@ summary {
 
 /*========== PASSENGER ==========*/
 
-.subheading-informaiton-container,
-.phone-number-container {
-  margin-left: var(--mb-2);
+// .subheading-informaiton-container,
+// .phone-number-container {
+//   margin-left: var(--mb-2);
+// }
+
+.subheading-informaiton-container {
+  width: 100%;
 }
 
-.passenger-name-container input {
+.passenger-name-container input:nth-child(3) {
   margin-top: var(--mb-1-2);
 }
 
@@ -513,29 +569,29 @@ summary {
 }
 
 .primarytxtbx {
-  width: 95%;
+  // width: 95%;
+  height: 45px;
 }
 
 /*Phone Number*/
 .phone-number-container {
-  position: relative;
+  margin-left: var(--mb-2);
 }
 
-.phone {
-  position: absolute;
-  padding: 21px 8px;
-  top: -7px;
-}
-
-.phone {
-  width: 67px;
-  height: 67px;
-}
+// .phone {
+//   position: absolute;
+//   padding: 21px 8px;
+//   top: -7px;
+// }
 
 input.accountphone {
-  padding-left: 52px;
-  height: 45px;
-  width: 300px;
+  padding-left: 50px;
+  height: 44px;
+  border-radius: 8px;
+  background-image: url(../../public/assets/flag-philippines.svg);
+  background-repeat: no-repeat;
+  background-position: 15px 10px;
+  
 }
 
 /*========== BOOKINGS ==========*/

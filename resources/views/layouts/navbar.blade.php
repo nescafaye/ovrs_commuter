@@ -55,7 +55,7 @@
                 
             @else
 
-                <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('/')) ? 'active-link' : '' }}">Home</a></li>
+                <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('home*')) ? 'active-link' : '' }}">Home</a></li>
 
                 <!-- Hide these links when the user isn't logged in -->
                 @if (Auth::guest())

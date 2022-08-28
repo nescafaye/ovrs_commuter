@@ -6,7 +6,7 @@
 
         @section('details')
 
-        <!--Settings Container -->
+        <!-- Settings Container -->
         <div class="settings_container">
 
             <div class="flash-message">
@@ -30,7 +30,7 @@
             @csrf
             {{-- @method('PUT') --}}
 
-            <! --Email -->
+            <!-- Email -->
             <div class="email-container">
                 <br>
                 <span class="dashboard-subtitle-email">Email Address</span>
@@ -38,14 +38,14 @@
                 <input class="textbox" type="text" name="comm_mail" placeholder="{{ __('Email') }}" value="{{ $commuter->comm_mail }}">
             </div>
 
-            <! --Username -->
+            <!-- Username -->
             <div class="username-container">
                 <br>
                 <span class="dashboard-subtitle-username">Username</span>
                 <input class="textbox" type="text" name="comm_un" placeholder="{{ __('Username') }}" value="{{ $commuter->comm_un }}">
             </div>
 
-            <! --Password -->
+            <!-- Password -->
             <div class="password-container">
                  <br>
                     <span class="dashboard-subtitle-password">Password</span>
@@ -61,12 +61,12 @@
 
             </form>
 
-            <! --Notification Container -->
+            <!-- Notification Container -->
             <div class="notification-container">
-                <br><hr style="opacity: 0.4;"><br>
+                <br><hr style="opacity: 0.3; border: 0.5px solid; border-radius:5px;"><br>
                 <span class="dashboard-subtitle-settings">Notification</span>
 
-                <! --Email -->
+                <!-- Email -->
                 <div class="email-notification-container">
                     <div class="email-description-container">
                         <span class="dashboard-subtitle-email">Email</span>
@@ -75,7 +75,7 @@
                     <input class="apple-switch email" type="checkbox">
                 </div>
 
-                <! --SMS -->
+                <!-- SMS -->
                 <div class="notification-sms-container">
                     <div class="sms-description-container">
                         <br><br>
@@ -86,13 +86,16 @@
                 </div>
             </div>
 
-            <! --Billing Container -->
+            <!-- Billing Container -->
             <div class="Billing-container">
-                <br><hr style="opacity: 0.4;"><br>
+                <br><hr style="opacity: 0.3; border: 0.5px solid; border-radius:5px;"><br>
                 <span class="dashboard-subtitle-settings">Billing Details</span>
                 <p class="billing-description">Let’s make your everyday payments safe & easy through <mark class="gcash-highlight">GCash</mark></p><br>
                 <details open class="dropdown-billing-container">
-                    <summary class="Username-billing">Passenger Name</summary>
+                    <summary class="Username-billing">
+                        <span>Billing Account</span>
+                        <img src="{{ asset('assets/arrowdown.svg')}}" width="14" height="14" alt="">
+                    </summary>
                     <div class="billing-information-container">
                         <center>
                             <input class="textbox accountName" type="text" placeholder="Account Name">
@@ -103,8 +106,9 @@
                     </div>
                     <br><br><br>
                 </details>
-                <br><br>
-            </div>
+                <br>
+            </div
+
 
             @endforeach
             

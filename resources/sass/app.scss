@@ -34,6 +34,7 @@
   --h2-font-size: 1.25rem;
   --h3-font-size: 1rem;
   --normal-font-size: .938rem;
+  --paragraph-size: .90rem;
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
 
@@ -59,7 +60,7 @@
  --mb-10: 6rem;
  --mb-11: 7rem;
  --mb-12: 8rem;
- --mb-8: 20rem;
+ --mb-8: 21rem;
 
 
  --mb-special: 50rem;
@@ -192,7 +193,7 @@ img{
 
 /*========== LAYOUT ==========*/
 .bd-container{
-  max-width: 960px;
+  max-width: 1024px;
   width: calc(100% - 2rem);
   margin-left: var(--mb-2);
   margin-right: var(--mb-2);
@@ -644,7 +645,7 @@ img{
     .subheading-informaiton-container  
   {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
