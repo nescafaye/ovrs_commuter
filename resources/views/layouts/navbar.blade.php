@@ -33,7 +33,8 @@
 
 </head>
 
-<body>
+<body onload="document.body.style.visibility=`visible`;">
+    <script>document.body.style.visibility=`hidden`;</script>
     
     
 <!--Scroll -->
@@ -55,14 +56,14 @@
                 
             @else
 
-                <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('home*')) ? 'active-link' : '' }}">Home</a></li>
+                <li class="nav__item"><a href="{{ url('/') }}" class="nav__link {{ (request()->is('/*')) ? 'active-link' : '' }}">Home</a></li>
 
                 <!-- Hide these links when the user isn't logged in -->
                 @if (Auth::guest())
 
                 <li class="nav__item"><a href="{{ url('/#about') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">About</a></li>
                 <li class="nav__item"><a href="{{ url('/#services') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Services</a></li>
-                <li class="nav__item "><a href="{{ url('/#contact') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Contact us</a></li>
+                <li class="nav__item"><a href="{{ url('/#contact') }}" class="nav__link {{ (request()->is('')) ? 'active-link' : '' }}">Contact us</a></li>
 
                 @endif
 
@@ -71,7 +72,7 @@
                     @auth
                     <li class="nav__item"><a href="{{ route('bookings') }}" class="nav__link {{ (request()->is('bookings')) ? 'active-link' : '' }}">Bookings</a></li>
                     <li class="nav__item"><a href="{{ route('account') }}" class="nav__link {{ (request()->is('account/*')) ? 'active-link' : '' }}">Account</a></li>
-                    <li class="nav__item"><a href="{{ route('logout') }}" class="nav__link"><span class="iconify" data-icon="entypo:log-out" data-width="13" data-height="13"></span></a></li>
+                    <li class="nav__item"><a href="#modalWindowExit" class="nav__link"><span class="iconify" data-icon="entypo:log-out" data-width="13" data-height="13"></span></a></li>
 
                 @else
 
@@ -96,5 +97,44 @@
      </div>
  </nav>
 </header>
+
+         <!-- EXIT MODAL -->
+    	<div id="modalWindowExit" class="">
+        	<div>
+            	<header>
+                	<div class="close">
+                    	<a href="#close" class="exit"><i class="uil uil-times"></i></a>
+                	</div>
+               	 	<br>
+            		<center>
+               	 		<img src="{{ asset('assets/offline.png') }}" class="modal-img-logout"> 
+                	</center>
+                    <br>
+                	<center>
+                     	<span class="dashboard-subtitle-modal">Are you sure you want to Log out?</span>
+                	</center>
+                	<br>
+            	</header>
+            	<div class="content">
+                	<div class="field">
+                    	<div class="modal-choice">
+                        	<center>
+                          		<button type="submit" class="choice-1 logoutyes" ><a href="{{ route('logout') }}" class="nav__link yesbtn">Yes</a></button>
+                            	<button class="choice-2"><a href="#close" class="choices-2">No</a></button>
+                        	</center>
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+    	</div>
+
+
+        {{-- <script type="text/javascript">
+
+            function openModal() {
+                        $("#modalWindowExit").modal('show');
+                    }
+
+        </script> --}}
 
 </body>

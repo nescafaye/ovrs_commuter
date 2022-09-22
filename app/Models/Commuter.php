@@ -26,14 +26,17 @@ class Commuter extends Authenticatable
     protected $primaryKey = 'comm_id';
 
     protected $fillable = [
-        'comm_fname',
-        'comm_lname',
-        'comm_un',
+        'fname',
+        'lname',
+        'email',
+        'username',
         'password',
-        'comm_mail',
-        'comm_phone',
-        'birthdate',
+        'phone',
         'gender',
+        'profilePic',
+        'accNumber',
+        'accName',
+        
     ];
 
     protected $hidden = [

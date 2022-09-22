@@ -72,17 +72,27 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'comm_fname' => ['required', 'string', 'max:255'],
-            'comm_lname' => ['required', 'string', 'max:255'],
-            'comm_un' => ['required', 'string', 'max:150'],
-            'comm_mail' => ['required', 'string', 'email', 'max:255', 'unique:commuters'],
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:150'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:commuters'],
             'password' => ['required', 'string', Password::min(8)
                 ->letters()
                 ->mixedCase()
                 ->numbers()
                 ->symbols()
-                ->uncompromised()],
-        ]);
+                ->uncompromised()]
+
+        ], 
+
+        [
+            'fname.required' => 'Please enter your first name'
+
+
+        ]
+    
+    );
+
     }
 
     /**
@@ -94,10 +104,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return Commuter::create([
-            'comm_fname' => $data['comm_fname'],
-            'comm_lname' => $data['comm_lname'],
-            'comm_un' => $data['comm_un'],
-            'comm_mail' => $data['comm_mail'],
+            'fname' => $data['fname'],
+            'lname' => $data['lname'],
+            'username' => $data['username'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }

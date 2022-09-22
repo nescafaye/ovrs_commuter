@@ -26,14 +26,15 @@
 
 	<!-- Script -->
 	<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/sass/dashboard.scss', 'resources/js/app.js', 'resources/js/main.js'])
 
 </head>
-<body>
+<body onload="document.body.style.visibility=`visible`;">
+    
+    <script>document.body.style.visibility=`hidden`;</script>
 
     <main class="l-main">
         <section class="passengers section bd-container" id="settings">

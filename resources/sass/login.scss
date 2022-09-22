@@ -8,11 +8,10 @@
 
 body {
     background: var(--body-color);
-    background-image: url(../../public/assets/bottom-bg.svg);
-    background-position: bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 100vh;
+    // background-image: url(../../public/assets/bottom-bg.svg);
+    // background-position: bottom;
+    // background-size: contain;
+    // background-repeat: no-repeat;
 }
 
 .container {
@@ -88,8 +87,11 @@ body {
     }
 }
 
+
+
 .uil.icon {
-  color: #606A74 !important;
+  color: var(--paragraph-color) !important;
+  font-size: var(--h3-font-size);
 }
 
 
@@ -100,21 +102,45 @@ body {
     padding: 0 35px;
     border: 2px;
     font-size: 16px;
-    background: #ecf0f1;
-    border-radius: 8px;
+    background: var(--text-area-color);
+    border-radius: 6px;
+    color: var(--font-color-text-area);
     transition: all 0.2s ease;
+
+    &::placeholder {
+      color: var(--paragraph-color);
+    }
+
+    &:hover {
+      background-color: #ecf0f10b;
+      box-shadow: 0px 0px 0px 1px #bcc8d3;
+      transition: background-color ease 0.2s;
+    }
 }
 
-.input-field input:is(:focus, :valid){
+.input-field {
+
+  .account {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+}
+
+.input-field input:is(:focus, :valid) {
     outline: none !important;
-    border:1px solid #60B0B0;
+    border: 0.5px solid #bcc8d3;
+    background-color: #ecf0f10b;
+    box-shadow: 0px 0px 0.5px 2px #60B0B0;
+    transition: all ease-out 0.1s;
+    color: var(--focus-txt);
 }
 
 .input-field i{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: #999;
+    color: var(--paragraph-color);
     font-size: 23px;
     transition: all 0.2s ease;
 }
@@ -145,6 +171,7 @@ body {
     align-items: center;
 }
 
+
 .checkbox-content input{
     margin: 0 8px -2px 4px;
     accent-color: #60B0B0;
@@ -171,28 +198,29 @@ body {
 }
 
 .form .socmed-button{
-    margin-top: 35px;
+    margin-top: 25px;
 
     button {
       font-size: 16px;
     }
 }
 
-.form .button-login input{
-    border: none;
-    color: #fff;
-    font-size: 17px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border-radius: 6px;
-    background-color: #60B0B0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+// .form .button-login input{
+//     border: none;
+//     color: #fff;
+//     font-size: 17px;
+//     font-weight: 500;
+//     letter-spacing: 1px;
+//     border-radius: 6px;
+//     background-color: #60B0B0;
+//     cursor: pointer;
+//     transition: all 0.3s ease;
+// }
 
-.button-login input:hover {
-    background-color: #004C4C;
-}
+// .button-login input:hover {
+//     background-color: #004C4C;
+// }
+
 
 .form .login-signup{
     margin-top: 30px;
@@ -231,6 +259,16 @@ body {
         text-decoration: none;
         color: #000;
       }
+
+    &.btn-light {
+      background: #eeeeee;
+
+      &:hover {
+        background: #e0e0e0;
+        border: transparent;
+        outline: transparent;
+      }
+    }
   }
 }
 

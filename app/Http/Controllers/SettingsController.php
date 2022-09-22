@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Commuter;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class SettingsController extends Controller
 {
@@ -31,20 +33,45 @@ class SettingsController extends Controller
         return view('settings', compact('commuters'));
     }
 
-    public function update(Request $request, Commuter $comm)
+    public function update(Request $request)
     {
         $all = $request->validate([
-            'comm_mail' => 'required|email',
-            'comm_un' => 'required|unique:commuters',
-            'password' => 'required',
+            'email' => 'email',
+            'username' => 'string',
+            'profilePic' => 'image|nullable|mimes:png,jpg,jpeg,svg,jfif',
+            'accName' => 'string|nullable',
+            'accNumber' => 'min:11|nullable|numeric',
+            'password'  => 'confirmed',
+            'password_confirmation'
         ]);
 
-        $pass = bcrypt(request()->password);
-        $update = Commuter::where('comm_id', auth()->id())->update($all, ['password' => $pass]);
+
+        if ($image = $request->file('profilePic')) {   
+
+            $profileImage = hash('md5', date('YmdHis')) . "." . $image->getClientOriginalExtension();
+            $destinationPath = Storage::path('public/images/');   
+
+            // $img = Image::make($image->path());
+            // $img->resize(80,80, function ($const) {
+            //     $const->aspectRatio();
+            // });
+
+            $image->move($destinationPath, $profileImage);
+            $all['profilePic'] = "$profileImage";
+            
+        } else {
+            unset($all['profilePic']);
+        }
+
+        // $product->update($input);
+        
+
+        $all['password'] = Hash::make(request()->password);
+        $update = Commuter::where('comm_id', auth()->id())->update($all);
         
         if  ($update)
                 {
-                    return redirect()->back()->with('success','Changes saved successfully');
+                    return redirect()->back()->with('success','Changes has been saved successfully');
                 }
         else
                 {

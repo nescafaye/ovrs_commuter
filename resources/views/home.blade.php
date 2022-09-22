@@ -83,9 +83,9 @@
 
         <div class="menu__container bd-grid">
              <div class="menu__content">
-                 <img src="{{ asset('assets/place1.png') }}" alt="" class="menu__img">
-                <h3 class="menu__name">Tayid Lighthouse </h3>
-                <span class="menu__detail">Famous Lighthouse</span>
+                 <img src="{{ asset('assets/tuguegarao.png') }}" alt="" class="menu__img">
+                <h3 class="menu__name">Tuguegarao City</h3>
+                <span class="menu__detail">Province of Cagayan</span>
                 <a href="#" class="button menu__button"><span class="iconify" data-icon="mdi:van-passenger" data-width="20" data-height="20"></span></a>
              </div>
              <div class="menu__content">
@@ -176,8 +176,10 @@
     <p class="footer__copy">&#169; 2022 Team OVRS. All right reserved</p>
 </footer>
 
-<!-- Script -->
+{{-- <!-- Script -->
 <script src="https://unpkg.com/scrollreveal"></script>
-<script src="../js/main.js"></script>
+<script src="../js/main.js"></script> --}}
+
+
     
 @endsection

@@ -15,18 +15,19 @@ return new class extends Migration
     {
         Schema::create('commuters', function (Blueprint $table) {
             $table->id('comm_id');
-            $table->string('comm_fname');
-            // $table->string('comm_mname')->nullable();
-            $table->string('comm_lname');
-            $table->string('comm_un')->unique();
-            $table->string('comm_mail');
-            $table->string('comm_phone')->unique()->nullable();
-            $table->date('birthdate')->nullable();
-            $table->enum('gender', ['Female', 'Male', 'Others'])->nullable();
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('email')->unique();
+            $table->string('username')->unique();
             $table->string('password');
+            $table->string('phone', '12')->unique()->nullable();
+            $table->enum('gender', ['Female', 'Male', 'Others'])->nullable();
+            // $table->binary('profilePic')->nullable();
+            $table->string('profilePic')->nullable();
+            $table->string('accNumber', '12')->nullable();
+            $table->string('accName')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            // $table->timestamp('email_verified_at')->nullable();
         });
     }
 

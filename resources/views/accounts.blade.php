@@ -9,18 +9,32 @@
         <!-- Passenger -->
         <div class="passenger-container">
             
-            <div class="flash-message">
+            <div class="flash-message" id="flash">
 
                 @if (session('success'))
-                        <p class="success-msg msg"><span class="iconify-inline" data-icon="bi:check-circle" data-width="17" data-height="17"></span> {{ session('success') }}</p>   
                 
+                        <div class="success-msg msg"> 
+                            <div class="msg-txt">
+                                <span class="iconify-inline" data-icon="bi:check-circle" data-width="20" data-height="17"></span> 
+                                <span class>{{ session('success') }}</span>
+                            </div>
+                            <span class="iconify-inline dismiss" onclick="closeMsg()" data-icon="akar-icons:circle-x" data-width="19" data-height="19"></span>
+                        </div>
+                    
                 @elseif (session('error'))
-    
-                        <p class="error-msg msg"><span class="iconify-inline" data-icon="bi:exclamation-circle" data-width="17" data-height="17"></span> {{ session('error') }}</p>
+                        
+                        <div class="error-msg msg">
+                            <div class="msg-txt">
+                                <span class="iconify-inline" data-icon="bi:exclamation-circle" data-width="17" data-height="17"></span> 
+                                <span class>{{ session('error') }}</span>
+                            </div>
+
+                            <span class="iconify-inline dismiss" onclick="closeMsg()" data-icon="akar-icons:circle-x" data-width="19" data-height="19"></span>
+                        </div>
     
                 @endif
     
-                </div>
+            </div>
 
             <span class="dashboard-subtitle-settings">Passenger Information</span>
             <div class="passenger-title-container">
@@ -36,7 +50,7 @@
             <div class="primary-container">
                 <details open class="dropdown-passenger-container">
                     <summary class="Username-passenger">
-                        <span>{{ $commuter->comm_fname }} {{ $commuter->comm_lname }}</span>
+                        <span>{{ $commuter->fname }} {{ $commuter->lname }}</span>
                         <img src="{{ asset('assets/arrowdown.svg')}}" width="14" height="14" alt="">
                     </summary>
 
@@ -49,8 +63,8 @@
                         <div class="passenger-name-container">
                             <center>
                                 <br>
-                                <input class="textbox primarytxtbx" name="comm_fname" type="text" placeholder="First Name" value="{{ $commuter->comm_fname }}">
-                                <input class="textbox primarytxtbx" name="comm_lname" type="text" placeholder="Last Name" value="{{ $commuter->comm_lname }}">
+                                <input class="textbox primarytxtbx" name="fname" type="text" placeholder="First Name" value="{{ $commuter->fname }}">
+                                <input class="textbox primarytxtbx" name="lname" type="text" placeholder="Last Name" value="{{ $commuter->lname }}">
                             </center>
                         </div>
 
@@ -67,12 +81,14 @@
                                                 {{ __('Female') }}
                                             </label>
                                         </div>
+
                                         <div class="gender">
                                             <label class="gender-lbl">
                                                 <input type="radio" class="radio" id="Male" name="gender" value="Male"/>
                                                 {{ __('Male') }}
                                             </label>
                                         </div>
+
                                         <div class="gender">
                                             <label class="gender-lbl">
                                                 <input type="radio" class="radio" id="Female" name="gender" value="Others"/>
@@ -80,29 +96,36 @@
                                             </label>
                                         </div>
                                       </div>
+
                                       <div class="selected-gender">
-                                           {{ $commuter->gender }}
+
+                                        @if(empty($commuter->gender))
+                                            Select
+                                        @else
+                                            {{ $commuter->gender }}
+                                        @endif
+
                                       </div>
+
                                     </div>
                             </div>
 
                             <!-- Phone Number -->
                             <div class="phone-number-container">
                                 {{-- <span class="iconify-inline phone" data-icon="twemoji:flag-philippines" data-width="12" data-height="12"></span> --}}
-                                <input class="textbox accountphone" type="text" placeholder="Phone Number" name="comm_phone" value="{{ $commuter->comm_phone }}">
+                                <input class="textbox accountphone" id="phone" type="text" placeholder="Phone Number" name="phone" value="{{ $commuter->phone }}" onclick="shwPass()">
                             </div>
                         </div>
 
                     </div>
-                    	
-                    <center>
-                        <button onclick="openModal()" type="submit" class="button account save-changes-account"> <a href="#modalWindowChangesAccount">Save Changes</button>
-                    </center>
-
-                    </form>
 
                     <br><br><br>
                 </details>
+
+                <center>
+                    <button onclick="openModal()" type="submit" class="button account save-changes-account"> <a href="#modalWindowChangesAccount">Save Changes</button>
+                </center>
+            </form>
                 
             </div>
 
@@ -140,38 +163,10 @@
             </div>
         </div>
 
-         <!-- EXIT MODAL -->
-    	<div id="modalWindowExit" class="">
-        	<div>
-            	<header>
-                	<div class="close">
-                    	<a href="#close" class="exit"><i class="uil uil-times"></i></a>
-                	</div>
-               	 	<br>
-            		<center>
-               	 		<img src="Images/offline.png" class="modal-img-logout"> 
-                	</center>
-                    <br>
-                	<center>
-                     	<span class="dashboard-subtitle-modal">Are you sure you want to Log out?</span>
-                	</center>
-                	<br>
-            	</header>
-            	<div class="content">
-                	<div class="field">
-                    	<div class="modal-choice">
-                        	<center>
-                          		<button type="submit" class="choice-1">Yes</button>
-                            	<button class="choice-2"><a href="#close" class="choices-2">No</a></button>
-                        	</center>
-                    	</div>
-                	</div>
-            	</div>
-        	</div>
-    	</div>
 
         <!-- Gender Dropdown Scripts -->
         <script type="text/javascript">
+
             const selectedGender = document.querySelector(".selected-gender");
             const genderContainer = document.querySelector(".gender-container");
             const optionsGender = document.querySelectorAll(".gender");
@@ -185,6 +180,51 @@
                     genderContainer.classList.remove("active");
                 });
             });
+
+            function closeMsg() {
+                document.getElementById("flash").style.display = "none";
+
+            }
+
+            // function shwPass() {
+            //     document.getElementById(phone)
+            // }
+
+
+        </script>
+        
+        <script>
+            
+            $("button").hide();
+
+            $(function(){ // document ready function
+            $("form").change(function() { // form change (checkboxes, radiobuttons etc)
+                $("button").show();
+            });
+
+            $("input").keyup(function() { // something typed in a textbox
+                
+                // $('input').blur(function()
+                // {
+                //     if( $(this).val() == '' ) {
+                //             $("button").hide();
+                //     }
+                // });
+                
+                if ($("input") == $("input").val()) {
+                    $("button").hide();
+
+                }
+                
+                else {
+                    $("button").show();
+                }
+
+                // $("button").show();
+            });
+            });
+
+
         </script>
             
         @endsection

@@ -48,15 +48,17 @@
 
                     <span class="title">Welcome!</span>
 
+
                     <div class="input-field form-group">
-                        <input type="text" placeholder="{{ __('Enter Username') }}" name="comm_un" class="is-invalid" value="{{ old('comm_un') }}" required autocomplete="username">
+                        <input type="text" placeholder="{{ __('Enter Username') }}" name="username" class="is-invalid" value="{{ old('username') }}" required autocomplete="username">
                         <span class="invalid-feedback"></span>
-                        <i class="uil uil-envelope icon"></i>
-
-                        @error('comm_un')
-                              <strong>{{ $message }}</strong>
-                        @enderror
-
+                        <i class="uil uil-user icon"></i>
+                    </div>
+                    
+                    <div class="error-validation">
+                      @error('username')
+                            {{ $message }}
+                      @enderror
                     </div>
 
                     <div class="input-field form-group pw">
@@ -78,8 +80,8 @@
 
                     <div class="checkbox-text">
                         <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck" checked>
-                            <label for="logCheck" class="text {{ old('remember') ? 'checked' : '' }}"> {{ __('Remember Me') }}</label>
+                            <input class="form-check-input" name="remember" type="checkbox" id="logCheck" {{ old('remember') ? 'checked' : '' }}>
+                            <label for="logCheck" class="form-check-label text"> {{ __('Keep me logged in') }}</label>
                         </div>
 
                         @if (Route::has('password.request'))
@@ -94,7 +96,7 @@
                     </div> -->
 
                     <div class="input-field button-login form-group">
-                        <input type="submit" name="btnLogin" value="{{ __('Login') }}">
+                      <button style="border:none" type="submit" class="button account">{{ __('Login') }}</button>
                     </div>
                 </form>
 

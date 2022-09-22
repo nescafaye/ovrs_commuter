@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Commuter;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class AccountController extends Controller
 {
@@ -28,16 +29,18 @@ class AccountController extends Controller
     public function index(Commuter $commuters)
     {   
         $commuters = Commuter::where('comm_id', auth()->id())->get();
-        return view('accounts', compact('commuters'));
+        $phone = Commuter::where('comm_id', auth()->id())->value('phone');
+        $mask = Str::mask($phone, '*', 2, 7);
+        return view('accounts', compact('commuters', 'mask'));
     }
 
     public function update(Request $request)
     {
         $all = $request->validate([
-            'comm_fname',
-            'comm_lname',
-            'gender',
-            'comm_phone' => 'min:11',
+            'fname' => 'string',
+            'lname' => 'string',
+            'gender' => 'in:Female,Male,Others',
+            'phone' => 'min:11|nullable|numeric',
         ]);
 
 
@@ -45,7 +48,7 @@ class AccountController extends Controller
         
         if  ($update)
             {
-                return redirect()->back()->with('success','Changes saved successfully!');
+                return redirect()->back()->with('success','Changes has been saved successfully!');
             }
         else
             {

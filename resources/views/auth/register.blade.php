@@ -8,45 +8,61 @@
     		<span class="dashboard-title register">Create an account</span>
  			<div class="registration-container">
 
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}" >
                     @csrf
 
                     <div class="full-name-container">
-                        <input class="textbox register-txtbx" type="text" name="comm_fname" placeholder="{{ __('First Name') }}" value="{{ old('comm_fname') }}" required autocomplete="given-name">
-                            
-                            @error('comm_fname')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
 
-                        <input class="textbox register-txtbx" type="text" name="comm_lname" placeholder="{{ __('Last Name') }}" value="{{ old('comm_lname') }}" required autocomplete="family-name">
+                        <div>
+                        <input class="textbox register-txtbx form-control @error('fname') is-error @enderror" type="text" name="fname" placeholder="{{ __('First Name') }}" value="{{ old('fname') }}" autocomplete="given-name">
+                            
+                            @error('fname')
+                     
+                                <div class="error-validation" role="alert">
+                                    {{ $message }}
+                                </div> 
+                
+                            @enderror
+                        </div>
+
+                        <div>
+                        <input class="textbox register-txtbx form-control @error('lname') is-error @enderror" type="text" name="lname" placeholder="{{ __('Last Name') }}" value="{{ old('lname') }}" autocomplete="family-name">
+                            @error('lname')
+                        
+                            <div class="error-validation " role="alert">
+                                {{ $message }}
+                            </div>
+            
+                            @enderror
+                        </div>
 
                     </div>
 
-                    <input class="textbox register-txtbx" type="email" name="comm_mail" placeholder="{{ __('Email Address') }}" value="{{ old('comm_mail') }}" required>
+                    <input class="textbox register-txtbx form-control @error('email') is-error @enderror" type="email" name="email" placeholder="{{ __('Email Address') }}" value="{{ old('email') }}" required autocomplete="email">
                     
-                        @error('comm_mail')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        @error('email')
+
+                            <div class="error-validation " role="alert">
+                                {{ $message }}
+                            </div>
+                        
                         @enderror
 
-                    <input class="textbox register-txtbx" type="text" name="comm_un" placeholder="{{ __('Username') }}" value="{{ old('comm_un') }}" required>
+                    <input class="textbox register-txtbx form-control @error('username') is-error @enderror" type="text" name="username" placeholder="{{ __('Username') }}" value="{{ old('username') }}" required autocomplete="username">
                 
-                    @error('comm_un')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
+                    @error('username')
+                            <div class="error-validation" role="alert">
+                                    {{ $message }}
+                            </div>
                     @enderror
 
-                    <div class="registration-password-container">
-                        <input class="textbox register-txtbx" type="password" name="password" placeholder="{{ __('Password') }}" required autocomplete="new-password">
+                    <div class="registration-password-container ">
+                        <input class="textbox register-txtbx form-control @error('password') is-error @enderror" type="password" name="password" placeholder="{{ __('Password') }}" required autocomplete="new-password">
                         
                         @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <div class="error-validation " role="alert">
+                                {{ $message }}
+                            </div>
                         @enderror
 
                         <input class="textbox register-txtbx" type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password">

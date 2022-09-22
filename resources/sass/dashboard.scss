@@ -22,6 +22,7 @@
   --error-msg: rgb(230, 189, 189);
   --error-txt: rgb(197, 58, 58);
   --dropdown-open: transparent;
+  --focus-txt: #008080;
 
   /*Font-size*/
 
@@ -47,6 +48,7 @@ body.dark-theme {
   --error-msg: rgba(238, 254, 251, 0.22);
   --error-txt: rgb(255, 131, 131);
   --dropdown-open: rgba(0, 0, 0, 0.055);
+  --focus-txt: #a4dddd;
 
 }
 
@@ -65,16 +67,16 @@ body.dark-theme {
   margin-top: var(--mb-2);
 }
 
-.textbox input {
-  width: 100%;
-  margin-top: 4px;
-  padding: 5px 15px;
-  box-sizing: border-box;
-  line-height: 2;
-  border: 2px;
-  background: var(--text-area-color);
-  border-radius: 6px;
-}
+// .textbox input {
+//   width: 100%;
+//   margin-top: 4px;
+//   padding: 5px 15px;
+//   box-sizing: border-box;
+//   line-height: 2;
+//   border: 2px;
+//   background: var(--text-area-color);
+//   border-radius: 6px;
+// }
 
 .textbox,
 textarea {
@@ -90,12 +92,28 @@ textarea {
   background: var(--text-area-color);
   border-radius: 6px;
   color: var(--font-color-text-area);
+
+  &:hover {
+    background-color: #ecf0f10b;
+    box-shadow: 0px 0px 0px 1px #bcc8d3;
+    transition: background-color ease 0.2s;
+  }
+
+  &::placeholder {
+    color: var(--paragraph-color);
+  }
+
 }
 
-.textbox:focus {
+.textbox:is(:focus) {
   outline: none !important;
-  border: 1px solid #60B0B0;
+  border: 0.5px solid #bcc8d3;
+  background-color: #ecf0f10b;
+  box-shadow: 0px 0px 0.5px 2px #60B0B0;
+  transition: all ease-out 0.1s;
+  color: var(--focus-txt);
 }
+
 /*========== FLASH MESSAGE ==========*/
 
 .flash-message {
@@ -115,10 +133,20 @@ textarea {
       font-size: var(--small-font-size);
       padding: 10px 15px;
       border-radius: 8px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
 
       .iconify-inline {
+        margin-bottom: -1.5px;
         margin-right: 2px;
       }
+
+      .dismiss {
+        cursor: pointer;
+      }
+
     }
 }
 
@@ -213,7 +241,7 @@ input.apple-switch:checked:after {
 
 .selected-gender::after {
   content: "";
-  background: url("../../public/assets/arrowdown.svg");
+  background: url(../../public/assets/arrowdown.svg);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -221,7 +249,7 @@ input.apple-switch:checked:after {
   width: 16px;
   right: 10px;
   top: 18px;
-  transition: all 0.6s;
+  transition: all 0.4s;
 }
 
 .gender-dropdown .gender-select-box .gender-container.active {
@@ -230,7 +258,7 @@ input.apple-switch:checked:after {
 }
 
 .gender-dropdown .gender-select-box .gender-container.active+.selected-gender::after {
-  transform: rotate(180deg);
+  transform: rotateX(180deg);
   top: 6px;
 }
 
@@ -416,6 +444,51 @@ input.register-txtbx {
 }
 
 /**ACCOUNT INFORMATION**/
+// .txtemail, .txtusername {
+//   background-image: url(../../public/assets/pencil-solid.svg);
+//   background-repeat: no-repeat;
+//   background-position: 98% center;
+//   background-size: 17px;
+// }
+
+.settings-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .settings-information {
+
+  }
+
+  .settings-profile {
+    width: 25%;
+    align-self: flex-end;
+
+    .prof-pic {
+      border-radius: 100%;
+      border: 3.5px solid var(--button-color);
+      padding: 5px;
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+    }
+  }
+  
+}
+
+.password-container {
+
+  .new-password {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 12px;
+
+  }
+
+}
+
+
+
 .dashboard-subtitle-settings,
 .dashboard-subtitle-upcoming {
   display: block;
@@ -455,6 +528,7 @@ input.register-txtbx {
 }
 
 /*Billing Details*/
+
 .Username-billing,
 .Username-passenger {
   color: var(--dashboard-font-color);
@@ -507,7 +581,8 @@ details.dropdown-passenger-container:not(.save-changes-account) {
   &[open] {
     max-height: 290px;
     background-color: var(--dropdown-open);
-    
+     
+
       img {
         transform: rotate3d(180deg);
         transition: ease 0.3s;
@@ -518,6 +593,7 @@ details.dropdown-passenger-container:not(.save-changes-account) {
 details.dropdown-billing-container {
   &[open] {
     width: 100%;
+    max-height: 230px;
   }
 }
 
@@ -533,6 +609,7 @@ details.dropdown-billing-container {
 
 .billing-information-container {
   padding-top: 8px;
+  height: 168px;
 }
 
 .billing-information-container input {
@@ -546,6 +623,7 @@ details.dropdown-billing-container {
 
 .save-changes-account {
   width: 100%;
+  margin-bottom: 0 !important;
 }
 
 /*========== PASSENGER ==========*/
@@ -556,7 +634,9 @@ details.dropdown-billing-container {
 // }
 
 .subheading-informaiton-container {
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1fr, 2);
+  grid-column-gap: 12px;
 }
 
 .passenger-name-container input:nth-child(3) {
@@ -574,9 +654,9 @@ details.dropdown-billing-container {
 }
 
 /*Phone Number*/
-.phone-number-container {
-  margin-left: var(--mb-2);
-}
+// .phone-number-container {
+//   margin-left: var(--mb-2);
+// }
 
 // .phone {
 //   position: absolute;
@@ -594,19 +674,20 @@ input.accountphone {
   
 }
 
+
 /*========== BOOKINGS ==========*/
 
 .bookings-description {
   text-align: center;
-  margin-bottom: var(--mb-1-2);
+  margin-bottom: var(--mb-02);
+  margin-top: 3px;
 }
 
 .dashboard-subtitle-no-bookings {
-  font-size: var(--h3-font-size);
+  font-size: var(--h2-font-size);
   color: var(--light-color);
-  font-weight: var(--page-title);
   margin-bottom: 0;
-  font-weight: var(--font-medium);
+  font-weight: var(--font-semi-bold);
 }
 
 .no-bookings-img {
