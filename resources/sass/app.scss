@@ -169,6 +169,14 @@ img{
   height: auto;
 }
 
+ /* ERROR MESSAGES */
+ .error-validation {
+  color: var(--error-txt);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  
+}
+
 /*========== CLASS CSS ==========*/
 .section{
   padding: 4rem 0 2rem;

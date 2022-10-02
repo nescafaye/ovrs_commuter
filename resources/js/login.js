@@ -1,6 +1,5 @@
 // Slider
 
-
 var slides = document.querySelectorAll('.slide');
 var btns = document.querySelectorAll('.btn_slider');
 let currentSlide = 1;

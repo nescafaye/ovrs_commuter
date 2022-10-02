@@ -36,9 +36,13 @@
 	'resources/js/main.js', 
 	'resources/js/login.js'])
 
+	@livewireStyles
+
 </head>
 <body onload="document.body.style.visibility=`visible`;">
     <script>document.body.style.visibility=`hidden`;</script>
+
+	@livewireScripts
 
     <div id="app">
 
