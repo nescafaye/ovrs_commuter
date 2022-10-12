@@ -13,6 +13,8 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Contracts\Auth\CanResetPassword;
+
 class Commuter extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, AuthenticableTrait;

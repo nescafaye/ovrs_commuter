@@ -70,8 +70,8 @@
                 <!-- Show these links when user is logged in -->
                 @if (Route::has('login'))
                     @auth
-                    <li class="nav__item"><a href="{{ route('bookings') }}" class="nav__link {{ (request()->is('bookings')) ? 'active-link' : '' }}">Bookings</a></li>
-                    <li class="nav__item"><a href="{{ route('account') }}" class="nav__link {{ (request()->is('account/*')) ? 'active-link' : '' }}">Account</a></li>
+                    <li class="nav__item"><a href="{{ route('transactions') }}" class="nav__link {{ (request()->is('transactions')) ? 'active-link' : '' }}">Transactions</a></li>
+                    <li class="nav__item"><a href="{{ route('profile') }}" class="nav__link {{ (request()->is('profile')) ? 'active-link' : '' }}">Profile</a></li>
                     <li class="nav__item"><a href="#modalWindowExit" class="nav__link"><span class="iconify" data-icon="entypo:log-out" data-width="13" data-height="13"></span></a></li>
 
                 @else

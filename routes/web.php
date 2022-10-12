@@ -25,15 +25,15 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::view('/privacy-policy', 'privacy')->name('privacy');
 Route::view('/terms-of-service', 'terms')->name('terms');
 
-Route::get('/bookings', [App\Http\Controllers\BookingsController::class, 'index'])->name('bookings');
+Route::get('/transactions', [App\Http\Controllers\TransactionsController::class, 'index'])->name('transactions');
 
-Route::get('/account/passengers/', [App\Http\Controllers\AccountController::class, 'index'])->name('account');
-Route::post('/account/passengers/', [App\Http\Controllers\AccountController::class, 'update'])->name('account.edit');
+Route::get('profile/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::post('profile/', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.edit');
 
 Route::get('/passengers', [App\Http\Controllers\PassengerController::class, 'index'])->name('passenger');
 
-Route::get('account/settings/', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
-Route::post('account/settings/', [App\Http\Controllers\SettingsController::class, 'update'])->name('settings.edit');
+Route::get('settings/', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
+Route::post('settings/', [App\Http\Controllers\SettingsController::class, 'update'])->name('settings.edit');
 
 //logout
 Route::group(['middleware' => ['auth']], function() {
@@ -41,8 +41,7 @@ Route::group(['middleware' => ['auth']], function() {
  });
 
 
- // Social Login
-
- Route::get('/auth/google/redirect', [App\Http\Controllers\SocialLoginController::class, 'googleRedirect'])->name('googleRedirect');
- Route::get('/auth/google/callback', [App\Http\Controllers\SocialLoginController::class, 'googleCallback'])->name('googleCallback');
+ // Google Login
+Route::get('/auth/google/redirect', [App\Http\Controllers\SocialLoginController::class, 'googleRedirect'])->name('googleRedirect');
+Route::get('/auth/google/callback', [App\Http\Controllers\SocialLoginController::class, 'googleCallback'])->name('googleCallback');
 

@@ -55,8 +55,8 @@
                     @else
 
                         <ul>
-                            <li><a href="{{ route('account') }}" class="{{ (request()->is('account/passengers')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('account/passengers')) ? 'picked-icon' : '' }}" data-icon="gridicons:multiple-users"></span>Passengers</a></li>
-                            <li><a href="{{ route('settings') }}" class="{{ (request()->is('account/settings')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('account/settings')) ? 'picked-icon' : '' }}" data-icon="ci:settings-filled"></span>Settings</a></li>
+                            <li><a href="{{ route('profile') }}" class="{{ (request()->is('profile')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('profile')) ? 'picked-icon' : '' }}" data-icon="gridicons:multiple-users"></span>Profile</a></li>
+                            <li><a href="{{ route('settings') }}" class="{{ (request()->is('settings')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('settings')) ? 'picked-icon' : '' }}" data-icon="ci:settings-filled"></span>Settings</a></li>
                         </ul>
                             
                         

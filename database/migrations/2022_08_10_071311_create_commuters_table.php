@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('profilePic')->nullable();
             $table->string('accNumber', '12')->nullable();
             $table->string('accName')->nullable();
+            $table->string('auth_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
