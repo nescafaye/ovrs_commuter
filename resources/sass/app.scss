@@ -25,6 +25,13 @@
   --title-color: #263238;
   --medium-color: #e0e0e0;
   --message-bg-color: #c8eeee;
+  --hover-color-add: #008080;
+  --payment-form: #343A40;
+  --gcash-background: #EAEBEC;
+  --gcash-title: #ABABAB;
+  --payment-text: #343A40;
+  --destination: #6C757D;
+  --fare-summary-title: #9B9B9B;
 
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
@@ -34,6 +41,7 @@
   --h2-font-size: 1.25rem;
   --h3-font-size: 1rem;
   --normal-font-size: .938rem;
+  --medium-font-size: .915rem;
   --paragraph-size: .90rem;
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
@@ -47,7 +55,7 @@
  /*========== Margenes ==========*/
  --mb-01: .3rem;
  --mb-1: .5rem;
- --mb-1-2: .7rem;
+ --mb-1-2: .8rem;
  --mb-2: 1rem;
  --mb-02: 1.2rem;
  --mb-3: 1.5rem;
@@ -61,6 +69,7 @@
  --mb-10: 6rem;
  --mb-11: 7rem;
  --mb-12: 8rem;
+ --mb-13: 10rem;
  --mb-8: 21rem;
 
 
@@ -78,6 +87,8 @@
     --h1-font-size: 2.25rem;
     --h2-font-size: 1.5rem;
     --h3-font-size: 1.25rem;
+    --large-font-size: 1.15rem;
+    --medium-font-size: 1.02rem;
     --normal-font-size: 1rem;
     --small-font-size: .875rem;
     --smaller-font-size: menu
@@ -105,6 +116,12 @@ body.dark-theme
   --title-color: #C7D1CC;
   --medium-color: #C7D1CC;
   --message-bg-color: rgba(238, 254, 251, 0.22);
+  --payment-form: #ffff;
+  --gcash-background: #525C64;
+  --gcash-title: white;
+  --payment-text: white;
+  --destination: white ;
+  --fare-summary-title: white;
 }
 
 /*========== Button Dark/Light ==========*/
@@ -191,6 +208,7 @@ img{
   font-size: var(--h1-font-size);
   color: var(--light-color);
   margin-bottom: var(--mb-3);
+  font-weight: var(--font-semi-bold);
 }
 
 .section-subtitle{
@@ -218,8 +236,8 @@ img{
   position: fixed;
   top: 0;
   left: 0;
-  z-index: var(--z-fixed);
   background-color: var(--body-color);
+  // z-index: var(--z-fixed);
 }
 
 /*========== NAV ==========*/
@@ -229,6 +247,11 @@ img{
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+    .bx {
+      padding-top: 5px;
+      color: var(--light-color);
+    }
 }
 
 @media screen and (max-width: 768px){
@@ -256,23 +279,34 @@ img{
   color: var(--light-color);
   font-weight: var(--font-medium);
 }
+
 .nav__logo, .vango
 {
   font-family: 'Circular Std';
   font-size: var(--h1-font-size);
   font-weight: var( --logo-font-weight);
+
+  &:not(.vango):hover {
+    color: var(--light-color);
+
+  }
+
 }
+
 .vango 
 {
   color: var(--first-color);
 }
+
 .nav__link{
   transition: .3s;
 }
+
 .nav__link:hover
 {
   color: var(--first-color);
 }
+
 .nav__toggle
 {
   font-size: 1.3rem;
@@ -336,13 +370,15 @@ img{
   font-size: var(--biggest-font-size);
   color: var(--first-color);
   margin-bottom: var(--mb-1);
+  font-weight: var(--font-medium);
 }
 
 .home__subtitle
 {
-  font-size: var(--h2-font-size);
+  font-size: 22px;
   color: var(--light-color);
   margin-bottom: var(--mb-4);
+  font-weight: 600;
 }
 
 .home__img
@@ -363,6 +399,7 @@ img{
 
 .button:hover{
   background-color: var(--hover-color);
+  color: var(--white-color);
 }
 
 /*========== ABOUT ==========*/
@@ -389,6 +426,9 @@ img{
 
 .services__content{
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .services__img
@@ -404,6 +444,7 @@ img{
   font-size: var(--h3-font-size);
   color: var(--light-color);
   margin-bottom: var(--mb-1);
+  font-weight: var(--font-medium);
 }
 
 .services__description{
@@ -540,6 +581,7 @@ img{
   font-size: var(--h2-font-size);
   color: var(--light-color);
   margin-bottom: var(--mb-2);
+  font-weight: var(--font-medium);
 }
 .footer-title
 {

@@ -1,0 +1,733 @@
+@import 'app.scss';
+
+/*========== PAYMENT FORM ==========*/
+
+/*Commuter Information*/
+.reservation-fare-summary-container {
+    flex: 38%;
+}
+
+.commuter-payment-container {
+    flex: 62%;
+    margin-right: var(--mb-2);
+}
+
+.reservation-icon {
+    color: #9B9B9B;
+    text-align: center;
+}
+
+.dashboard-subtitle-gcash {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--payment-text);
+}
+
+.gcash-radio {
+    background: var(--gcash-background);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 10px;
+    width: 160px;
+    cursor: pointer;
+
+    img {
+        margin: 0 5px;
+    }
+}
+
+
+.from-container,
+.to-container,
+.departuredate- {
+    display: flex;
+    flex-direction: column;
+}
+
+.departure {
+    display: flex;
+    flex-direction: row;
+}
+
+.currentdestination,
+.destination-cont {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-subtitle-available-reservation-subtitle {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    color: var(--payment-text);
+}
+
+.payment-form-passenger,
+.payment-title,
+.payment-form-title-passenger-method,
+.payment-form-title-passenger-method .passenger-reservation-date {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px;
+    color: var(--payment-text);
+}
+
+.dashboard-subtitle-available-reservation,
+.passenger-reservation-date,
+.passenger-reservation,
+.payment-form-trip-details-commuter,
+.payment-form-trip-details-name {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    color: var(--destination);
+}
+
+.totalprice {
+    font-size: var(--h2-font-size);
+    text-decoration: underline;
+}
+
+.commmuter-form-title,
+.payment-form-title {
+    font-family: 'Circular Std';
+    font-weight: 500;
+    font-size: var(--h2-font-size);
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: var(--payment-form);
+}
+
+.payment-form-title-passenger {
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: var(--h4-font-size);
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    color: var(--payment-form);
+}
+
+.payment-form-title-passenger-type {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    color: #ABABAB;
+}
+
+.passenger-title {
+    margin: var(--mb-4);
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-form-trip-details {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fare-summary-title);
+}
+
+.payment-form-trip-details {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--payment-form);
+}
+
+.first-passenger-information-container,
+.payment-title-container {
+    box-sizing: border-box;
+    border: 1px solid var(--dropdown-border);
+    border-radius: 12px 12px 0px 0px;
+    background-color: var(--dropdown-open);
+}
+
+
+.second-passenger-information-container,
+.third-passenger-information-container,
+.fare-summary-body {
+    box-sizing: border-box;
+    border: 1px solid var(--dropdown-border);
+    background-color: var(--dropdown-open);
+}
+
+.fullname-passenger {
+    display: flex;
+    flex-direction: row;
+}
+
+.fullname-passenger,
+.payment-form-title-passenger-method,
+.commuter-fare-container {
+    margin: var(--mb-4);
+}
+
+.passsenger-body-information,
+.payment-container,
+.trip-details-summary {
+    box-sizing: border-box;
+    border: 1px solid var(--dropdown-border);
+    background-color: var(--dropdown-open);
+}
+
+.third-passenger-container {
+
+    .passsenger-body-information {
+        border-radius: 0 0 12px 12px;
+    }
+}
+
+
+.trip-details-summary {
+    padding: 2rem;
+}
+
+.fname {
+    margin-right: var(--mb-1);
+}
+
+.reservation-summary,
+.fare-title-container {
+    box-sizing: border-box;
+    border: 1px solid #CECECE;
+    border-radius: 12px 12px 0px 0px;
+}
+
+.commuter-1,
+.commuter-2,
+.commuter-3,
+.reservation-fee,
+.tax-fee {
+    display: flex;
+    flex: row;
+}
+
+.line-divider {
+    border: 1px solid #CECECE;
+    width: 90%;
+    justify-content: center;
+}
+
+.paymentseats {
+    width: 65%;
+}
+
+.payment-button span {
+    font-family: 'Poppins';
+    font-style: normal;
+    color: var(--payment-text);
+}
+
+.cancel-payment-button {
+    border: none;
+    background: none;
+    width: 100%;
+    color: #42A1A1;
+}
+
+.cancel-payment-button:hover {
+    color: var(--hover-color-add);
+}
+
+.proceed-payment-button {
+    border: none;
+    background: #42A1A1;
+    border-radius: 10px;
+    width: 100%;
+    height: 50px;
+    color: #ffff;
+    margin-bottom: var(--mb-2);
+}
+
+.proceed-payment-button:hover {
+    background-color: var(--hover-color-add);
+}
+
+.payment-button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.reservation-fare-summary-container {
+
+    details.dropdown-passenger-container {
+
+        overflow: hidden;
+        max-height: 90px;
+
+        summary {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        &[open] {
+            max-height: 350px;
+        }
+        
+    }
+
+    .passenger-information-container {
+        padding-top: 20px;
+        height: auto !important;
+    }
+
+    .fare-summary-container {
+
+        details.dropdown-passenger-container {
+
+            &[open] {
+                max-height: 650px;
+            }
+        }
+
+        .passenger-information-container {
+            height: auto !important;
+        }
+
+        .collapse-body-two {
+
+            .sub {
+                font-size: var(--medium-font-size);
+                margin-bottom: var(--mb-1-2);
+            }
+
+            .fee-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                .reservation-info {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    
+                    .iconify-inline {
+                        margin-left: 8px;
+                        color: #9B9B9B;
+                    }
+                }
+
+                .total-info {
+
+                    .total-text {
+                        font-size: var(--large-font-size);
+                    }
+
+                    .total-subtext {
+                        font-size: var(--small-font-size);
+                        color: #9B9B9B;
+                    }
+
+                }
+
+                .total-price {
+                    font-size: var(--large-font-size);
+                    font-weight: 500;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+    }
+
+}
+
+.collapse-title {
+    margin-left: var(--mb-2);
+}
+
+.collapse-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 10px;
+    // margin-top: 20px; 
+
+    .departure-date {
+        grid-column-start: 2;
+        justify-self: end;
+        background: #EAF8F2;
+        padding: 5px 20px;
+        border-radius: 100px;
+
+        span {
+            font-size: 14px;
+            color: #9B9B9B;
+        }
+    }
+
+    .collapse-first-col,
+    .collapse-second-col {
+        grid-row-start: 2;
+    }
+
+    .collapse-text {
+        margin: var(--mb-2) 0;
+        display: grid;
+        grid-template-columns: 0.2fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        .dashboard-subtitle-available-reservation {
+            grid-column-start: 2;
+        }
+    }
+
+}
+
+
+
+// /*========== GENDER DROPDOWN ==========*/
+// .gender-dropdown {
+//     margin-top: var(--mb-1);
+//     z-index: 1000;
+// }
+
+// .gender-dropdown .gender-select-box {
+//     display: flex;
+//     width: 270px;
+//     flex-direction: column;
+//     color: var(--font-color-text-area);
+//     z-index: 300;
+// }
+
+// .gender-dropdown .gender-select-box .gender-container {
+//     background: var(--text-area-color-payment);
+//     max-height: 0;
+//     width: 100%;
+//     opacity: 0;
+//     transition: all 0.3s;
+//     border-radius: 8px;
+//     overflow: hidden;
+//     order: 1;
+//     box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.07);
+// }
+
+// .selected-gender {
+//     background: var(--text-area-color-payment);
+//     height: 45px;
+//     border-radius: 8px;
+//     margin-bottom: 8px;
+//     position: relative;
+//     order: 0;
+// }
+
+// .selected-gender::after {
+//     content: "";
+//     background: url("Images/arrow-down.svg");
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     height: 50%;
+//     width: 16px;
+//     right: 10px;
+//     top: 18px;
+//     transition: all 0.6s;
+// }
+
+// .gender-dropdown .gender-select-box .gender-container.active {
+//     max-height: 250px;
+//     opacity: 1;
+// }
+
+// .gender-dropdown .gender-select-box .gender-container.active+.selected-gender::after {
+//     transform: rotateX(180deg);
+//     top: 6px;
+// }
+
+// .gender-dropdown .gender-select-box .gender,
+// .selected-gender {
+//     padding: 14px 24px;
+//     cursor: pointer;
+//     font-family: var(--font);
+//     font-size: var(--paragraph-size);
+//     font-weight: var(--dropdown);
+// }
+
+// .gender-dropdown .gender-select-box .gender:hover {
+//     background: rgba(102, 178, 178, 0.67);
+//     color: white;
+// }
+
+// .gender-dropdown .gender-select-box label {
+//     cursor: pointer;
+// }
+
+// .gender-dropdown .gender-select-box .gender .radio {
+//     display: none;
+// }
+
+// /*========== SECOND GENDER DROPDOWN ==========*/
+// .second-dropdown {
+//     margin-top: var(--mb-1);
+//     z-index: 1000;
+// }
+
+// .second-dropdown .second-select-box {
+//     display: flex;
+//     width: 270px;
+//     flex-direction: column;
+//     color: var(--font-color-text-area);
+//     z-index: 300;
+// }
+
+// .second-dropdown .second-select-box .second-container {
+//     background: var(--text-area-color-payment);
+//     max-height: 0;
+//     width: 100%;
+//     opacity: 0;
+//     transition: all 0.3s;
+//     border-radius: 8px;
+//     overflow: hidden;
+//     order: 1;
+//     box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.07);
+// }
+
+// .second-selected-gender {
+//     background: var(--text-area-color-payment);
+//     height: 45px;
+//     border-radius: 8px;
+//     margin-bottom: 8px;
+//     position: relative;
+//     order: 0;
+// }
+
+// .second-selected-gender::after {
+//     content: "";
+//     background: url("Images/arrow-down.svg");
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     height: 50%;
+//     width: 16px;
+//     right: 10px;
+//     top: 18px;
+//     transition: all 0.6s;
+// }
+
+// .second-dropdown .second-select-box .second-container.active {
+//     max-height: 250px;
+//     opacity: 1;
+// }
+
+// .second-dropdown .second-select-box .second-container.active+.second-selected-gender::after {
+//     transform: rotateX(180deg);
+//     top: 6px;
+// }
+
+// .second-dropdown .second-select-box .second-gender,
+// .second-selected-gender {
+//     padding: 14px 24px;
+//     cursor: pointer;
+//     font-family: var(--font);
+//     font-size: var(--paragraph-size);
+//     font-weight: var(--dropdown);
+// }
+
+// .second-dropdown .second-select-box .second-gender:hover {
+//     background: rgba(102, 178, 178, 0.67);
+//     color: white;
+// }
+
+// .second-dropdown .second-select-box label {
+//     cursor: pointer;
+// }
+
+// .second-dropdown .second-select-box .second-gender .radio {
+//     display: none;
+// }
+
+// .second-container input {
+//     display: none;
+// }
+
+// /*========== THIRD GENDER DROPDOWN ==========*/
+// .third-dropdown {
+//     margin-top: var(--mb-1);
+//     z-index: 1000;
+// }
+
+// .third-dropdown .third-select-box {
+//     display: flex;
+//     width: 270px;
+//     flex-direction: column;
+//     color: var(--font-color-text-area);
+//     z-index: 300;
+// }
+
+// .third-dropdown .third-select-box .third-container {
+//     background: var(--text-area-color-payment);
+//     max-height: 0;
+//     width: 100%;
+//     opacity: 0;
+//     transition: all 0.3s;
+//     border-radius: 8px;
+//     overflow: hidden;
+//     order: 1;
+//     box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.07);
+// }
+
+// .third-selected-gender {
+//     background: var(--text-area-color-payment);
+//     height: 45px;
+//     border-radius: 8px;
+//     margin-bottom: 8px;
+//     position: relative;
+//     order: 0;
+// }
+
+// .third-selected-gender::after {
+//     content: "";
+//     background: url("Images/arrow-down.svg");
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     height: 50%;
+//     width: 16px;
+//     right: 10px;
+//     top: 18px;
+//     transition: all 0.6s;
+// }
+
+// .third-dropdown .third-select-box .third-container.active {
+//     max-height: 250px;
+//     opacity: 1;
+// }
+
+// .third-dropdown .third-select-box .third-container.active+.third-selected-gender::after {
+//     transform: rotateX(180deg);
+//     top: 6px;
+// }
+
+// .third-dropdown .third-select-box .third-gender,
+// .third-selected-gender {
+//     padding: 14px 24px;
+//     cursor: pointer;
+//     font-family: var(--font);
+//     font-size: var(--paragraph-size);
+//     font-weight: var(--dropdown);
+// }
+
+// .third-dropdown .third-select-box .third-gender:hover {
+//     background: rgba(102, 178, 178, 0.67);
+//     color: white;
+// }
+
+// .third-dropdown .third-select-box label {
+//     cursor: pointer;
+// }
+
+// .third-dropdown .third-select-box .third-gender .radio {
+//     display: none;
+// }
+
+// .third-container input {
+//     display: none;
+// }
+
+
+/*========== MEDIA QUERIES ==========*/
+@media screen and (min-width: 576px) {
+
+    .home__container,
+    .about__container,
+    .app__container {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+
+    .payment-form-container-seats,
+    .payment-form-container-van {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .about__data,
+    .about__initial,
+    .app__data,
+    .app__initial,
+    .contact__container,
+    .contact__initial {
+        text-align: initial;
+    }
+
+    .about__img,
+    .app__img,
+    .bookings-img {
+        width: 380px;
+        order: -1;
+    }
+
+    .remind__img {
+        width: 918px;
+        order: -1;
+    }
+
+    .contact__container {
+        grid-template-columns: 1.75fr 1fr;
+        align-items: center;
+    }
+
+    .contact__button {
+        justify-self: center;
+    }
+
+    .vector {
+        width: 1595px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        margin: 0;
+    }
+
+    .section {
+        padding-top: 8rem;
+    }
+
+    .nav {
+        height: calc(var(--header-height) + 1.5rem);
+    }
+
+    .nav__list {
+        display: flex;
+    }
+
+    .nav__item {
+        margin-left: var(--mb-5);
+        margin-bottom: 0;
+    }
+
+    .nav__toggle {
+        display: none;
+    }
+
+    .change-theme {
+        position: initial;
+        margin-left: var(--mb-2);
+    }
+}
+
+
+@media screen and (min-width: 960px) {
+    .bd-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home__img {
+        width: 500px;
+    }
+
+    .logo_img {
+        margin-right: var(--mb-1);
+    }
+
+}

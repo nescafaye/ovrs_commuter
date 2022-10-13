@@ -51,21 +51,16 @@ class SettingsController extends Controller
             $profileImage = hash('md5', date('YmdHis')) . "." . $image->getClientOriginalExtension();
             $destinationPath = Storage::path('public/images/');   
 
-            // $img = Image::make($image->path());
-            // $img->resize(80,80, function ($const) {
-            //     $const->aspectRatio();
-            // });
-
             $image->move($destinationPath, $profileImage);
             $all['profilePic'] = "$profileImage";
             
         } else {
+
             unset($all['profilePic']);
         }
 
         // $product->update($input);
         
-
         $all['password'] = Hash::make(request()->password);
         $update = Commuter::where('comm_id', auth()->id())->update($all);
         

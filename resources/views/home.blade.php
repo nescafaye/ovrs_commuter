@@ -10,8 +10,9 @@
         <div class="home__container bd-container bd-grid">
             <div class="home__data">
                 <h1 class="home__title">Book now!</h1>
-                <h2 class="home__subtitle">Plan your trip with us <br> And Enjoy your journey</h2>
+                <h2 class="home__subtitle">Plan your trip with us <br> And enjoy your journey</h2>
                  <a href="#" class="button">Book a trip</a>
+                 
             </div>
             <img src="{{ asset('assets/car-header.png') }}" alt="" class="home__img">
         </div>
@@ -139,7 +140,7 @@
 <footer class="footer section bd-container">
     <div class="footer__container bd-grid">
         <div class="footer__content">
-            <h1 class="home__title_ footer-title">Van<mark style="background: none;color: "class="vango">Go</mark></h1>
+            <a href="{{ route('home') }}" class="nav__logo">Van<mark style="background: none;" class="vango">Go</mark></a>
                <span class="footer__description">Online Van Reservation</span>
             <div>
                 <a href="https://www.facebook.com/VanGoph-106458635519239/" class="footer__social"><i class='bx bxl-facebook'></i></a>

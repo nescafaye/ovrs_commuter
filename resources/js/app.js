@@ -18,6 +18,12 @@ const app = createApp({});
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
 
+// Reference from published scripts
+require('./vendor/livewire-ui/modal');
+
+// Reference from vendor
+require('../../vendor/livewire-ui/modal/resources/js/modal');
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

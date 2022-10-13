@@ -20,8 +20,7 @@ class Login extends Component
     ];
 
     protected $messages = [
-        'username.min' => 'Username',
-        'username.required' => 'Username is fcking required',
+        'username.required' => 'Username is required',
         'password.required' => 'Password is required.',
     ];
 

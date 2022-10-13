@@ -36,10 +36,10 @@
     
             </div>
 
-            <span class="dashboard-subtitle-settings">Passenger Information</span>
+            <span class="dashboard-subtitle-settings">Basic Information</span>
             <div class="passenger-title-container">
                 <br>
-                <span class="dashboard-subtitle-primary">Primary Passenger</span>
+                <span class="dashboard-subtitle-primary">Primary Commuter</span>
                 <p class="email-description">A passenger type code provides the capability to specify fare related classifications for each passenger. </p>
                 <br>
             </div>
@@ -56,7 +56,7 @@
 
                     <div class="passenger-information-container">
 
-                        <form action="{{ route('account.edit') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('profile.edit') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <!-- Full Name -->

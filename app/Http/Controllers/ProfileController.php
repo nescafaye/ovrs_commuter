@@ -7,7 +7,7 @@ use App\Models\Commuter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class AccountController extends Controller
+class ProfileController extends Controller
 {
     //
 
@@ -31,7 +31,7 @@ class AccountController extends Controller
         $commuters = Commuter::where('comm_id', auth()->id())->get();
         $phone = Commuter::where('comm_id', auth()->id())->value('phone');
         $mask = Str::mask($phone, '*', 2, 7);
-        return view('accounts', compact('commuters', 'mask'));
+        return view('profile', compact('commuters', 'mask'));
     }
 
     public function update(Request $request)

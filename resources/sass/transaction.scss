@@ -1,0 +1,472 @@
+@import 'app.scss';
+
+.transaction-bg {
+    width: 92%;
+    height: 270px;
+    // background: #B2D8D8;
+    // background-image: url(../../public/assets/header.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+    margin: auto;
+    border-radius: 12px;
+}
+
+.tabs {
+    margin: 0 100px;
+    position: relative;
+    top: 40px;
+}
+
+ul.nav-pills {
+    width: 28%;
+}
+
+.nav-link {
+    background: transparent !important;
+    /*override bootstrap style*/
+    border-radius: 0 !important;
+    color: rgba(135, 133, 143, 0.89);
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+    iconify-icon {
+        margin-right: 8px;
+    }
+
+}
+
+.nav-link:hover {
+    color: var(--hover-color-add);
+}
+
+.nav-link.active {
+    color: #008080 !important;
+    border-bottom: 4px solid #008080;
+}
+
+.dashboard-subtitle-current-destination {
+    font-size: var(--normal-font-size);
+    color: #263238;
+    margin-bottom: 0;
+    font-weight: var(--font-medium);
+    font-size: 15px;
+}
+
+.destinations_transaction {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    margin: 0 var(--mb-3);
+    grid-column-gap: 20px;
+    align-items: center;
+}
+
+/*Rent Van*/
+.rent_van form, .rent_van {
+
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFF;
+    border-radius: 8px;
+    height: 100px;
+    margin: 0;
+    box-shadow: 2px 2px 6px 1px rgba(9, 9, 14, 0.058);
+
+}
+
+.border-left {
+    border-left: 1px solid #ABABAB;
+    margin-right: var(--mb-01);
+    margin-left: var(--mb-01);
+}
+
+.date_transaction_container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-column-gap: 20px;
+    align-items: center;
+    margin: 0 var(--mb-2);
+
+}
+
+.number-passenger-container {
+    margin: var(--mb-1-2);
+}
+
+/*Button*/
+.search_button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #FFF;
+    padding: .75rem 1rem;
+    border-radius: 0px 8px 8px 0px;
+    transition: .3s;
+    border-style: none;
+    width: 200px;
+    margin-left: var(--mb-3);
+}
+
+.search_button:hover {
+    background-color: var(--hover-color-add);
+}
+
+/*Date*/
+.departuredate input {
+    width: 100%;
+    margin-top: 4px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    line-height: 2;
+    border: 2px;
+    background: var(--text-area-color);
+    border-radius: 6px;
+}
+
+.departuredate {
+    width: 100%;
+    margin-top: 4px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    line-height: 2;
+    font-family: var(--font);
+    font-size: var(--paragraph-size);
+    border: 2px;
+    background: white;
+    border-radius: 6px;
+    color: var(--paragraph-color);
+}
+
+.departuredate:focus {
+    outline: none !important;
+}
+
+.currentdestination {
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+        box-shadow: none;
+        outline: none;
+        border: none;
+        color: #4B535A;
+    }
+
+    color: #4B535A;
+}
+
+/*========== Passenger DROPDOWN ==========*/
+.Passenger-dropdown {
+    margin-top: var(--mb-1);
+    z-index: 1000;
+}
+
+.Passenger-dropdown .Passenger-select-box {
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    color: #4B535A;
+    z-index: 300;
+}
+
+.Passenger-dropdown .Passenger-select-box .Passenger-container {
+    background: white;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.3s;
+    border-radius: 8px;
+    overflow: hidden;
+    order: 1;
+    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.07);
+}
+
+.selected-Passenger {
+    background: white;
+    height: 45px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    order: 0;
+
+}
+
+.selected-Passenger:focus {
+    border: 1px solid #60B0B0;
+}
+
+.selected-Passenger::after {
+    content: "";
+    background: url("../../public/assets/chevron-small-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 50%;
+    width: 16px;
+    right: 50px;
+    top: 13px;
+    transition: all 0.4s;
+}
+
+.Passenger-dropdown .Passenger-select-box .Passenger-container.active {
+    max-height: 280px;
+    opacity: 1;
+}
+
+.Passenger-dropdown .Passenger-select-box .Passenger-container.active+.selected-Passenger::after {
+    transform: rotateX(180deg);
+    top: 6px;
+}
+
+.Passenger-dropdown .Passenger-select-box .Passenger,
+.selected-Passenger {
+    padding: 10px 24px;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: var(--paragraph-size);
+    font-weight: var(--dropdown);
+}
+
+.Passenger-dropdown .Passenger-select-box .Passenger:hover {
+    background: rgba(102, 178, 178, 0.67);
+    color: white;
+}
+
+.Passenger-dropdown .Passenger-select-box label {
+    cursor: pointer;
+}
+
+.Passenger-dropdown .Passenger-select-box .Passenger .radio {
+    display: none;
+}
+
+/*========== RESULTS ==========*/
+
+.results-transaction {
+    margin: 0 var(--mb-13) var(--mb-7);
+
+    .result-count {
+        font-size: var(--small-font-size);
+        color: #76818c;
+    }
+
+    .result-head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: var(--mb-2);
+        margin-bottom: var(--mb-5);
+
+        .filter-container {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            align-items: center;
+            grid-column-gap: 10px;
+
+            .sort-by {
+                text-transform: uppercase;
+                font-size: var(--small-font-size);
+                color: #76818c;
+            }
+
+            .sort-latest {
+                text-align: center;
+                font-size: var(--paragraph-size);
+
+                input[type=checkbox] {
+                    display: none;
+
+                    &:checked~.icon-box {
+                        background: #EAF8F2;
+
+                        span {
+                            color: #263238;
+                        }
+                    }
+                }
+
+                .icon-box {
+
+                    padding: 5px;
+                    width: 95px;
+                    border-radius: 100px;
+
+                    &:hover {
+                        background: #EAF8F2;
+                        cursor: pointer;
+                    }
+
+                    span {
+                        color: #263238;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.no-results-container {
+    
+    height: 48vh;
+
+    .no-results-bg {
+        background-image: url(../../public/assets/no-results.svg);
+        background-repeat: no-repeat;
+        background-size: 25%;
+        background-position: top center;
+        height: 40vh;
+    }
+
+    .no-results-text {
+        text-align: center;
+    }
+}
+
+.available-results-container {
+    border: 1px solid rgba(171, 171, 171, 0.3);
+    box-shadow: 2px 2px 6px 1px rgba(9, 9, 14, 0.058);
+    border-radius: 12px;
+    width: 100%;
+    padding: var(--mb-4);
+}
+
+// .available-results-destination-container,
+// .available-results-vaninformation-container {}
+
+
+.No-seats-available {
+    margin-right: var(--mb-2);
+}
+
+.plate-number {
+    margin-left: var(--mb-2);
+}
+
+.available-results-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.available-results-vaninformation-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.available-results-destination-container {
+  
+}
+
+.right {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 25px;
+    flex: 12%;
+    justify-items: end;
+}
+
+.left {
+    flex: 88%;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 25px;
+}
+
+/*icons*/
+.cdp {
+    color: #008080;
+}
+
+.dp {
+    color: #ABABAB;
+}
+
+.icon {
+    color: #626B74;
+}
+
+.steering {
+    color: #008080;
+}
+
+
+/*Fonts*/
+.current-destination-tag {
+    background: none;
+    color: #66B2B2;
+    text-transform: uppercase;
+}
+
+.destination-tag {
+    background: none;
+    color: #ABABAB;
+    text-transform: uppercase;
+}
+
+.dashboard-subtitle-available {
+    font-size: var(--h3-font-size);
+    color: #42A1A1;
+    font-weight: var(--page-title);
+    margin-bottom: 0;
+    font-weight: var(--font-medium);
+    margin-left: var(--mb-3);
+}
+
+.dashboard-subtitle-available-dp {
+    font-size: var(--h3-font-size);
+    color: #626B74;
+    font-weight: var(--page-title);
+    margin-bottom: 0;
+    font-weight: var(--font-medium);
+    margin-left: var(--mb-3);
+}
+
+.dashboard-subtitle-available-seats-tile {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--menu);
+    line-height: 18px;
+    color: #ABABAB;
+}
+
+.dashboard-subtitle-available-seats {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    color: #66B2B2;
+}
+
+.dashboard-subtitle-available-seats-price {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 60px;
+    text-align: right;
+    display: block;
+    letter-spacing: -0.02em;
+    font-size: 30px;
+    color: #60B0B0;
+    width: 180px;
+}
+
+/*Button*/
+.select-button {
+    border: none;
+    background: #42A1A1;
+    border-radius: 10px;
+    width: 145px;
+    height: 55px;
+    color: #ffff;
+    align-self: flex-end;
+
+}
+
+.select-button:hover {
+    background-color: var(--hover-color-add);
+}
+
+.right a {
+    text-decoration: none;
+    color: inherit;
+}

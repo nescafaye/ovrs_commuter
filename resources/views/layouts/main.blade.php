@@ -25,16 +25,30 @@
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Livewire reqs -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
 	<!-- Script -->
 	<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 
     'resources/sass/dashboard.scss', 
+    'resources/sass/transaction.scss',
+    'resources/sass/payment.scss',
     'resources/sass/modal.scss', 
-    'resources/js/app.js', 
+    'resources/js/app.js',
+    'resources/js/dropdown.js', 
     'resources/js/main.js'])
+
+    @livewireStyles
 
 </head>
 
@@ -45,29 +59,10 @@
 
 @yield('content')
 
+@livewire('livewire-ui-modal')
+@livewireScripts
+
 
 </body>
-{{-- 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
-@endsection --}}

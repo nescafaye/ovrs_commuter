@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone', '12')->unique()->nullable();
             $table->enum('gender', ['Female', 'Male', 'Others'])->nullable();
-            // $table->binary('profilePic')->nullable();
             $table->string('profilePic')->nullable();
             $table->string('accNumber', '12')->nullable();
             $table->string('accName')->nullable();
+            $table->string('auth_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

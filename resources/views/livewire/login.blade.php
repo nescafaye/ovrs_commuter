@@ -72,7 +72,7 @@
 
                 <div class="row g-2">
 
-                    <div class="col-12">
+                    <div class="col-12 or-sign-in">
                         <h5>&nbsp;or sign in with&nbsp;</h5>
                     </div>
 

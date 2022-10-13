@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Commuter;
+use Illuminate\Http\File;
 
 class SocialLoginController extends Controller
 {
     //
+//     function getSocialAvatar($file, $path){
+//     $fileContents = file_get_contents($file);
+//     return File::put(public_path() . $path . $user->getId() . ".jpg", $fileContents);
+// }
 
     public function googleRedirect(Request $request) {
 
@@ -20,28 +25,42 @@ class SocialLoginController extends Controller
 
     public function googleCallback(Request $request) {
 
-        $userdata = Socialite::driver('google')->user(); 
+        $userdata = Socialite::driver('google')->user();
+        
+        //dd($userdata); 
 
-        //check login 
-        $user = Commuter::where('comm_id', $userdata->comm_id)->where('auth_type','google')->first();
+        /*
+        function getAvatar($file, $path){
+            $fileContents = file_get_contents($file);
+            return Storage::put(public_path($path='public/images/') . $path . $userdata->id() . ".jpg", $fileContents);
+        }
+        */
 
-        if($user)
+       //check user if existing 
+       $existingUser = Commuter::where('email', $userdata->email)->where('auth_type','google')->first();
+
+       if($existingUser)
         {
-            Auth::login($user);
-            return redirect('/bookings');
+            Auth::login($existingUser);
+            return redirect('/transactions');
         }
         else
         {
-             //do register
+            //register new user
             $uuid = Str::uuid()->toString();
-            $user = new Commuter();
-            $user->comm_fname =$userdata->comm_fname;
-            $user->comm_mail  =$userdata->comm_mail;
-            $user->password = Hash::make($uuid.now());
-            $user->auth_type ='google';
-            $user->save();  
-            Auth::login($user);
-            return redirect('/bookings');
+            $newUser = new Commuter();
+            $newUser->fname = $userdata->user['given_name'];
+            $newUser->lname = $userdata->user['family_name'];
+            $newUser->email = $userdata->email;
+            $newUser->username = Str::Random(12);
+            $newUser->password = Hash::make($uuid.now());
+            //$newUser->profilePic = $userdata->user['picture'];
+            //$newUser->profilePic = getAvatar($userdata->avatar,'path');
+            $newUser->auth_type ='google';
+            $newUser->save();
+
+            Auth::login($newUser, true);
+            return redirect('/transactions');
         }
        
     }

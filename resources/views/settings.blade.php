@@ -36,7 +36,6 @@
     
             </div>
 
-
             <span class="dashboard-subtitle-settings">Account Information</span>
 
             @foreach ($commuters as $commuter)

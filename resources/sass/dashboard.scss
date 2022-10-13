@@ -383,6 +383,10 @@ input.register-txtbx {
 }
 
 /*========== SETTINGS ==========*/
+.sidebar_nav {
+  margin: var(--mb-2);
+}
+
 /**Sidebar**/
 .sidebar_nav li a {
   display: block;
@@ -688,6 +692,10 @@ input.accountphone {
   color: var(--light-color);
   margin-bottom: 0;
   font-weight: var(--font-semi-bold);
+}
+
+.no-bookings {
+  margin-bottom: 10vh;
 }
 
 .no-bookings-img {

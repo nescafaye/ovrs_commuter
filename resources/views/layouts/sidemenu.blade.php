@@ -26,6 +26,7 @@
 
 	<!-- Script -->
 	<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Scripts -->
@@ -39,7 +40,6 @@
     <main class="l-main">
         <section class="passengers section bd-container" id="settings">
             
-            
             <div class="passenger-nav-container">
     
                 <div class="sidebar_nav">
@@ -47,16 +47,16 @@
                     @if(Route::is('terms', 'privacy'))
 
                         <ul class="policy-class">
-                            <li><a href="{{ route('home') }}" ><span class="iconify-inline icon" data-icon="cil:arrow-left" data-width="20" data-height="20"></span>Back</a></li>
-                            <li><a href="{{ route('privacy') }}" class="{{ (request()->is('privacy-policy')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('privacy-policy')) ? 'picked-icon' : '' }}" data-icon="ic:round-privacy-tip" data-width="20" data-height="20"></span>Privacy Policy</a></li>
-                            <li><a href="{{ route('terms') }}" class="{{ (request()->is('terms-of-service')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('terms-of-service')) ? 'picked-icon' : '' }}" data-icon="gridicons:multiple-users"></span>Terms of Service</a></li>
+                            <li><a href="{{ route('home') }}" ><iconify-icon inline icon="cil:arrow-left" class="iconify-inline icon" width="20" height="20"></iconify-icon>Back</a></li>
+                            <li><a href="{{ route('privacy') }}" class="{{ (request()->is('privacy-policy')) ? 'picked' : '' }}"><iconify-icon inline icon="ic:round-privacy-tip" class="iconify-inline {{ (request()->is('privacy-policy')) ? 'picked-icon' : '' }}" width="20" height="20"></iconify-icon>Privacy Policy</a></li>
+                            <li><a href="{{ route('terms') }}" class="{{ (request()->is('terms-of-service')) ? 'picked' : '' }}"><iconify-icon inline icon="fluent:document-16-filled" class="iconify-inline {{ (request()->is('terms-of-service')) ? 'picked-icon' : '' }}" width="20" height="20"></iconify-icon>Terms of Service</a></li>
                         </ul>
                             
                     @else
 
                         <ul>
-                            <li><a href="{{ route('account') }}" class="{{ (request()->is('account/passengers')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('account/passengers')) ? 'picked-icon' : '' }}" data-icon="gridicons:multiple-users"></span>Passengers</a></li>
-                            <li><a href="{{ route('settings') }}" class="{{ (request()->is('account/settings')) ? 'picked' : '' }}"><span class="iconify-inline {{ (request()->is('account/settings')) ? 'picked-icon' : '' }}" data-icon="ci:settings-filled"></span>Settings</a></li>
+                            <li><a href="{{ route('profile') }}" class="{{ (request()->is('profile')) ? 'picked' : '' }}"><iconify-icon inline icon="gridicons:multiple-users" class="iconify-inline {{ (request()->is('profile')) ? 'picked-icon' : '' }}" width="20" height="20"></iconify-icon>Profile</a></li>
+                            <li><a href="{{ route('settings') }}" class="{{ (request()->is('settings')) ? 'picked' : '' }}"><iconify-icon inline icon="ci:settings-filled" class="iconify-inline {{ (request()->is('settings')) ? 'picked-icon' : '' }}"></iconify-icon>Settings</a></li>
                         </ul>
                             
                         
