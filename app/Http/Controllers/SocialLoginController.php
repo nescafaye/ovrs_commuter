@@ -62,6 +62,7 @@ class SocialLoginController extends Controller
             Auth::login($newUser, true);
             return redirect('/transactions');
         }
-       
+
     }
+
 }
