@@ -127,7 +127,7 @@
 											</div>
 										</div>
 
-										<input type="submit" class="search_button" value="Update">
+										<input type="submit" class="search_button" value="Search">
 							</form>
 										{{-- <button class="search_button"></button> --}}
 										
@@ -184,7 +184,7 @@
 												</div>
 									</div>
 
-									<input type="submit" class="search_button" value="Update">
+									<input type="submit" class="search_button" value="Search">
 
 								</form>
 						</div>
