@@ -54,16 +54,18 @@
 </head>
 
 <body onload="document.body.style.visibility=`visible`;">
-    <script>document.body.style.visibility=`hidden`;</script>
+    <script>document.body.style.visibility=`hidden`</script>
     
-@extends('layouts.navbar')
+    @extends('layouts.navbar')
 
-@yield('content')
+    @yield('content')
 
-@livewire('livewire-ui-modal')
-@livewireScripts
+    @livewire('livewire-ui-modal')
+    @livewireScripts
 
 
 </body>
+
+
 
 

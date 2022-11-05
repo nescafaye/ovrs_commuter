@@ -141,11 +141,4 @@
     </div>
 
 
-    {{-- <script type="text/javascript">
-        function openModal() {
-                        $("#modalWindowExit").modal('show');
-                    }
-
-    </script> --}}
-
 </body>
