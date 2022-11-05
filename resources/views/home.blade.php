@@ -4,6 +4,8 @@
 
 <!-- Main Section -->
 <main  class="l-main">
+
+    
     
     <!-- HEADER -->
     <section class="home" id="home">
@@ -14,8 +16,11 @@
                  <a href="#" class="button">Book a trip</a>
                  
             </div>
+
             <img src="{{ asset('assets/car-header.png') }}" alt="" class="home__img">
         </div>
+
+        
     </section>
 
     <!-- ABOUT -->
@@ -29,6 +34,7 @@
             </div>
             <img src="{{ asset('assets/about1.png') }}" alt="" class="about__img">
         </div>
+        
     </section>
 
     <!-- SERVICES -->

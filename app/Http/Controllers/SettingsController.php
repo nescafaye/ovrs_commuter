@@ -49,7 +49,12 @@ class SettingsController extends Controller
         if ($image = $request->file('profilePic')) {   
 
             $profileImage = hash('md5', date('YmdHis')) . "." . $image->getClientOriginalExtension();
-            $destinationPath = Storage::path('public/images/');   
+            $destinationPath = Storage::path('public/images/'); 
+
+            // $img = Image::make($image->getRealPath());
+            // $img->resize(100, 100, function ($constraint) {
+            //     $constraint->aspectRatio();
+            // })->save($destinationPath.'/'. $profileImage);
 
             $image->move($destinationPath, $profileImage);
             $all['profilePic'] = "$profileImage";

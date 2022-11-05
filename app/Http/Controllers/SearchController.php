@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Route;
 use App\Models\RouteVehicle;
-use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use App\Models\Seat;
 
 class SearchController extends Controller
 {
@@ -25,7 +25,7 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         
         $trips = Route::all();
@@ -40,16 +40,20 @@ class SearchController extends Controller
         $trip = RouteVehicle::join('routes', 'routes.routeNo', '=', 'route_vehicle.routeNo')
                             ->get(['routes.origin', 'routes.destination', 'routes.routeTitle', 'route_vehicle.*']);
 
-
         if( $rq->origin && $rq->destination && $rq->departureDate){
             
             $result = $trip->where('origin', $rq->origin)
-                        ->where('destination', $rq->destination)
-                        ->where('departureDate', '==', $rq->departureDate);
-
+                            ->where('destination', $rq->destination)
+                            ->where('departureDate', '==', $rq->departureDate);
+                        // ->where('returnDate', '==', $rq->returnDate);
         }
 
-        return view('search', compact('result'));
+        $plateNo = $result->value('plateNo');
+
+        $getSeats = Seat::where('assignedVehicle', $plateNo)->get('isAvailable');
+        $availableSeats = $getSeats->where('isAvailable', 1)->count();
+
+        return view('search', compact('result','availableSeats'));
 
     }
 
@@ -57,7 +61,7 @@ class SearchController extends Controller
 
         $trip = RouteVehicle::join('vehicles', 'vehicles.plateNo', '=', 'route_vehicle.plateNo')
                             ->join('routes', 'routes.routeNo', '=', 'route_vehicle.routeNo')
-                            ->get(['routes.origin', 'routes.origin', 'routes.destination', 'routes.routeTitle', 'vehicles.*', 'route_vehicle.*']);
+                            ->get(['routes.origin', 'routes.destination', 'routes.routeTitle', 'vehicles.*', 'route_vehicle.*']);
 
         if( $rq->origin && $rq->destination && $rq->departureDate){
 

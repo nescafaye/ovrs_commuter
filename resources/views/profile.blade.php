@@ -15,7 +15,7 @@
                 
                         <div class="success-msg msg"> 
                             <div class="msg-txt">
-                                <span class="iconify-inline" data-icon="bi:check-circle" data-width="20" data-height="17"></span> 
+                                <iconify-icon icon="bi:check-circle" class="iconify-inline" width="20" height="17"></iconify-icon>
                                 <span class>{{ session('success') }}</span>
                             </div>
                             <span class="iconify-inline dismiss" onclick="closeMsg()" data-icon="akar-icons:circle-x" data-width="19" data-height="19"></span>

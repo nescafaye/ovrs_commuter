@@ -10,8 +10,7 @@
 
                 @if(Session::has('error'))
                     <p class="alert alert-danger alert-dismissible fade show">{{ Session::get('message') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
                     </p>
                 @endif
 
@@ -40,11 +39,6 @@
                             {{ $message }}
                         </span>
                     @enderror
-
-                <!-- <div class="Forgot-password">
-                    <a href="#" class="forgot-pw">Forgot Password?</a>
-                </div> -->
-
 
                 <div class="checkbox-text">
                     <div class="checkbox-content">
@@ -77,7 +71,7 @@
                     </div>
 
                     <div class="col-9 social-login">
-                        <button class="btn w-100 btn-light"><i class='bx bxl-google'></i><a class="google" href="{{ route('googleRedirect') }}" target="_blank">Sign in with Google</a></button>
+                        <button class="btn w-100 btn-light"><i class='bx bxl-google'></i><a class="google" href="{{ route('googleRedirect') }}" target="_blank">Continue with Google</a></button>
                     </div>
 
                     <div class="col-3 social-login">

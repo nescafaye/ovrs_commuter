@@ -9,36 +9,34 @@
  {{-- <div id="modalSelectSeat"> --}}
     <div class="select-seat">
         <header>
-            {{-- <div class="close">
-                <a href="#close" class="exit"><i class="uil uil-times"></i></a>
-            </div>
-            <br> --}}
+
+            <form action="{{ route('payment') }}">
+                @csrf
+                
             <center>
                 <span class="dashboard-subtitle-modal-seats">Choose your preferred seats</span>
             </center>
 
-            {{-- @foreach ($trip as $tr)
-               {{  $tr->fare }}
-            @endforeach --}}
-
-
             <div class="interactive-seats" style="margin-top:1.8rem; margin-left: 1rem;">
                 <div class="available">
-                    <iconify-icon inline icon="akar-icons:circle" class="iconify avail" width="15" height="15"></iconify-icon>
-                    <span
-                        class="dashboard-subtitle-modal-seats-interactive-available">Available</span>
+                    <iconify-icon inline icon="bx:square-rounded" class="iconify avail" width="15" height="15"></iconify-icon>
+                    <span class="dashboard-subtitle-modal-seats-interactive-available">Available</span>
                 </div>
                 <div class="selected">
-                    <iconify-icon inline icon="akar-icons:circle-fill" class="iconify select" width="15" height="15"></iconify-icon>
+                    <iconify-icon inline icon="bxs:square-rounded" class="iconify select" width="15" height="15"></iconify-icon>
                     <span class="dashboard-subtitle-modal-seats-interactive">Selected</span>
                 </div>
                 <div class="reserved">
-                    <iconify-icon inline icon="akar-icons:circle-fill" class="iconify reserve" width="15" height="15"></iconify-icon>
+                    <iconify-icon inline icon="bxs:square-rounded" class="iconify reserve" width="15" height="15"></iconify-icon>
                     <span class="dashboard-subtitle-modal-seats-interactive">Reserved</span>
                 </div>
             </div>
+
             <br>
+
+
             <div class="interactive-seating-chart">
+
                 <div class="seat-layout">
 
                     <div class="driver-area">
@@ -49,7 +47,7 @@
                     @foreach ($seat as $seatCode)
 
                         <label class="commuter-seats s1">
-                            <input type="checkbox" name="seatCode" class="chxbx" value="{{ $seatCode }}" wire:click="increment"/>
+                            <input type="checkbox" class="chxbx" value="{{ $seatCode }}" id="{{ $seatCode }}" name="seatCode[]" onclick="maxSeats()"/>
                             <div class="icon-box">
                                 <span>{{ $seatCode }}</span>
                             </div>
@@ -57,18 +55,128 @@
 
                     @endforeach
 
-                    {{ $choose }}
-
                 </div>
             </div>
 
-            <center> <div id="result"></div> </span></center>
+            <div class="prompt-section">
+
+                <div class="selected-seats">
+                    <iconify-icon inline icon="mdi:car-seat" class="iconify-inline seat-icon" width="20" height="20"></iconify-icon>
+                    <input disabled type="text" id="valueList" class="valueList">
+                    <input hidden type="text" id="noOfPassengers" value="{{ $query['noOfPassengers'] }}">
+                    <span id="result"></span>
+                </div>
+    
+                <div id="max-msg">
+                    <span class="error-maximum">Maximum of [{{ $query['noOfPassengers'] }}] seat/s only</span>
+                </div>
+
+            </div>
             
             <div class="buttons">
-                <br>
-                <button class="cancel" wire:click="$emit('closeModal')">Cancel</button>
-                <button onclick="displayValue()" class="proceed"><a href="{{ route('payment') }}">Proceed</a></button>
+                <a class="cancel modal-btn" wire:click="$emit('closeModal')">Cancel</a>
+
+                 {{-- get url query parameters --}}
+                @foreach ($trip as $tr)
+
+                    {{-- {{ $returnDate = $tr->returnDate}} --}}
+
+                    {{-- try mo hidden input --}}
+
+                    <input type="hidden" name="id" value="{{$tr->id}}">
+                    <input type="hidden" name="origin" value="{{$query['origin']}}">
+                    <input type="hidden" name="destination" value="{{$query['destination']}}">
+                    <input type="hidden" name="route" value="{{$tr->routeTitle}}">
+                    <input type="hidden" name="departureDate" value="{{$query['departureDate']}}">
+                    <input type="hidden" name="departureTime" value="{{$tr->departureTime}}">
+                    <input type="hidden" name="returnDate" value="{{$returnDate}}">
+                    <input type="hidden" name="passengers" value="{{$query['noOfPassengers']}}">
+                    <input type="hidden" name="fare" value="{{$tr->fare}}">
+
+                    <button class="proceed modal-btn disabled" id="proceed">Proceed</a>
+                    
+                    @if ($loop->first)
+                        @break
+                    @endif
+
+                @endforeach
+
             </div>
+
+            </form>
         </header>
     </div>
+
+    <script lang="javascript">
+
+        var valueList = document.getElementById('valueList');
+        var noOfPass = document.getElementById('noOfPassengers');
+        var result = document.getElementById('result');
+        var maxMsg = document.getElementById('max-msg');
+        noOfPass = parseInt(noOfPass.value);
+
+        var proceedBtn = document.getElementById('proceed');
+
+        valueList.value = 'No seat/s selected'
+
+        var listArray = [];
+        var checkboxes = document.querySelectorAll('.chxbx');
+        var chkbox = document.getElementsByClassName('chxbx');
+
+            for (var checkbox of checkboxes) {
+
+                checkbox.addEventListener('click', function() {
+
+                    if (this.checked == true) {
+                        listArray.push(this.value);
+                        valueList.value = listArray.join(', ');
+
+                        if (noOfPass == listArray.length) {
+
+                            proceedBtn.classList.remove("disabled");
+                            
+                        }
+
+                        else if (listArray.length > noOfPass) {
+
+                            this.checked = false;
+                            listArray.pop(this.value);
+                            valueList.value = listArray.join(', ');
+
+                            maxMsg.style.display = "block";
+
+                            setTimeout(function(){
+                                maxMsg.style.display = "none";
+                            }, 2500);
+                        }
+
+                    }
+
+                    else {
+
+                        //Remove from array when it is unchecked
+
+                        listArray = listArray.filter(e => e !== this.value);
+                        valueList.value = listArray.join(', ');
+
+                        if (listArray.length == 0) {
+                            valueList.value = 'No seat/s selected';
+                        }
+
+                        else if (listArray.length < noOfPass) {
+
+                            proceedBtn.classList.add("disabled");
+
+                            for (let i = 0; i <= chkbox.length; i++) {
+                             
+                             chkbox[i].disabled = false;
+
+                            } 
+                        }
+                    }
+                })    
+            }
+
+    </script>
+
 {{-- </div> --}}

@@ -178,6 +178,7 @@
 
 .select-seat {
   padding: var(--mb-6) 0;
+  background: var(--body-color);
 }
 
 #modalSelectSeat
@@ -262,16 +263,17 @@
 #modalBeforeProceed
 {
     position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 99999;
-      opacity:0;
-      transition: opacity 400ms linear;
-      pointer-events: none;
+    top: -100px;
+    right: 0;
+    bottom: 0px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99999;
+    opacity:0;
+    transition: opacity 400ms linear;
+    pointer-events: none;
 }
+
 #modalBeforeProceed:target
 {
   opacity:1;
@@ -280,7 +282,7 @@
 #modalBeforeProceed> div 
 {
   width: 450px;
-  height: 400px;
+  height: 600px;
   position: relative;
   margin: 10% auto;
   padding: 20px 20px 13px 20px;
@@ -288,7 +290,7 @@
   border-color: var(--text-area-color);
   border-width : 2px;
   background:var(--text-area-color);
-   border-radius: 10px;
+  border-radius: 10px;
 }
 /*Cancellation Warning*/
 .modalCancellationWarning
@@ -438,7 +440,7 @@ width: 35%;
   color: #60B0B0;;
 }
 .reserve {
-  color: #ABABAB;;
+  color: #ABABAB;
 }
 .available, .selected, .reserved{
   margin-right: var(--mb-4);
@@ -446,9 +448,9 @@ width: 35%;
 /*Fonts*/
 .dashboard-subtitle-modal-seats 
 {
-	 justify-content: center;
+	justify-content: center;
   font-size: var(--h4-font-size);
-  color: var( --light-color);
+  color: #ABABAB;
   font-weight: var(--page-title);
   margin-bottom: 0;
   font-weight: var(--font-medium);
@@ -456,8 +458,8 @@ width: 35%;
 }
 .dashboard-subtitle-modal-seats-interactive-available{
   font-size: .938rem;
-  color: #6C757D;
-  font-family: 'Poppins';
+  color: #ABABAB;
+  font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: 30px;
@@ -465,7 +467,7 @@ width: 35%;
 }
 .dashboard-subtitle-modal-seats-interactive {
   font-size:  .938rem;
-  color: var( --light-color);
+  color: #ABABAB;
   font-weight: var(--page-title);
   margin-bottom: 0;
   font-weight: var(--font-medium);
@@ -473,6 +475,7 @@ width: 35%;
 }
 
 /*seats*/
+
 .seat-layout
 {
   	display: grid;
@@ -510,61 +513,126 @@ width: 35%;
   	flex-direction: column;
   	align-items: center;
   	color: #6C757D;
-  	border: 1px solid #ABABAB;
+  	border: 2px solid #ABABAB;
   	border-radius: 10px;
   	font-size: .6rem;
-  	transition: 0.5s;
+  	transition: 0.4s;
   	user-select: none;
 }
+
 .icon-box:hover
 {
-	background-color:#66B2B2;
-	color: white !important;
-	border: none !important;
+	border: 2px solid #66B2B2 !important;
+  transition: 0.4s;
 }
+
 .seat-layout label input[type="checkbox"]:checked ~ .icon-box 
 {
   	background: #66B2B2;
-  	border-color: white;
+  	border-color: transparent;
   	color: #fff;
 }
+
+.seat-layout label input[type="checkbox"]:disabled ~ .icon-box 
+{
+  	cursor: not-allowed;
+
+    &:hover {
+      border-color: #ABABAB !important;
+    }
+}
+
 .seat-layout label .icon-box span 
 {
   	margin: 5px;
   	font-size: .938rem;
 }
 
+.prompt-section {
+  margin: var(--mb-3) var(--mb-9);
+
+  .selected-seats {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: var(--seat-list-color);
+    height: 45px;
+    border-radius: 10px;
+    padding-left: 10px;
+  
+    .seat-icon {
+      color: #66B2B2;
+      padding-right: 8px;
+    }
+  
+    input.valueList {
+      font-size: var(--paragraph-size);
+      color: #66B2B2;
+      font-weight: var(--page-title);
+      background: transparent;
+    }
+  
+  }
+
+  .error-maximum {
+    display: block;
+    font-size: var(--paragraph-size);
+    color: var(--error-txt);
+    margin: 4px;
+  }
+
+}
+
+#max-msg {
+  display: none;
+}
+
 /*buttons*/
 .buttons{
   display: flex;
   justify-content: center;
-  margin-top: var(--mb-5);
+  margin-top: var(--mb-4);
+
+  .modal-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 130px;
+    border-radius: 10px;
+  }
+
+  .disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #393b3dc2;
+    color: #848e95;
+  }
 }
 .cancel {
   margin-right: var(--mb-3);
-  box-sizing: border-box;
-  background: #FFFFFF;
-  border: 1px solid #656565;
-  border-radius: 10px;
-  width: 130px;
-  height:50px;
+  background: #848e95;
+  color: white;
+  cursor: pointer;
 }
 .cancel:hover{
-  background-color: var(--hover-color-add);
+  background-color: #6C757D;
   color: white;
-  border: none;
+  transition: 0.3s;
 }
+
 .proceed {
   background: #60B0B0;
-border-radius: 10px;
-width: 130px;
-  height:50px;
+  border-radius: 10px;
   border: none;
   color: white;
+  transition: 0.3s;
 }
 .proceed:hover
 {
    background-color: var(--hover-color-add);
+   transition: 0.3s;
 }
 
  /*========== VIEW VAN ==========*/
@@ -733,9 +801,9 @@ width: 130px;
 }
 .yes-payment
 {
- background: #60B0B0;
-border-radius: 10px;
-width: 130px;
+  background: #60B0B0;
+  border-radius: 10px;
+  width: 130px;
   height:50px;
   border: none;
   color: white;

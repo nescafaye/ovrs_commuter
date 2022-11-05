@@ -139,7 +139,6 @@ textarea {
       align-items: center;
 
       .iconify-inline {
-        margin-bottom: -1.5px;
         margin-right: 2px;
       }
 
@@ -382,7 +381,37 @@ input.register-txtbx {
   margin-top: var(--mb-46);
 }
 
+/*========== RESET PASSWORD ==========*/
+
+.reset-container {
+  max-width: 520px !important;
+  width: calc(100% - 15%) !important;
+  margin: auto !important;
+}
+
+.reset-txt {
+  display: flex;
+  align-items: center;
+  margin-top: var(--mb-1);
+  height: 45px;
+  padding: 0px 12px;
+  font-size: var(--paragraph-size);
+  // border: 2px solid var(--focus-txt);
+  background: var(--text-area-color);
+  border-radius: 8px;
+
+    .user-icon {
+      color: var(--first-color);
+    }
+
+    .reset-email {
+      padding: 0 6px;
+      color: var(--first-color);
+    }
+}
+
 /*========== SETTINGS ==========*/
+
 .sidebar_nav {
   margin: var(--mb-2);
 }
@@ -421,7 +450,8 @@ input.register-txtbx {
   color: var(--iconic) !important;
 }
 
-/* ***When picked**** */
+/* *** When picked **** */
+
 .picked {
   align-items: center;
   color: var(--first-color) !important;
@@ -437,6 +467,7 @@ input.register-txtbx {
 }
 
 /*Forgot Password*/
+
 .password-button {
   float: right;
   color: var(--button-color);
@@ -445,6 +476,7 @@ input.register-txtbx {
   font-weight: var(--button);
   margin-top: var(--mb-2);
   font-size: var(--paragraph-size);
+
 }
 
 /**ACCOUNT INFORMATION**/
@@ -459,10 +491,6 @@ input.register-txtbx {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  .settings-information {
-
-  }
 
   .settings-profile {
     width: 25%;
@@ -565,6 +593,7 @@ details.dropdown-passenger-container:not(.save-changes-account) {
   margin-bottom: 0px;
   border-radius: 10px;
   max-height: 84px;
+  overflow: hidden;
   transition: all 0.3s ease-in-out;
   
   // box-shadow: 1px 1px 8px 1px rgba(132, 146, 158, 0.119);
@@ -673,11 +702,11 @@ input.accountphone {
   height: 44px;
   border-radius: 8px;
   background-image: url(../../public/assets/flag-philippines.svg);
+  z-index: 999;
   background-repeat: no-repeat;
   background-position: 15px 10px;
   
 }
-
 
 /*========== BOOKINGS ==========*/
 
@@ -696,6 +725,7 @@ input.accountphone {
 
 .no-bookings {
   margin-bottom: 10vh;
+  padding-top: 5rem !important;
 }
 
 .no-bookings-img {

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -43,5 +43,48 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+<main  class="l-main">
+    <section class="section bd-container reset-container">
+
+        <span class="dashboard-title register reset-title">Reset Password</span>
+
+        <div class="flash-message" id="flash">
+
+            @if (session('status'))
+
+                <div class="success-msg msg"> 
+                    <div class="msg-txt">
+                        <iconify-icon inline icon="bi:check-circle" class="iconify-inline" width="20" height="19"></iconify-icon>
+                        <span class>{{ session('status') }}</span>
+                    </div>
+                    <span class="iconify-inline dismiss" onclick="closeMsg()" data-icon="akar-icons:circle-x" data-width="19" data-height="19"></span>
+                </div>
+
+            @endif
+
+        </div>
+
+        <div class="reset-msg">Enter the email address associated with your account and we'll send you a link to reset your password.</div>
+
+        <form method="POST" action="{{ route('password.email') }}">
+            @csrf
+
+            <input class="textbox register-txtbx form-control @error('email') is-error @enderror" type="email" name="email" placeholder="{{ __('Email Address') }}" value="{{ old('email') }}" required autocomplete="email">
+                    
+            @error('email')
+
+                <div class="error-validation " role="alert">
+                    {{ $message }}
+                </div>
+            
+            @enderror
+
+            <button style="border:none" type="submit" class="button account">{{ __('Send Password Reset Link') }}</button>
+        </form>
+
+    </section>
+
+</main>
 @endsection
