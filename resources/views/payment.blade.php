@@ -13,8 +13,6 @@
     			
     			<div class="commuter-payment-container">
 
-					<span class="result" id="result"></span>
-
 					@foreach ($commuter as $comm)
 					
     				<div class="commuter-container">
@@ -28,7 +26,7 @@
     						<div class="first-passenger-information-container">
 								<div class="passenger-title">
 									<span class="payment-form-passenger">Commuter 1</span>
-									<label class="">
+									<label class="lbl-commuter">
 										<input type="checkbox" name="commuter" id="commuter" class="checkbox-comm">
 										<span class="payment-form-title-passenger-type">I am a commuter</span>
 									</label>
@@ -38,10 +36,10 @@
 							<div class="passsenger-body-information">
 								<div class="passenger-information">
 									<div class="fullname-passenger">
-										<span class="hidden" id="hidden-fname"> {{ $comm->fname }}</span>
-										<span class="hidden" id="hidden-lname"> {{ $comm->lname }}</span>
+										<span class="hidden" id="hidden-fname">{{ $comm->fname }}</span>
+										<span class="hidden" id="hidden-lname">{{ $comm->lname }}</span>
 										<input class="textbox fname" id="fname" name="fname" type="text" placeholder="First Name">
-										<input class="textbox lname" id="lname" name="lname" value="{{ $comm->lname }}" type="text" placeholder="Last Name">
+										<input class="textbox lname" id="lname" name="lname" type="text" placeholder="Last Name">
 									</div>
 								</div>
 								<div class = "gender-information" style="margin: 2rem;">
@@ -67,8 +65,8 @@
 								<div class="passsenger-body-information">
 									<div class="passenger-information">
 										<div class="fullname-passenger">
-											<input class="textbox fname" type="text" placeholder="First Name">
-											<input class="textbox lname" type="text" placeholder="Last Name">
+											<input class="textbox fname" id="fname-{{ $i }}" name="fname" type="text" placeholder="First Name">
+											<input class="textbox lname other" id="lname-{{ $i }}" name="lname" type="text" placeholder="Last Name">
 										</div>
 									</div>
 
@@ -193,11 +191,20 @@
 								<div class="collapse-body-two">
 
 									<div class="route-title sub dashboard-subtitle-available-reservation">{{ $query['route'] }}</div>
-									
-									@for ($i = 1; $i <= $query['passengers']; $i++)
 
 										<div class="passenger-fee fee-container">
-											<div class="dashboard-subtitle-available-reservation-subtitle">Commuter {{$i}} </div>
+											<div class="dashboard-subtitle-available-reservation-subtitle">Commuter 1 
+											<span class="commuter-name" id="lname"></span>
+											</div>
+											<div class="fare">P {{ $query['fare'] }}</div>
+										</div>
+									
+									@for ($i = 2; $i <= $query['passengers']; $i++)
+
+										<div class="passenger-fee fee-container">
+											<div class="dashboard-subtitle-available-reservation-subtitle">Commuter {{$i}} 
+											<span class="name-other" id="lname-{{ $i }}"></span>
+											</div>
 											<div class="fare">P {{ $query['fare'] }}</div>
 										</div>
 
@@ -260,7 +267,7 @@
 
 	</form>
 
-		<!-- ARE YOU SURE MODAL (Proceed) -->
+		{{-- <!-- ARE YOU SURE MODAL (Proceed) -->
 		<div id="modalBeforeProceed">
 			<div>
                 <header>
@@ -317,17 +324,92 @@
                     </div>
                 </header>
             </div>
-		</div>
+		</div> --}}
 
 </main>
 
-<script lang="javascript">
+<script>
+
+	// populate the textboxes with user's full name when the checkbox is checked
+
+	var hiddenFname = $('#hidden-fname').html();
+	var hiddenLname = $('#hidden-lname').html();
 
 
-		var result = document.getElementbyId('result');
-		result.innerHTML = "HAHAHA";
+    $(document).ready(function(){
+
+        $('#commuter').click(function(){
+
+            if($(this).is(":checked")){
+                $('#fname').val(hiddenFname);
+				$('#lname').val(hiddenLname);
+				$('.commuter-name').show();
+				$('.commuter-name').text("(" + hiddenLname + ")");
+
+            }
+            else if($(this).is(":not(:checked)")){
+                $('#fname').val('');
+				$('#lname').val('');
+				$( ".commuter-name" ).hide();
+            }
+
+        });
+
+		$('#lname').keyup(function () { 
+
+			var lnameVal = $(this).val();
+
+			$('.commuter-name').show();
+			$('.commuter-name').text("(" + lnameVal + ")");
+
+			if (lnameVal === '') {
+				$( ".commuter-name" ).hide();
+			}
+		})
+
+    });
+
+	$(document).ready(function(){ 
+
+
+		$('.other').each(function () {
+
+			$(this).keyup(function (e) { 
+				
+				var value = $( this ).val();
+				var getVal = $(this).attr('id');
+
+				$('.name-other').each(function () {
+
+					$(this).show();
+
+					var showVal = $(this).attr('id');
+					
+					if (getVal === showVal) {
+
+						$(this).text("(" + value  + ")" );
+
+						if (value === '') {
+							$(this).hide();
+						}
+					}
+
+				// var id = $(this).attr('id');
+				// console.log(id);
+				// $( "p" ).text( value );
+
+				});
+
+			});
+
+            // var id = $(this).attr('id');
+            // console.log(id);
+        });
+
+	})
 	
-    
+
 </script>
+
 
 @endsection
