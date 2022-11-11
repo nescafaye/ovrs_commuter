@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Commuter;
-use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Crypt;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
 {
@@ -26,6 +28,8 @@ class PaymentController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+    public $total;
+
     public function index(Request $rq)
     {
 
@@ -35,6 +39,7 @@ class PaymentController extends Controller
         $query['departureTime'] = date('h:i A', strtotime($query['departureTime']));
         $query['departureDate'] = date('D, M d', strtotime($query['departureDate']));
         $query['seatCode'] = implode(", ", $query['seatCode']);;
+        $query['fare'] = Crypt::decrypt($query['fare']);
 
 
         $reservationFee = number_format((float) 8, 2, '.', ',');
@@ -43,5 +48,37 @@ class PaymentController extends Controller
 
         return view('payment', compact('commuter', 'query', 'reservationFee', 'taxFee', 'total'));
 
+    }
+
+    public function createPayment(Request $rq) {
+
+        $amount = (int) number_format($rq->totalAmount, 2, '', '');
+        
+        $response = Http::withHeaders([
+
+            'accept' => 'application/json',
+            'authorization' => 'Basic cGtfdGVzdF9YMlNmbTZKRW1GeFZYNXA4b0J4WUhqaUQ6',
+            'content-type' => 'application/json',
+
+        ])->post('https://api.paymongo.com/v1/sources' , [
+            
+                'data' => [
+                    'attributes' => [
+                        'amount' => $amount,
+                        'redirect' => ['success' => 'http://127.0.0.1:8000/transactions',
+                                        'failed' => 'http://127.0.0.1:8000/search/results?origin=Tuguegarao&destination=Alcala&departureDate=2022-10-11&returnDate=&noOfPassengers=2&_token=NtHupxZNgOf6rTln52kIdNUDImt4Vo1t2YCT6mKY'],
+                        'billing' => ['name' => "Name",
+                                    'phone' => "Phone",
+                                    'email' => "email@gmail.com"],
+                        'type' => 'gcash',
+                        'currency' =>'PHP'
+                    ]
+                ]
+            ]);
+
+        $source = json_decode($response->body(), true);
+        $redirect = $source['data']['attributes']['redirect']['checkout_url'];
+
+        return redirect($redirect);
     }
 }

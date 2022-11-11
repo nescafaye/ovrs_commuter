@@ -103,6 +103,18 @@ textarea {
     color: var(--paragraph-color);
   }
 
+  &:read-only {
+
+    &:focus, &:hover {
+      border: none;
+      background: var(--text-area-color);
+      color: var(--font-color-text-area);
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+  }
+
 }
 
 .textbox:is(:focus) {
