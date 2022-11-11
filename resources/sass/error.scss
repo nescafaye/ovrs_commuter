@@ -1,0 +1,56 @@
+@import 'app.scss';
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .error-content {
+        background: #3b4d5672;
+        width: 580px;
+        height: 580px;
+        padding: 40px;
+        border-radius: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+
+        .error-message {
+
+            text-align: center;
+            margin-top: 30px;
+
+            .error-text {
+                font-size: var(--h1-font-size);
+                font-weight: var(--font-semi-bold);
+            }
+
+            .error-subtext {
+                font-size: var(--h3-font-size);
+                font-weight: var(-button);
+            }
+
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .error-content {
+        width: 380px !important;
+        height: 380px !important;
+        padding: 0px;
+        background: #000;
+    }
+
+    .error-image {
+        width: 200px;
+        height: 200px;
+    }
+
+}

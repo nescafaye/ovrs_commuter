@@ -41,6 +41,7 @@ Route::get('/search/results', [App\Http\Controllers\SearchController::class, 'qu
 Route::get('/search/van', [App\Http\Controllers\SearchController::class, 'searchvan'])->name('search.van');
 
 Route::get('payment', [App\Http\Controllers\PaymentController::class, 'index'])->name('payment');
+Route::get('checkout', [App\Http\Controllers\PaymentController::class, 'createPayment'])->name('checkout');
 
 
 //logout

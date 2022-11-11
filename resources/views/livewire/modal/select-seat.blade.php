@@ -12,6 +12,19 @@
 
             <form action="{{ route('payment') }}">
                 @csrf
+
+                {{-- {{route('bid.update', encrypt($id))}}
+
+
+                public function update($id, Request $request){
+
+                    $ID = decrypt($id);
+                    $tender = TenderMaster::findOrFail($ID);
+
+                    ..
+                    ...
+                } --}}
+
                 
             <center>
                 <span class="dashboard-subtitle-modal-seats">Choose your preferred seats</span>
@@ -83,7 +96,7 @@
 
                     {{-- try mo hidden input --}}
 
-                    <input type="hidden" name="id" value="{{$tr->id}}">
+                    <input type="hidden" name="id" value="{{ $tr->id}}">
                     <input type="hidden" name="origin" value="{{$query['origin']}}">
                     <input type="hidden" name="destination" value="{{$query['destination']}}">
                     <input type="hidden" name="route" value="{{$tr->routeTitle}}">
@@ -91,7 +104,7 @@
                     <input type="hidden" name="departureTime" value="{{$tr->departureTime}}">
                     <input type="hidden" name="returnDate" value="{{$returnDate}}">
                     <input type="hidden" name="passengers" value="{{$query['noOfPassengers']}}">
-                    <input type="hidden" name="fare" value="{{$tr->fare}}">
+                    <input type="hidden" name="fare" value="{{ Crypt::encrypt($tr->fare) }}">
 
                     <button class="proceed modal-btn disabled" id="proceed">Proceed</a>
                     

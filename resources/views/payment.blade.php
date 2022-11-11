@@ -5,7 +5,7 @@
 <main class="l-main">
 
     <!-- PAYMENT FORM-->
-	<form action="" method="post">
+	<form action="{{ route('checkout', ['totalAmount' => $total]) }}" method="get">
 	@csrf
 
     	<section class=" bd-container section ">
@@ -38,7 +38,7 @@
 									<div class="fullname-passenger">
 										<span class="hidden" id="hidden-fname">{{ $comm->fname }}</span>
 										<span class="hidden" id="hidden-lname">{{ $comm->lname }}</span>
-										<input class="textbox fname" id="fname" name="fname" type="text" placeholder="First Name">
+										<input class="textbox fname" id="fname" name="fname" type="text" placeholder="First Name" >
 										<input class="textbox lname" id="lname" name="lname" type="text" placeholder="Last Name">
 									</div>
 								</div>
@@ -59,14 +59,14 @@
 								<div class="first-passenger-information-container">
 									<div class="passenger-title">
 										<span class="payment-form-passenger">Commuter {{ $i }}</span>
-										<span class="payment-form-title-passenger-type">Adult</span>
+										{{-- <span class="payment-form-title-passenger-type">Adult</span> --}}
 									</div>
 								</div>
 								<div class="passsenger-body-information">
 									<div class="passenger-information">
 										<div class="fullname-passenger">
-											<input class="textbox fname" id="fname-{{ $i }}" name="fname" type="text" placeholder="First Name">
-											<input class="textbox lname other" id="lname-{{ $i }}" name="lname" type="text" placeholder="Last Name">
+											<input class="textbox fname" id="fname-{{ $i }}" name="fname" type="text" placeholder="First Name" >
+											<input class="textbox lname input-other" id="lname-{{ $i }}" name="lname" type="text" placeholder="Last Name" >
 										</div>
 									</div>
 
@@ -203,7 +203,7 @@
 
 										<div class="passenger-fee fee-container">
 											<div class="dashboard-subtitle-available-reservation-subtitle">Commuter {{$i}} 
-											<span class="name-other" id="lname-{{ $i }}"></span>
+											<span class="show-other" id="lname-{{ $i }}"></span>
 											</div>
 											<div class="fare">P {{ $query['fare'] }}</div>
 										</div>
@@ -238,7 +238,9 @@
 											<div class="total-subtext">Taxes and Fees included</div>
 										</div>
 
-										<div class="total-price">P {{ $total }}</div>
+										<div class="total-price">
+											<input disabled type="text" data-type="currency" name="totalAmount" value="P {{ $total }}">
+										</div>
 									</div>
 
 								</div>
@@ -258,7 +260,7 @@
 					<br>
 					<span class="warning-button">By clicking <mark style="background:none; color: #42A1A1;">Proceed to payment</mark>, I understand and agree with the <mark style="background:none; color: #42A1A1; text-decoration:underline;"><a target="_blank" href="{{ route('privacy') }}"> privacy policy</a></mark> and <mark style="background:none; color: #42A1A1; text-decoration:underline;"><a target="_blank" href="{{ route('terms') }}">terms of service</a></mark> of VanGo.</span>
 					<br><br>
-					<button class="proceed-payment-button "><a href="#modalBeforeProceed">Proceed to payment</a></button>
+					<button class="proceed-payment-button "><a href="{{ route('checkout', ['totalAmount' => $total]) }}">Proceed to payment</a></button>
 					<button class="cancel-payment-button"><a href="#modalCancellationWarning">Cancel</a></button>
 				</div>	
 			</div>
@@ -340,14 +342,22 @@
 
         $('#commuter').click(function(){
 
-            if($(this).is(":checked")){
+            if ($(this).is(":checked")){
+
+				$('#fname').prop('readonly', true);
+				$('#lname').prop('readonly', true);
+
                 $('#fname').val(hiddenFname);
 				$('#lname').val(hiddenLname);
 				$('.commuter-name').show();
-				$('.commuter-name').text("(" + hiddenLname + ")");
+				$('.commuter-name').html("(" + hiddenLname + ")");
 
             }
-            else if($(this).is(":not(:checked)")){
+            else if ($(this).is(":not(:checked)")){
+
+				$('#fname').prop('readonly', false);
+				$('#lname').prop('readonly', false);
+
                 $('#fname').val('');
 				$('#lname').val('');
 				$( ".commuter-name" ).hide();
@@ -360,7 +370,7 @@
 			var lnameVal = $(this).val();
 
 			$('.commuter-name').show();
-			$('.commuter-name').text("(" + lnameVal + ")");
+			$('.commuter-name').html("(" + lnameVal + ")");
 
 			if (lnameVal === '') {
 				$( ".commuter-name" ).hide();
@@ -372,38 +382,32 @@
 	$(document).ready(function(){ 
 
 
-		$('.other').each(function () {
+		$('.input-other').each(function () {
 
 			$(this).keyup(function (e) { 
 				
-				var value = $( this ).val();
+				var value = $(this).val();
 				var getVal = $(this).attr('id');
 
-				$('.name-other').each(function () {
-
-					$(this).show();
+				$('.show-other').each(function () {
 
 					var showVal = $(this).attr('id');
 					
 					if (getVal === showVal) {
 
-						$(this).text("(" + value  + ")" );
+						$(this).show();
+
+						$(this).html("(" + value  + ")" );
 
 						if (value === '') {
 							$(this).hide();
 						}
 					}
 
-				// var id = $(this).attr('id');
-				// console.log(id);
-				// $( "p" ).text( value );
-
 				});
 
 			});
 
-            // var id = $(this).attr('id');
-            // console.log(id);
         });
 
 	})
