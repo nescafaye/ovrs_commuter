@@ -365,8 +365,14 @@
 
                 .total-price {
                     font-size: var(--x-large-font-size);
-                    font-weight: 500;
                     text-decoration: underline;
+
+                    input[type="text"]:disabled {
+                        background: none;
+                        text-align: end;
+                        max-width: 140px;
+                        font-weight: 600;
+                    }
                 }
                 
             }

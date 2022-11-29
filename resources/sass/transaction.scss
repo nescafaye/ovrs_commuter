@@ -279,7 +279,9 @@ option {
     box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.07);
 
     .Passenger {
+
         label {
+            cursor: pointer;
             padding: 10px 18px;
             display: block;
         }

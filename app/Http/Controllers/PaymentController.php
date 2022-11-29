@@ -76,9 +76,9 @@ class PaymentController extends Controller
                 ]
             ]);
 
-        $source = json_decode($response->body(), true);
-        $redirect = $source['data']['attributes']['redirect']['checkout_url'];
+        dd($source = json_decode($response->body(), true));
+        // $redirect = $source['data']['attributes']['redirect']['checkout_url'];
 
-        return redirect($redirect);
+        // return redirect($redirect);
     }
 }
