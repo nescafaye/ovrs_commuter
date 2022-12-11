@@ -57,8 +57,12 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('/auth/google/redirect', [App\Http\Controllers\SocialLoginController::class, 'googleRedirect'])->name('googleRedirect');
 Route::get('/auth/google/callback', [App\Http\Controllers\SocialLoginController::class, 'googleCallback'])->name('googleCallback');
 
+// Notif
+Route::get('/welcome2', function () {
+    return view('welcome2');
+});
 
-
+Route::get('/send', [App\Http\Controllers\SendMessageController::class, 'index'])->name('send');
 Route::post('/postMessage', [App\Http\Controllers\SendMessageController::class, 'sendMessage'])->name('postMessage');
 
 
