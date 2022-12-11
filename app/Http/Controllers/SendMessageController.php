@@ -9,7 +9,7 @@ class SendMessageController extends Controller
 {
     public function index()
     {
-        return view('send');
+        return view('send2');
     }
     
     public function sendMessage(Request $request)
@@ -36,6 +36,6 @@ class SendMessageController extends Controller
 
         $pusher->trigger('Notify', 'send-message', $data);
 
-        return redirect()->route('send');
+        return redirect()->route('');
     }
 }

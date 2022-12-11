@@ -36,6 +36,8 @@
     
             </div>
 
+            <a href="{{ route('send') }}"></a>
+
             <span class="dashboard-subtitle-settings">Basic Information</span>
             <div class="passenger-title-container">
                 <br>
