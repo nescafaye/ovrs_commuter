@@ -52,7 +52,10 @@ Route::group(['middleware' => ['auth']], function() {
  });
 
 
- // Google Login
+// Google Login
 
 Route::get('/auth/google/redirect', [App\Http\Controllers\SocialLoginController::class, 'googleRedirect'])->name('googleRedirect');
-Route::get('/auth/google/callback', [App\Http\Controllers\SocialLoginController::class, 'googleCallback'])->name('googleCallback');
+Route::get('/auth/google/callback', [App\Http\Controllers\SocialLoginController::class, 'googleCallback'])->name('googleCallback');Route::post('/postMessage', [App\Http\Controllers\SendMessageController::class, 'sendMessage'])->name('postMessage');
+
+
+
