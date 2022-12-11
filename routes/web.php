@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendMessageController;
+use Illuminate\Notifications\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +61,13 @@ Route::get('/auth/google/redirect', [App\Http\Controllers\SocialLoginController:
 Route::get('/auth/google/callback', [App\Http\Controllers\SocialLoginController::class, 'googleCallback'])->name('googleCallback');
 
 // Notif
-Route::get('send', [SendMessageController::class, 'index'])->name('send');
-Route::post('sendMessage', [SendMessageController::class, 'sendMessage'])->name('sendMessage');
+// Route::get('send', [SendMessageController::class, 'index'])->name('send');
+// Route::post('sendMessage', [SendMessageController::class, 'sendMessage'])->name('postMessage');
+
+Route::get('send', [NotificationController::class, 'index'])->name('notification');
+// Route::post('post',[NotificationController::class, 'sendNotification'])->name('postMessage');
+Route::get('post', [NotificationController::class, 'postMessage'])->name('postMessage');
+
+
 
 

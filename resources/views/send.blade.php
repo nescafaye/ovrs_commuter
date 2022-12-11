@@ -8,7 +8,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{route('postMessage')}}" method="post">
+    <form action="{{ route('postMessage') }}" method="post">
         @csrf
         <label for="fname">Title</label>
         <input type="text" id="title" name="title" placeholder="Your Title..">

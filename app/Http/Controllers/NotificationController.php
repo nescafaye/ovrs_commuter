@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Pusher\Pusher;
 
-class SendMessageController extends Controller
+class NotificationController extends Controller
 {
-    public function index()
-    {
+    //
+
+    public function index() {
+
         return view('send');
+
     }
-    
-    public function sendMessage(Request $request)
-    {
+
+    public function postMessage(Request $request) {
+
         $request->validate([
             'title' => 'required',
             'content' => 'required'
@@ -38,4 +42,5 @@ class SendMessageController extends Controller
 
         return redirect()->route('notification');
     }
+
 }
