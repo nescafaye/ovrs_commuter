@@ -55,11 +55,14 @@
 								Today 
 							@elseif ($diff == 1)
 								Tomorrow
-							@else
+							@elseif ($diff > 1)
 								In {{ $diff }} days
+							@elseif ($diff < 0)
+								Completed
 							@endif
+							
 						</mark>
-						
+
 					</div>
 					<div class="rent-body-container">
 						<div class="trip-schedule">

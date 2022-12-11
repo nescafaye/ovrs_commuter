@@ -35,19 +35,6 @@ class TransactionController extends Controller
         $transactions = Transaction::where('commuterId', $commuter_id)->get();
         $count = count($transactions); 
 
-        $depDate = Transaction::all()->pluck('departureDate');
-        $now = Carbon::now();
-
-        // convert departure date from collection to array and from array to string
-        $toArray = $depDate->toArray();
-        $toString = implode(', ', $toArray);
-
-        // format departure date and date today
-        $formatDepDate = date('Y-m-d', strtotime($toString));
-        $formatNow = date('Y-m-d', strtotime($now));
-        
-        $diff = Carbon::parse($formatDepDate)->diffInDays($formatNow);
-
-        return view('transactions', compact('transactions', 'count', 'diff'));
+        return view('transactions', compact('transactions', 'count'));
     }
 }

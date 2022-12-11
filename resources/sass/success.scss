@@ -10,7 +10,7 @@
     .success-container {
         padding: 40px 80px;
         box-shadow: rgba(9, 10, 18, 0.132) 0px 0px 20px 5px;
-        background-color: rgba(77, 77, 77, 0.156);
+        background-color: var(--ticket-bg);
         border-radius: 15px;
 
         .success-head, .success-id, .success-button {

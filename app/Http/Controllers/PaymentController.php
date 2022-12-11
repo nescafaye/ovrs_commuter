@@ -75,7 +75,7 @@ class PaymentController extends Controller
                     'attributes' => [
                         'amount' => $amount,
                         'redirect' => ['success' => route('success', ['q' => $query]),
-                                        'failed' => route('failed'),
+                                        'failed' => route('transactions'),
                                     ],
                         'billing' => ['name' => $fullName,
                                     'phone' => $rq->contactNo,
@@ -97,6 +97,7 @@ class PaymentController extends Controller
         $query =  Crypt::decrypt($rq->q);
         $count = count($query['fname']);
         $random = random_int(000001, 999999);
+        $trNo = str_pad($random, 6, '0', STR_PAD_LEFT);
 
         for ($i=0; $i < $count; $i++) { 
             
@@ -124,7 +125,7 @@ class PaymentController extends Controller
         $commuter_id = Commuter::where('comm_id', auth()->id())->value('comm_id'); 
 
         Transaction::Create([
-                            'transactionNo' => $random,
+                            'transactionNo' => $trNo,
                             'commuterName' => $comm,
                             'commuterId' => $commuter_id,
                             'transactionType' => 'reserve', 
@@ -140,7 +141,7 @@ class PaymentController extends Controller
                             'transactionTime' => Carbon::now()
                         ]);
 
-        $transactionNo = Transaction::all()->value('transactionNo');
+        $transactionNo = Transaction::where('commuterId', $commuter_id)->latest('created_at')->value('transactionNo');
 
         return view('success', compact('transactionNo'));
 

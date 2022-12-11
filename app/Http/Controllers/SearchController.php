@@ -37,6 +37,8 @@ class SearchController extends Controller
 
     public function searchSeats(Request $rq) {
 
+        $transactionType = 'reserve';
+
         $trip = RouteVehicle::join('routes', 'routes.routeNo', '=', 'route_vehicle.routeNo')
                             ->get(['routes.origin', 'routes.destination', 'routes.routeTitle', 'route_vehicle.*']);
 
@@ -58,6 +60,8 @@ class SearchController extends Controller
     }
 
     public function searchVan(Request $rq) {
+
+        $transactionType = 'rent';
 
         $trip = RouteVehicle::join('vehicles', 'vehicles.plateNo', '=', 'route_vehicle.plateNo')
                             ->join('routes', 'routes.routeNo', '=', 'route_vehicle.routeNo')
