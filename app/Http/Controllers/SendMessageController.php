@@ -11,6 +11,7 @@ class SendMessageController extends Controller
     {
         return view('send');
     }
+    
     public function sendMessage(Request $request)
     {
         $request->validate([
