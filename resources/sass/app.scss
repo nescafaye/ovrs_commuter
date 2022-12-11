@@ -38,7 +38,7 @@
 
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
-  --logo-font: 'Circular Std';
+  --logo-font: 'Circular Std', 'Poppins';
   --biggest-font-size: 2.25rem;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
@@ -295,7 +295,7 @@ img{
 
 .nav__logo, .vango
 {
-  font-family: 'Circular Std';
+  font-family: 'Circular Std', 'Poppins';
   font-size: var(--h1-font-size);
   font-weight: var( --logo-font-weight);
 

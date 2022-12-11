@@ -96,7 +96,7 @@
 
 .commmuter-form-title,
 .payment-form-title {
-    font-family: 'Circular Std';
+    font-family: 'Circular Std', 'Poppins';
     font-weight: 500;
     font-size: var(--h2-font-size);
     line-height: 40px;
@@ -170,6 +170,12 @@
 .fullname-passenger {
     display: flex;
     flex-direction: row;
+}
+
+.contact-information {
+    display: grid !important;
+    grid-template-rows: 1fr 1fr !important;
+    grid-row-gap: 1px !important;
 }
 
 .fullname-passenger,
@@ -365,8 +371,14 @@
 
                 .total-price {
                     font-size: var(--x-large-font-size);
-                    font-weight: 500;
                     text-decoration: underline;
+
+                    input[type="text"]:disabled {
+                        background: none;
+                        text-align: end;
+                        max-width: 140px;
+                        font-weight: 600;
+                    }
                 }
                 
             }

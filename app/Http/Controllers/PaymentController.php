@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Commuter;
 use Illuminate\Support\Facades\Crypt;
-use GuzzleHttp\Client;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
+
+use App\Models\Commuter;
+use App\Models\Transaction;
+use App\Models\Seat;
 
 class PaymentController extends Controller
 {
@@ -38,8 +41,12 @@ class PaymentController extends Controller
         $query = $rq->all();
         $query['departureTime'] = date('h:i A', strtotime($query['departureTime']));
         $query['departureDate'] = date('D, M d', strtotime($query['departureDate']));
-        $query['seatCode'] = implode(", ", $query['seatCode']);;
-        $query['fare'] = Crypt::decrypt($query['fare']);
+        $query['seatCode'] = implode(", ", $query['seatCode']);
+
+        if ($query['returnDate'] !== null) {
+            
+            $query['returnDate'] = date('D, M d', strtotime($query['returnDate']));
+        }
 
 
         $reservationFee = number_format((float) 8, 2, '.', ',');
@@ -53,6 +60,8 @@ class PaymentController extends Controller
     public function createPayment(Request $rq) {
 
         $amount = (int) number_format($rq->totalAmount, 2, '', '');
+        $fullName = $rq->fname[0] . ' ' . $rq->lname[0];
+        $query = Crypt::encrypt($rq->all());
         
         $response = Http::withHeaders([
 
@@ -65,11 +74,12 @@ class PaymentController extends Controller
                 'data' => [
                     'attributes' => [
                         'amount' => $amount,
-                        'redirect' => ['success' => 'http://127.0.0.1:8000/transactions',
-                                        'failed' => 'http://127.0.0.1:8000/search/results?origin=Tuguegarao&destination=Alcala&departureDate=2022-10-11&returnDate=&noOfPassengers=2&_token=NtHupxZNgOf6rTln52kIdNUDImt4Vo1t2YCT6mKY'],
-                        'billing' => ['name' => "Name",
-                                    'phone' => "Phone",
-                                    'email' => "email@gmail.com"],
+                        'redirect' => ['success' => route('success', ['q' => $query]),
+                                        'failed' => route('failed'),
+                                    ],
+                        'billing' => ['name' => $fullName,
+                                    'phone' => $rq->contactNo,
+                                    'email' => $rq->contactEmail],
                         'type' => 'gcash',
                         'currency' =>'PHP'
                     ]
@@ -80,5 +90,63 @@ class PaymentController extends Controller
         $redirect = $source['data']['attributes']['redirect']['checkout_url'];
 
         return redirect($redirect);
+    }
+
+    public function successPayment(Request $rq) {
+
+        $query =  Crypt::decrypt($rq->q);
+        $count = count($query['fname']);
+        $random = random_int(000001, 999999);
+
+        for ($i=0; $i < $count; $i++) { 
+            
+            $commuter[] = $query['fname'][$i] . ' ' . $query['lname'][$i]; 
+        }
+
+        $comm = implode(', ', $commuter);
+
+        $query['departureDate'] = date('Y-m-d', strtotime($query['departureDate']));
+
+        if ($query['returnDate'] !== null) {
+
+            $query['returnDate'] = date('Y-m-d', strtotime($query['returnDate']));
+        }
+
+        $toArray = explode(',', $query['seatsTaken']);
+        $getSeats = Seat::where('assignedVehicle',  $query['pNo'])->get(['seatCode']);
+
+        foreach ($toArray as $seat) {
+            
+            $unavailable = $getSeats->where('seatCode', $toArray);
+
+        }
+
+        $commuter_id = Commuter::where('comm_id', auth()->id())->value('comm_id'); 
+
+        Transaction::Create([
+                            'transactionNo' => $random,
+                            'commuterName' => $comm,
+                            'commuterId' => $commuter_id,
+                            'transactionType' => 'reserve', 
+                            'contactEmail' => $query['contactEmail'],
+                            'contactNo' => $query['contactNo'],
+                            'seatsTaken' => $query['seatsTaken'],
+                            'routeTaken' => $query['route'],
+                            'totalAmount' => $query['totalAmount'],
+                            'departureDate' => $query['departureDate'],
+                            'returnDate' => $query['returnDate'],
+                            'fare' => $query['fare'],
+                            'paymentMethod' => $query['paymentMethod'],
+                            'transactionTime' => Carbon::now()
+                        ]);
+
+        $transactionNo = Transaction::all()->value('transactionNo');
+
+        return view('success', compact('transactionNo'));
+
+    }
+
+    public function failedPayment() {
+
     }
 }

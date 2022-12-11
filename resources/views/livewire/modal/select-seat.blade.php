@@ -102,9 +102,10 @@
                     <input type="hidden" name="route" value="{{$tr->routeTitle}}">
                     <input type="hidden" name="departureDate" value="{{$query['departureDate']}}">
                     <input type="hidden" name="departureTime" value="{{$tr->departureTime}}">
-                    <input type="hidden" name="returnDate" value="{{$returnDate}}">
+                    <input type="hidden" name="returnDate" value="{{$query['returnDate']}}">
                     <input type="hidden" name="passengers" value="{{$query['noOfPassengers']}}">
-                    <input type="hidden" name="fare" value="{{ Crypt::encrypt($tr->fare) }}">
+                    <input type="hidden" name="fare" value="{{ $tr->fare }}">
+                    <input type="hidden" name="p" value="{{ $tr->plateNo }}">
 
                     <button class="proceed modal-btn disabled" id="proceed">Proceed</a>
                     

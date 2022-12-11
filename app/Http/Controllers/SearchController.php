@@ -35,7 +35,7 @@ class SearchController extends Controller
         return view('search', compact('trips'));
     }
 
-    public function query(Request $rq) {
+    public function searchSeats(Request $rq) {
 
         $trip = RouteVehicle::join('routes', 'routes.routeNo', '=', 'route_vehicle.routeNo')
                             ->get(['routes.origin', 'routes.destination', 'routes.routeTitle', 'route_vehicle.*']);
@@ -45,7 +45,7 @@ class SearchController extends Controller
             $result = $trip->where('origin', $rq->origin)
                             ->where('destination', $rq->destination)
                             ->where('departureDate', '==', $rq->departureDate);
-                        // ->where('returnDate', '==', $rq->returnDate);
+            
         }
 
         $plateNo = $result->value('plateNo');
@@ -53,11 +53,11 @@ class SearchController extends Controller
         $getSeats = Seat::where('assignedVehicle', $plateNo)->get('isAvailable');
         $availableSeats = $getSeats->where('isAvailable', 1)->count();
 
-        return view('search', compact('result','availableSeats'));
+        return view('search', compact('result', 'availableSeats'));
 
     }
 
-    public function searchvan(Request $rq) {
+    public function searchVan(Request $rq) {
 
         $trip = RouteVehicle::join('vehicles', 'vehicles.plateNo', '=', 'route_vehicle.plateNo')
                             ->join('routes', 'routes.routeNo', '=', 'route_vehicle.routeNo')
@@ -70,14 +70,6 @@ class SearchController extends Controller
                         ->where('departureDate', '==', $rq->departureDate);
 
         }
-
-        // $plateNo = $result->value('plateNo');
-
-        // $vehicle = Vehicle::all();
-
-        // $vans = $vehicle->where('plateNo', $plateNo);
-
-        // dd(Vehicle::where('plateNo', $plateNo));
 
         return view('search', compact('vans'));
     }
