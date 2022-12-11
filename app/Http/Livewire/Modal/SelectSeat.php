@@ -16,8 +16,6 @@ class SelectSeat extends ModalComponent
     public $vehicle;
     public $seat;
     public $query;
-    public $returnDate;
-    // public $rq;
 
     public function mount($id)
     {
@@ -35,17 +33,7 @@ class SelectSeat extends ModalComponent
 
         // get seats of the returned plateNo
         $this->seat = Seat::where('assignedVehicle', $plateNo)->pluck('seatCode');
-
-        foreach ($this->trip as $tr) {
-
-            if ($tr->returnDate == null) {
-                $this->returnDate = "None";
-            }
-
-            else {
-                $this->returnDate = $tr->returnDate;
-            }
-        }
+    
     }
 
     public function render()

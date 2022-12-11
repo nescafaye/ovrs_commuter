@@ -37,11 +37,13 @@ Route::post('settings/', [App\Http\Controllers\SettingsController::class, 'updat
 
 // Route::get('/bookings/search', [App\Http\Controllers\TransactionController::class, 'index'])->name('transaction');
 Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
-Route::get('/search/results', [App\Http\Controllers\SearchController::class, 'query'])->name('search.seat');
-Route::get('/search/van', [App\Http\Controllers\SearchController::class, 'searchvan'])->name('search.van');
+Route::get('/search/results', [App\Http\Controllers\SearchController::class, 'searchSeats'])->name('search.seat');
+Route::get('/search/van', [App\Http\Controllers\SearchController::class, 'searchVan'])->name('search.van');
 
 Route::get('payment', [App\Http\Controllers\PaymentController::class, 'index'])->name('payment');
 Route::get('checkout', [App\Http\Controllers\PaymentController::class, 'createPayment'])->name('checkout');
+
+Route::get('payment/success/', [App\Http\Controllers\PaymentController::class, 'successPayment'])->name('success');
 
 
 //logout

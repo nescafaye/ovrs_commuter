@@ -1,0 +1,70 @@
+@import 'app.scss';
+
+.success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .success-container {
+        padding: 40px 80px;
+        box-shadow: rgba(9, 10, 18, 0.132) 0px 0px 20px 5px;
+        background-color: rgba(77, 77, 77, 0.156);
+        border-radius: 15px;
+
+        .success-head, .success-id, .success-button {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+    
+            .iconify-inline {
+                margin-bottom: 20px;
+                color: var(--first-color);
+            }
+    
+            .success-message {
+                font-size: var(--h2-font-size);
+                font-weight: var(--font-semi-bold);
+                margin: 10px 0;
+            }
+    
+            .success-text {
+                font-size: var(--h4-font-size);
+                font-weight: var(--font-medium);
+                color: rgb(160, 165, 174);
+            }
+    
+            .transaction-no {
+                font-size: var(--h1-font-size);
+                font-weight: var(--font-semi-bold);
+                border: 2px solid #a4a4a471;
+                border-radius: 10px;
+                padding: 10px 65px;
+                margin: 10px 0;
+            }
+        }
+    
+        .success-button {
+
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+
+            .button {
+                margin: 10px;
+            }
+
+            .another {
+                background: #6a6a6a;
+
+                &:hover {
+                    background: #7e7e7e;
+                    transition: all ease-in .2s;
+                }
+            }
+        }
+    }
+
+}

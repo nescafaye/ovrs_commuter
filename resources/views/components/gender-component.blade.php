@@ -1,7 +1,4 @@
-<div class="gender-dropdown">
-    <div class="gender-select-box">
 
-        <div class="gender-container">
 
             <div class="gender">
                 <input type="radio" class="radio" id="Female" name="gender[]" />
@@ -15,14 +12,8 @@
                 <input type="radio" class="radio" id="Others" name="gender[]" />
                 <label for="Others">{{ __('Others') }}</label>
             </div>
-        </div>
 
-        <div class="selected-gender"> 
-            Select
-        </div>
-        
-    </div>
-</div>
+
 
 <script>
 

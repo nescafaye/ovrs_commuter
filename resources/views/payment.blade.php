@@ -5,7 +5,7 @@
 <main class="l-main">
 
     <!-- PAYMENT FORM-->
-	<form action="{{ route('checkout', ['totalAmount' => $total]) }}" method="get">
+	<form action="{{ route('checkout') }}" method="get">
 	@csrf
 
     	<section class=" bd-container section ">
@@ -25,9 +25,9 @@
     					<div class="first-passenger-container">
     						<div class="first-passenger-information-container">
 								<div class="passenger-title">
-									<span class="payment-form-passenger">Commuter 1</span>
+									<span class="payment-form-passenger">Primary Commuter</span>
 									<label class="lbl-commuter">
-										<input type="checkbox" name="commuter" id="commuter" class="checkbox-comm">
+										<input type="checkbox" id="commuter" class="checkbox-comm">
 										<span class="payment-form-title-passenger-type">I am a commuter</span>
 									</label>
 									
@@ -38,8 +38,8 @@
 									<div class="fullname-passenger">
 										<span class="hidden" id="hidden-fname">{{ $comm->fname }}</span>
 										<span class="hidden" id="hidden-lname">{{ $comm->lname }}</span>
-										<input class="textbox fname" id="fname" name="fname" type="text" placeholder="First Name" >
-										<input class="textbox lname" id="lname" name="lname" type="text" placeholder="Last Name">
+										<input class="textbox fname" id="fname" name="fname[]" type="text" placeholder="First Name" >
+										<input class="textbox lname" id="lname" name="lname[]" type="text" placeholder="Last Name">
 									</div>
 								</div>
 								<div class = "gender-information" style="margin: 2rem;">
@@ -65,8 +65,8 @@
 								<div class="passsenger-body-information">
 									<div class="passenger-information">
 										<div class="fullname-passenger">
-											<input class="textbox fname" id="fname-{{ $i }}" name="fname" type="text" placeholder="First Name" >
-											<input class="textbox lname input-other" id="lname-{{ $i }}" name="lname" type="text" placeholder="Last Name" >
+											<input class="textbox fname" id="fname-{{ $i }}" name="fname[]" type="text" placeholder="First Name" >
+											<input class="textbox lname input-other" id="lname-{{ $i }}" name="lname[]" type="text" placeholder="Last Name" >
 										</div>
 									</div>
 
@@ -79,8 +79,25 @@
 							</div>
 
 						@endfor
+						
+    			</div>
 
-    				</div>
+				<div class="first-passenger-container">
+					<div class="first-passenger-information-container">
+						<div class="passenger-title">
+							<span class="payment-form-passenger">Contact Information</span>
+							{{-- <span class="payment-form-title-passenger-type">Adult</span> --}}
+						</div>
+					</div>
+					<div class="passsenger-body-information">
+						<div class="passenger-information">
+							<div class="fullname-passenger contact-information">
+								<input class="textbox fname" id="email" name="contactEmail" type="text" placeholder="Email" >
+								<input class="textbox lname input-other" id="contactNo" name="contactNo" type="text" placeholder="Contact Number" >
+							</div>
+						</div>
+					</div>
+				</div>
 
     				<! -- PAYMENT METHOD -->
 
@@ -88,6 +105,7 @@
     					<span class="payment-form-title">Payment Information</span>
     					<br><br>
     				</div>
+					
     				<div class="payment-method-container">
     					<div class="payment-title-container">
     						<div class="payment-title"> 
@@ -99,7 +117,7 @@
     					<div class="payment-container" style="border-radius: 0px 0px 12px 12px;">
 							<div class="gcash" style="margin-top: 2rem;margin-left: 2rem;">
                                 <label class="gcash-radio">
-                                    <input type="radio" name="paymentMethod" id="gcash">
+                                    <input type="radio" name="paymentMethod" id="gcash" value="gcash">
                                     <img width="40" height="40" src="{{ asset('assets/gcash.svg') }}"> 
 									<span>Gcash</span>
                                 </label>
@@ -130,7 +148,8 @@
 
                                     <div class="departure-date">
 										<input type="hidden" name="departureDate" value="{{ $query['departureDate'] }}">
-                                        <span class="dashboard-subtitle-available-reservation">{{ $query['departureDate'] }} &#8211; {{ $query['returnDate'] }}</span>
+										<input type="hidden" name="returnDate" value="{{ $query['returnDate'] }}">
+                                        <span class="dashboard-subtitle-available-reservation">{{ $query['departureDate'] }} &#8211; {{ $query['returnDate'] }} @if ($query['returnDate'] == null) None @endif</span>
                                     </div>
 
                                     <div class="collapse-first-col">
@@ -161,6 +180,9 @@
                                             <span class="iconify-inline reservation-icon" data-icon="mdi:car-seat" data-width="20" data-height="20"></span>
                                             <span class="dashboard-subtitle-available-reservation-subtitle">Seat(s)</span>
                                             <span class="dashboard-subtitle-available-reservation">{{ $query['seatCode'] }}</span>
+											<input hidden type="text" name="seatsTaken" value="{{ $query['seatCode'] }}">
+											<input hidden type="text" name="pNo" value="{{ $query['p'] }}">
+											
                                         </div>
 
                                     </div>
@@ -190,12 +212,14 @@
 
 								<div class="collapse-body-two">
 
+									<input hidden type="text" name="route" value="{{ $query['route'] }}">
 									<div class="route-title sub dashboard-subtitle-available-reservation">{{ $query['route'] }}</div>
 
 										<div class="passenger-fee fee-container">
 											<div class="dashboard-subtitle-available-reservation-subtitle">Commuter 1 
 											<span class="commuter-name" id="lname"></span>
 											</div>
+											<input hidden type="text" name="fare" value="{{ $query['fare'] }}">
 											<div class="fare">P {{ $query['fare'] }}</div>
 										</div>
 									
@@ -239,7 +263,8 @@
 										</div>
 
 										<div class="total-price">
-											<input disabled type="text" data-type="currency" name="totalAmount" value="P {{ $total }}">
+											<b>{{ $total }}</b>
+											<input hidden type="text" data-type="currency" name="totalAmount" value="{{ $total }}">
 										</div>
 									</div>
 
@@ -260,7 +285,7 @@
 					<br>
 					<span class="warning-button">By clicking <mark style="background:none; color: #42A1A1;">Proceed to payment</mark>, I understand and agree with the <mark style="background:none; color: #42A1A1; text-decoration:underline;"><a target="_blank" href="{{ route('privacy') }}"> privacy policy</a></mark> and <mark style="background:none; color: #42A1A1; text-decoration:underline;"><a target="_blank" href="{{ route('terms') }}">terms of service</a></mark> of VanGo.</span>
 					<br><br>
-					<button class="proceed-payment-button "><a href="{{ route('checkout', ['totalAmount' => $total]) }}">Proceed to payment</a></button>
+					<button class="proceed-payment-button ">Proceed to payment</button>
 					<button class="cancel-payment-button"><a href="#modalCancellationWarning">Cancel</a></button>
 				</div>	
 			</div>
