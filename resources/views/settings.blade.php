@@ -46,40 +46,38 @@
 
             <div class="settings-container">
 
-            <div class="settings-information">
+                <div class="settings-information">
 
-                <!-- Email -->
-                <div class="email-container">
-                    <br>
-                    <span class="dashboard-subtitle-email">Email Address</span>
-                    <p class="email-description">This is where your confirmation email, tickets, and notifications will be sent</p>
-                    <input class="textbox txtemail acct" type="text" name="email" placeholder="{{ __('Email') }}" value="{{ $commuter->email }}">
+                    <!-- Email -->
+                    <div class="email-container">
+                        <br>
+                        <span class="dashboard-subtitle-email">Email Address</span>
+                        <p class="email-description">This is where your confirmation email, tickets, and notifications will be sent</p>
+                        <input class="textbox txtemail acct" type="text" name="email" placeholder="{{ __('Email') }}" value="{{ $commuter->email }}">
+                    </div>
+
+                    <!-- Username -->
+                    <div class="username-container">
+                        <br>
+                        <span class="dashboard-subtitle-username">Username</span>
+                        <input class="textbox txtusername acct" type="text" name="username" placeholder="{{ __('Username') }}" value="{{ $commuter->username }}">
+                    </div>
+
                 </div>
 
-                <!-- Username -->
-                <div class="username-container">
-                    <br>
-                    <span class="dashboard-subtitle-username">Username</span>
-                    <input class="textbox txtusername acct" type="text" name="username" placeholder="{{ __('Username') }}" value="{{ $commuter->username }}">
+                <div class="settings-profile">
+                    
+                    @if (empty($commuter->profilePic))
+                        <img class="prof-pic" src="{{ asset('assets/default-avatar.png') }}" alt="{{ asset('assets/default-avatar.png') }}">
+                    @else 
+                        <img class="prof-pic" src="{{ Storage::disk('s3')->url('profile_picture/' . 'commuter-uploads/' . 'profile-' . $commuter->comm_id . '/' . $commuter->profilePic) }}" alt="avatar">
+                    @endif
+
+                    <div class="photo-upload">
+                        <input type="file" accept="image/*" name="profilePic" id="" class="file-upload">
+                    </div>
+
                 </div>
-
-            </div>
-
-            <div class="settings-profile">
-                @if (empty($commuter->profilePic))
-                <img class="prof-pic" src="{{ asset('assets/default-avatar.png') }}" alt="avatar">
-                @else
-                    <img class="prof-pic" src="{{ asset('storage/images/'. $commuter->profilePic) }}" alt="avatar">
-                @endif
-
-                <input type="file" accept="image/*" name="profilePic" id="" class="file-upload">
-                <div class="admin-profile-button" class="profile-admin">
-                    <button type="submit" class="upload-profile">Upload</button>
-                    <br>
-                    <button class="remove-profile">Remove</button>
-                </div>
-
-            </div>
 
             </div>
 
@@ -105,7 +103,7 @@
             </form>
 
             <!-- Notification Container -->
-            <div class="notification-container">
+            {{-- <div class="notification-container">
                 <br><hr style="opacity: 0.2; border: 0.1px solid; border-radius:5px;"><br>
                 <span class="dashboard-subtitle-settings">Notification</span>
 
@@ -118,7 +116,7 @@
                     <input class="apple-switch email" type="checkbox" checked>
                 </div>
 
-                {{-- <!-- SMS -->
+                <!-- SMS -->
                 <div class="notification-sms-container">
                     <div class="sms-description-container">
                         <br><br>
@@ -126,8 +124,8 @@
                         <p class="sms-description">Receive updates, notifications, upcoming events, and offers in my mobile number.</p>
                     </div>
                     <input class="apple-switch sms" type="checkbox">
-                </div> --}}
-            </div>
+                </div>
+            </div> --}}
 
             <!-- Billing Container -->
             <div class="Billing-container">
