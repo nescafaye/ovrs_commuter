@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
+use Pusher\Pusher;
+
 
 use App\Models\Commuter;
 use App\Models\Transaction;
@@ -35,26 +37,45 @@ class PaymentController extends Controller
 
     public function index(Request $rq)
     {
-
-        $commuter = Commuter::where('comm_id', auth()->id())->get();
-    
         $query = $rq->all();
-        $query['departureTime'] = date('h:i A', strtotime($query['departureTime']));
-        $query['departureDate'] = date('D, M d', strtotime($query['departureDate']));
-        $query['seatCode'] = implode(", ", $query['seatCode']);
+        $commuter = Commuter::where('comm_id', auth()->id())->get();
 
-        if ($query['returnDate'] !== null) {
-            
-            $query['returnDate'] = date('D, M d', strtotime($query['returnDate']));
+        if ($query['type'] == 'reserve') {
+
+            $query['departureTime'] = date('h:i A', strtotime($query['departureTime']));
+            $query['departureDate'] = date('D, M d', strtotime($query['departureDate']));
+            $query['seatCode'] = implode(", ", $query['seatCode']);
+    
+            if ($query['returnDate'] !== null) {
+                
+                $query['returnDate'] = date('D, M d', strtotime($query['returnDate']));
+            }
+    
+    
+            $reservationFee = number_format((float) 8, 2, '.', ',');
+            $taxFee = number_format((float) .50, 2, '.', ',');
+            $total = number_format( (float) $query['fare'] * $query['passengers'] + $reservationFee + $taxFee, 2, '.', ',');
+    
+            return view('payment', compact('commuter', 'query', 'reservationFee', 'taxFee', 'total'));
+
         }
 
+        else if ($query['type'] == 'rent') {
 
-        $reservationFee = number_format((float) 8, 2, '.', ',');
-        $taxFee = number_format((float) .50, 2, '.', ',');
-        $total = number_format( (float) $query['fare'] * $query['passengers'] + $reservationFee + $taxFee, 2, '.', ',');
+            $query['pickupTime'] = date('h:i A', strtotime($query['pickupTime']));
+            $query['pickupDate'] = date('D, M d', strtotime($query['pickupDate']));
 
-        return view('payment', compact('commuter', 'query', 'reservationFee', 'taxFee', 'total'));
+            if ($query['returnDate'] !== null) {
+                
+                $query['returnDate'] = date('D, M d', strtotime($query['returnDate']));
+            }
 
+            $reservationFee = number_format((float) 8, 2, '.', ',');
+            $taxFee = number_format((float) .50, 2, '.', ',');
+            $total = number_format( (float) $query['rentalPrice'] + $reservationFee + $taxFee, 2, '.', '');
+
+            return view('payment', compact('query', 'commuter', 'reservationFee', 'taxFee', 'total'));
+        }
     }
 
     public function createPayment(Request $rq) {
@@ -95,6 +116,7 @@ class PaymentController extends Controller
     public function successPayment(Request $rq) {
 
         $query =  Crypt::decrypt($rq->q);
+
         $count = count($query['fname']);
         $random = random_int(000001, 999999);
         $trNo = str_pad($random, 6, '0', STR_PAD_LEFT);
@@ -113,35 +135,89 @@ class PaymentController extends Controller
             $query['returnDate'] = date('Y-m-d', strtotime($query['returnDate']));
         }
 
-        $toArray = explode(',', $query['seatsTaken']);
-        $getSeats = Seat::where('assignedVehicle',  $query['pNo'])->get(['seatCode']);
+        $commuter_id = Commuter::where('comm_id', auth()->id())->value('comm_id'); 
 
-        foreach ($toArray as $seat) {
-            
-            $unavailable = $getSeats->where('seatCode', $toArray);
+        // if transaction type is reserve
+
+        if ($query['type'] == 'reserve') {
+
+            $toArray = explode(',', $query['seatsTaken']);
+            $getSeats = Seat::where('assignedVehicle',  $query['pNo'])->get(['seatCode']);
+    
+            foreach ($toArray as $seat) {
+                
+                $unavailable = $getSeats->where('seatCode', $toArray);
+            }
+
+            Transaction::Create([
+                'transactionNo' => $trNo,
+                'commuterName' => $comm,
+                'commuterId' => $commuter_id,
+                'transactionType' => $query['type'], 
+                'contactEmail' => $query['contactEmail'],
+                'contactNo' => $query['contactNo'],
+                'routeTaken' => $query['route'],
+                'totalAmount' => $query['totalAmount'],
+                'returnDate' => $query['returnDate'],
+                'paymentMethod' => $query['paymentMethod'],
+                'seatsTaken' => $query['seatsTaken'],
+                'departureDate' => $query['departureDate'],
+                'fare' => $query['fare'],
+                'transactionTime' => Carbon::now(),
+            ]);
+
+            $data['title'] = 'A user reserved a seat';
+            $data['content'] = $commuter[0] . ' ' . 'reserved seats' . ' ' . $query['seatsTaken'];
+        }
+
+        // if transaction type is rent
+
+        else if ($query['type'] == 'rent') {
+
+            $departTime = date('h:i:s', strtotime($query['pickupTime']));
+            $departDate = $query['departureDate'] . ' ' . $departTime;
+
+            Transaction::Create([
+                'transactionNo' => $trNo,
+                'commuterName' => $comm,
+                'commuterId' => $commuter_id,
+                'transactionType' => $query['type'], 
+                'contactEmail' => $query['contactEmail'],
+                'contactNo' => $query['contactNo'],
+                'routeTaken' => $query['route'],
+                'totalAmount' => $query['totalAmount'],
+                'returnDate' => $query['returnDate'],
+                'paymentMethod' => $query['paymentMethod'],
+                'seatsTaken' => $query['vehicle'],
+                'departureDate' => $departDate,
+                'fare' => '0',
+                'transactionTime' => Carbon::now()
+            ]);
+
+            $data['title'] = 'A user rented a van';
+            $data['content'] = $comm . ' ' . 'rented' . ' ' . $query['vehicle'];
 
         }
 
-        $commuter_id = Commuter::where('comm_id', auth()->id())->value('comm_id'); 
-
-        Transaction::Create([
-                            'transactionNo' => $trNo,
-                            'commuterName' => $comm,
-                            'commuterId' => $commuter_id,
-                            'transactionType' => 'reserve', 
-                            'contactEmail' => $query['contactEmail'],
-                            'contactNo' => $query['contactNo'],
-                            'seatsTaken' => $query['seatsTaken'],
-                            'routeTaken' => $query['route'],
-                            'totalAmount' => $query['totalAmount'],
-                            'departureDate' => $query['departureDate'],
-                            'returnDate' => $query['returnDate'],
-                            'fare' => $query['fare'],
-                            'paymentMethod' => $query['paymentMethod'],
-                            'transactionTime' => Carbon::now()
-                        ]);
-
         $transactionNo = Transaction::where('commuterId', $commuter_id)->latest('created_at')->value('transactionNo');
+
+        // for notifications
+
+        $data['time'] = Carbon::now()->format('M j Y g:i');
+
+        $options = array(
+            'cluster' => 'ap1',
+            'encrypted' => true
+        );
+
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            $options
+        );
+
+        $pusher->trigger('Notify', 'send-message', $data);
 
         return view('success', compact('transactionNo'));
 

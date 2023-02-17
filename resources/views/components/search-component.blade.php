@@ -6,10 +6,10 @@
         <div class="content-container">
             <nav class="tab-pills">
                 <span class="tab-title active" data-title="home">                    
-                    <iconify-icon icon="mdi:car-seat" class="iconify tab" width="22" height="22"></iconify-icon>Reserve Seats</button>
+                    <button class="tab-btn"><iconify-icon icon="mdi:car-seat" class="iconify tab" width="22" height="22"></iconify-icon>Reserve Seats</button>
                 </span>
                 <span class="tab-title" data-title="work">                    
-                    <iconify-icon icon="fa6-solid:van-shuttle" class="iconify tab" width="22" height="22"></iconify-icon> Rent Van</button>
+                    <button class="tab-btn"><iconify-icon icon="fa6-solid:van-shuttle" class="iconify tab" width="22" height="22"></iconify-icon> Rent Van</button>
                 </span>
                 <div class="slider"></div>
             </nav>
@@ -28,7 +28,7 @@
                                 <!--  Current -->
                                     <div class="current_destination_container">
                                         <span class="dashboard-subtitle-current-destination">Leaving From</span>
-                                        <input class="textbox currentdestination search-input" list="origin" name="origin" id="left" value="{{ Request::get('origin') }}" placeholder="Current Destination" autocomplete="off">
+                                        <input class="textbox currentdestination search-input" list="origin" name="origin" id="left" value="{{ Request::get('origin') }}" placeholder="Current Destination" autocomplete="off" required>
     
                                         <datalist id="origin">
     
@@ -48,7 +48,7 @@
     
                                         <div class="current_destination_container">
                                             <span class="dashboard-subtitle-current-destination">Going to</span>
-                                            <input class="textbox currentdestination search-input" list="destination" name="destination" id="right" value="{{ Request::get('destination') }}" placeholder="Destination Point" autocomplete="off">
+                                            <input class="textbox currentdestination search-input" list="destination" name="destination" id="right" value="{{ Request::get('destination') }}" placeholder="Destination Point" autocomplete="off" required>
                                             
                                             <datalist id="destination">
     
@@ -73,7 +73,7 @@
     
                                         <div class="departuredate_transaction">
                                             <span class="dashboard-subtitle-current-destination">Departure Date</span>
-                                            <input type="date" class="departuredate" name="departureDate" value="{{ Request::get('departureDate') }}" onfocus="this.showPicker()">  
+                                            <input type="date" class="departuredate" name="departureDate" value="{{ Request::get('departureDate') }}" onfocus="this.showPicker()" required>  
                                         </div>
     
                                     <!--  Return Date -->
@@ -92,15 +92,15 @@
                                             <div class="Passenger-select-box">
                                                 <div class="Passenger-container">
                                                     <div class="Passenger">
-                                                        <input type="radio" class="radio" id="1" value="1" name="noOfPassengers"/>
+                                                        <input type="radio" @if(request()->noOfPassengers == 1) @checked(true) @endif class="radio" id="1" value="1" name="noOfPassengers"/>
                                                         <label for="1">1 passenger</label>
                                                     </div>
                                                     <div class="Passenger">
-                                                        <input type="radio" class="radio" id="2" value="2" name="noOfPassengers"/>
+                                                        <input type="radio" @if(request()->noOfPassengers == 2) @checked(true) @endif class="radio" id="2" value="2" name="noOfPassengers"/>
                                                         <label for="2">2 passengers</label>
                                                     </div>
                                                     <div class="Passenger">
-                                                        <input type="radio" class="radio" id="3" value="3" name="noOfPassengers"/>
+                                                        <input type="radio" @if(request()->noOfPassengers == 3) @checked(true) @endif class="radio" id="3" value="3" name="noOfPassengers"/>
                                                         <label for="3">3 passengers</label>
                                                     </div>
                                                 </div>
@@ -136,7 +136,6 @@
                 <div class="rent_van">
 
                     <form action="{{ route('search.van') }}" method="GET">
-                    @csrf
 
                     <!--  Destinations -->
                         <div class="destinations_transaction">
@@ -145,7 +144,7 @@
                                     <span class="dashboard-subtitle-current-destination">Leaving
                                         From</span>
                                     <input class="textbox currentdestination search-input" type="text" name="origin"
-                                        placeholder="Current Destination">
+                                        placeholder="Current Destination" value="{{ request()->origin }}" required>
                                 </div>
 
                                 <button onclick="switchText()"><span class="iconify-inline arrow-destination" data-icon="akar-icons:arrow-right-left" data-width="20" data-height="20"></span></button>
@@ -155,7 +154,7 @@
                                         <span class="dashboard-subtitle-current-destination">Going
                                             to</span>
                                         <input class="textbox currentdestination search-input" type="text" name="destination"
-                                            placeholder="Destination Point">
+                                            placeholder="Destination Point" value="{{ request()->destination }}" required>
                                     </div>
                         </div>
                         
@@ -169,7 +168,7 @@
                                     <span class="dashboard-subtitle-current-destination">Departure
                                         Date</span>
                                     <input type="date" class="departuredate" name="departureDate" value="{{ request()->departureDate }}"
-                                        onfocus="this.showPicker()">
+                                        onfocus="this.showPicker()" required>
                                     
                                 </div>
 
@@ -178,11 +177,13 @@
                                         <span class="dashboard-subtitle-current-destination">Return
                                             Date</span>
                                         <input type="date" class="departuredate" name="returnDate" value="{{ request()->returnDate }}"
-                                            onfocus="this.showPicker()">
+                                            onfocus="this.showPicker()" required>
                                     </div>
                         </div>
 
                                 <input type="submit" class="search_button" value="Search">
+
+                        @csrf
 
                         </form>
                 </div>

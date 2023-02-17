@@ -4,18 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class GenderComponent extends Component
+class Gender2Component extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
-
     public function __construct()
     {
-      
+        //
     }
 
     /**
@@ -25,6 +23,6 @@ class GenderComponent extends Component
      */
     public function render()
     {
-        return view('components.gender-component');
+        return view('components.gender2-component');
     }
 }

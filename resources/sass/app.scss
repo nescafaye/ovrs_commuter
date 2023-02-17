@@ -319,6 +319,7 @@ img{
 .nav__link:hover
 {
   color: var(--first-color);
+  text-decoration: none !important;
 }
 
 .nav__toggle

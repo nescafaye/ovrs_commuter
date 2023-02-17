@@ -13,18 +13,19 @@
             <form action="{{ route('payment') }}">
                 @csrf
 
-                {{-- {{route('bid.update', encrypt($id))}}
-
-
-                public function update($id, Request $request){
-
-                    $ID = decrypt($id);
-                    $tender = TenderMaster::findOrFail($ID);
-
-                    ..
-                    ...
-                } --}}
-
+                {{-- URL::signedRoute('payment', 
+                                            ['id' => $tr->id, 
+                                            'origin' => $query['origin'], 
+                                            'destination' => $query['destination'],
+                                            'route' => $tr->routeTitle,
+                                            'departureDate' => $query['departureDate'],
+                                            'returnDate' => $query['returnDate'],
+                                            'passengers' => $query['noOfPassengers'],
+                                            'fare' => $tr->fare,
+                                            'p' => $tr->plateNo,
+                                            'type' => $type,
+                                            'departureTime' => $tr->departureTime,
+                                            ]) }}" --}}
                 
             <center>
                 <span class="dashboard-subtitle-modal-seats">Choose your preferred seats</span>
@@ -106,6 +107,8 @@
                     <input type="hidden" name="passengers" value="{{$query['noOfPassengers']}}">
                     <input type="hidden" name="fare" value="{{ $tr->fare }}">
                     <input type="hidden" name="p" value="{{ $tr->plateNo }}">
+                    <input type="hidden" name="type" value="{{ $type }}">
+                    
 
                     <button class="proceed modal-btn disabled" id="proceed">Proceed</a>
                     

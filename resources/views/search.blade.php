@@ -145,8 +145,7 @@
                     <div class="available-results-vaninformation-container">
 
                         <div class="No-seats-available">
-                            <span class="dashboard-subtitle-available-seats-tile">Available
-                                Seats</span>
+                            <span class="dashboard-subtitle-available-seats-tile">Seat Capacity</span>
                             <div>
                                 <iconify-icon inline icon="mdi:car-seat" class="iconify-inline icon " width="20" height="20"></iconify-icon>
                                 <span class="dashboard-subtitle-available-seats">{{ $van->seatCapacity }}</span>
@@ -178,7 +177,7 @@
                             style="margin-left: 1.5rem;">P {{ (int) $van->rentalPrice }}</span>  
                     </div>
 
-                    <button class="select-button"><a href="#modalViewVan">Select Van</a></button>
+                    <button onclick='Livewire.emit("openModal", "modal.select-van", {{ json_encode([$van]) }})' class="select-button"><a>Select Van</a></button>
                 </div>
             </div>
 
@@ -211,14 +210,16 @@
 </script>
 
 <script>
+    
     let slideIndex = 1;
+
     showSlides(slideIndex);
 
     function plusSlides(n) {
         showSlides(slideIndex += n);
     }
 
-    function currentSlide(n) {
+    function currSlide(n) {
         showSlides(slideIndex = n);
     }
 

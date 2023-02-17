@@ -49,7 +49,6 @@
 			</div>
 	
 			<div class="success-button">
-				<a href="#" class="button another">View details</a>
 				<a href="{{ route('transactions') }}" class="button proceed">Proceed to transactions</a>
 			</div>
 

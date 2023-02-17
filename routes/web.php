@@ -54,19 +54,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'logout'])->name('');
  });
 
+ // Notifications
+ 
+Route::get('send', [NotificationController::class, 'index'])->name('notification');
+Route::post('post', [NotificationController::class, 'postMessage'])->name('postMessage');
 
 // Google Login
 
 Route::get('/auth/google/redirect', [App\Http\Controllers\SocialLoginController::class, 'googleRedirect'])->name('googleRedirect');
 Route::get('/auth/google/callback', [App\Http\Controllers\SocialLoginController::class, 'googleCallback'])->name('googleCallback');
 
-// Notif
-// Route::get('send', [SendMessageController::class, 'index'])->name('send');
-// Route::post('sendMessage', [SendMessageController::class, 'sendMessage'])->name('postMessage');
-
-Route::get('send', [NotificationController::class, 'index'])->name('notification');
-// Route::post('post',[NotificationController::class, 'sendNotification'])->name('postMessage');
-Route::get('post', [NotificationController::class, 'postMessage'])->name('postMessage');
 
 
 

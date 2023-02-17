@@ -5,6 +5,7 @@ use App\Models\Route;
 use App\Models\RouteVehicle;
 use Illuminate\Http\Request;
 use App\Models\Seat;
+use Illuminate\Support\Facades\Session;
 
 class SearchController extends Controller
 {
@@ -55,7 +56,7 @@ class SearchController extends Controller
         $getSeats = Seat::where('assignedVehicle', $plateNo)->get('isAvailable');
         $availableSeats = $getSeats->where('isAvailable', 1)->count();
 
-        return view('search', compact('result', 'availableSeats'));
+        return view('search', compact('result', 'availableSeats', 'transactionType'));
 
     }
 
@@ -75,7 +76,10 @@ class SearchController extends Controller
 
         }
 
-        return view('search', compact('vans'));
+       $return = $vans->returnDate = $rq->returnDate;
+
+
+        return view('search', compact('vans', 'transactionType', 'return'));
     }
 
     

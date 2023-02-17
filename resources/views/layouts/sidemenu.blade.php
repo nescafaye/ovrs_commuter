@@ -28,6 +28,8 @@
 	<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link href="cropperjs/cropper.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/sass/dashboard.scss', 'resources/js/app.js', 'resources/js/main.js'])

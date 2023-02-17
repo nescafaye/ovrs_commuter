@@ -70,7 +70,16 @@
 							<p class="date-description"></p>
 						</div>
 						<div class="trip-destination">
-							<span class="dashboard-subtitle-destination">{{ $transaction->routeTaken }}</span>
+							@if ($transaction->transactionType == 'reserve')
+
+								<span class="dashboard-subtitle-destination">{{ $transaction->routeTaken }}</span>
+								
+							@elseif($transaction->transactionType == 'rent')
+
+								<span class="dashboard-subtitle-destination">{{ $transaction->seatsTaken }}</span>
+								
+							@endif
+
 						</div>
 					</div>
 				</div>
@@ -78,8 +87,6 @@
 				@endforeach
 
 			</section>
-
-			
 			
 		@endif
 		

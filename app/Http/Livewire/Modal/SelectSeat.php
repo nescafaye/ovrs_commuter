@@ -16,6 +16,8 @@ class SelectSeat extends ModalComponent
     public $vehicle;
     public $seat;
     public $query;
+    public $type;
+    
 
     public function mount($id)
     {
@@ -33,6 +35,8 @@ class SelectSeat extends ModalComponent
 
         // get seats of the returned plateNo
         $this->seat = Seat::where('assignedVehicle', $plateNo)->pluck('seatCode');
+
+        $this->type = 'reserve';
     
     }
 

@@ -70,12 +70,8 @@
                         <h5>&nbsp;or sign in with&nbsp;</h5>
                     </div>
 
-                    <div class="col-9 social-login">
+                    <div class="col-12 social-login">
                         <button class="btn w-100 btn-light"><i class='bx bxl-google'></i><a class="google" href="{{ route('googleRedirect') }}" target="_blank">Continue with Google</a></button>
-                    </div>
-
-                    <div class="col-3 social-login">
-                        <button class="btn w-100 btn-primary fb"><i class='bx bxl-facebook'></i></button>
                     </div>
 
                 </div>

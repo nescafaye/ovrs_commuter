@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Contracts\Auth\CanResetPassword;
 
@@ -54,5 +55,14 @@ class Commuter extends Authenticatable
     public function getAuthPassword()
     {
         return $this->password;
+    }
+
+    public function getImageAttribute($path)
+    {
+        if ($path) {
+            return Storage::disk('s3')->url($path);
+        }
+
+        return "https://source.unsplash.com/96x96/daily";
     }
 }

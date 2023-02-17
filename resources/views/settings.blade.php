@@ -72,10 +72,12 @@
                     @else 
                         <img class="prof-pic" src="{{ Storage::disk('s3')->url('profile_picture/' . 'commuter-uploads/' . 'profile-' . $commuter->comm_id . '/' . $commuter->profilePic) }}" alt="avatar">
                     @endif
+                    
 
                     <div class="photo-upload">
-                        <input type="file" accept="image/*" name="profilePic" id="" class="file-upload">
+                        <input type="file" accept="image/*" name="profilePic" id="image" class="file-upload image">
                     </div>
+                    
 
                 </div>
 
@@ -166,6 +168,9 @@
             
         </div>
 
+    </div>
+</div>
+        
         <script>
 
             function closeMsg() {

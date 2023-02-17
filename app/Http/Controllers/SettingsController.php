@@ -71,9 +71,6 @@ class SettingsController extends Controller
 
             //save image name in database
             $all['profilePic'] = "$profileImage";
-
-            // dd($image->move($destinationPath, $profileImage));
-            // $all['profilePic'] = "$profileImage";
             
         } else {
 
